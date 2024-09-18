@@ -22,17 +22,14 @@ metadata/_edit_lock_ = true
 [node name="navigation_entity" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(-10, 0)
 optimize_path = true
-continuous_pathing = true
 debug = true
 
 [node name="navigation_entity2" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(30, 0)
 optimize_path = true
-continuous_pathing = true
 debug = true
 
 [node name="navigation_entity3" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(-91, 0)
 optimize_path = true
-continuous_pathing = true
 debug = true

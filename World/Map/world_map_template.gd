@@ -49,7 +49,6 @@ func _process(_delta):
 
 var old_gateway_polygon = []
 func update_debug_navigation_visuals():
-		print("balls")
 		var array = []
 		for n in $shallow_water.navigation_polygon.get_polygon_count():
 			array.append($shallow_water.navigation_polygon.get_polygon(n))
