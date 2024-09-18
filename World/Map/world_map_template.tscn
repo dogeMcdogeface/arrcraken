@@ -1,24 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqcebjaw3kte2"]
+[gd_scene load_steps=8 format=3 uid="uid://bqcebjaw3kte2"]
 
 [ext_resource type="Script" path="res://World/Map/world_map_template.gd" id="1_4uogi"]
 [ext_resource type="Texture2D" uid="uid://rqq2ys3msb0x" path="res://map.png" id="1_mv6m7"]
 [ext_resource type="PackedScene" uid="uid://dbp82hyh7qdij" path="res://World/Map/world_map_navigation_obstacle.tscn" id="2_epnws"]
 [ext_resource type="PackedScene" uid="uid://v31fq6ne0dos" path="res://World/Map/world_map_navigation_target.tscn" id="2_f2oxq"]
+[ext_resource type="Texture2D" uid="uid://dx2p5ibpy8ncn" path="res://Textures/Light/texture_09.png" id="3_puehv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vbaus"]
 resource_local_to_scene = true
-vertices = PackedVector2Array(4419.93, 2952.77, -4316.02, 2913.22, -4318.97, -2899.32, 4412.06, -2955.67)
+vertices = PackedVector2Array(4408.09, -2935.01, 4419.89, 2953.03, -4363.89, 2959.96, -4352.09, -2937.98)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(4405, -2947, 4470, 3003, -4366, 2963, -4369, -2949)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(4458, -2985, 4470, 3003, -4414, 3010, -4402, -2988)])
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation_obstacles"
 agent_radius = 50.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_8fjp7"]
 resource_local_to_scene = true
-vertices = PackedVector2Array(6704.14, 92.2266, 5059.62, 2784.79, 5264.69, -2068.91)
+vertices = PackedVector2Array(6704.08, 92.1406, 5132.04, 2580.79, 5265.1, -2068.3)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(5256, -2100, 5048, 2823, 6716, 92)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(5256, -2100, 5121, 2617, 6716, 92)])
 
 [node name="world_map" type="Container"]
 custom_minimum_size = Vector2(10000, 10000)
@@ -45,31 +46,46 @@ stretch_mode = 5
 metadata/_edit_lock_ = true
 
 [node name="debug" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0.235294)
+metadata/_edit_lock_ = true
 
 [node name="visual_shallow_water" type="Polygon2D" parent="debug"]
+texture_repeat = 3
 position = Vector2(5000, 5000)
-color = Color(0.895, 1, 0.58, 0.262745)
-polygon = PackedVector2Array(4419.93, 2952.77, -4316.02, 2913.22, -4318.97, -2899.32, 4412.06, -2955.67)
+color = Color(0.37, 0.685, 1, 1)
+texture = ExtResource("3_puehv")
+texture_scale = Vector2(3, 3)
+invert_border = 523.7
+polygon = PackedVector2Array(4408.09, -2935.01, 4419.89, 2953.03, -4363.89, 2959.96, -4352.09, -2937.98)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
 metadata/_edit_lock_ = true
 
 [node name="visual_deep_water" type="Polygon2D" parent="debug"]
+texture_repeat = 3
 position = Vector2(5000, 5000)
-color = Color(1, 0.39, 0.400167, 0.415686)
-polygon = PackedVector2Array(6704.14, 92.2266, 5059.62, 2784.79, 5264.69, -2068.91)
+color = Color(1, 0.39, 0.400167, 1)
+texture = ExtResource("3_puehv")
+texture_scale = Vector2(4, 4)
+texture_rotation = 0.785398
+polygon = PackedVector2Array(6704.08, 92.1406, 5132.04, 2580.79, 5265.1, -2068.3)
 polygons = [PackedInt32Array(0, 1, 2)]
-
-[node name="visual_connection_water" type="Line2D" parent="debug"]
-position = Vector2(5000, 5000)
 metadata/_edit_lock_ = true
 
+[node name="visual_connection_water" type="Line2D" parent="debug"]
+top_level = true
+texture_repeat = 3
+width = 20.0
+default_color = Color(0.9575, 0.49, 1, 1)
+texture = ExtResource("3_puehv")
+texture_mode = 1
+
 [node name="shallow_water" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(5000, 5000)
 navigation_polygon = SubResource("NavigationPolygon_vbaus")
 metadata/_edit_lock_ = true
 
 [node name="deep_water" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(5000, 5000)
 navigation_polygon = SubResource("NavigationPolygon_8fjp7")
 travel_cost = 3.0
