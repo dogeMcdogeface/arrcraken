@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgw3g0jnej4bf"
-path.s3tc="res://.godot/imported/wood_plank_NormalMap.png-27f0b15088b170dd71d9fe661a521138.s3tc.ctex"
-path.etc2="res://.godot/imported/wood_plank_NormalMap.png-27f0b15088b170dd71d9fe661a521138.etc2.ctex"
+path.s3tc="res://.godot/imported/wood_plank_NormalMap.png-67dff6013701151f217ba6c708725249.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_plank_NormalMap.png-67dff6013701151f217ba6c708725249.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://wood_plank_NormalMap.png"
-dest_files=["res://.godot/imported/wood_plank_NormalMap.png-27f0b15088b170dd71d9fe661a521138.s3tc.ctex", "res://.godot/imported/wood_plank_NormalMap.png-27f0b15088b170dd71d9fe661a521138.etc2.ctex"]
+source_file="res://Textures/wood_plank1/wood_plank_NormalMap.png"
+dest_files=["res://.godot/imported/wood_plank_NormalMap.png-67dff6013701151f217ba6c708725249.s3tc.ctex", "res://.godot/imported/wood_plank_NormalMap.png-67dff6013701151f217ba6c708725249.etc2.ctex"]
 
 [params]
 

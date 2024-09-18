@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cvubem6hbgbx"]
 
-[ext_resource type="Texture2D" uid="uid://bmtea2dgscdqe" path="res://wood plank.jpg" id="1_abnfr"]
+[ext_resource type="Texture2D" uid="uid://bmtea2dgscdqe" path="res://Textures/wood_plank1/wood plank.jpg" id="1_abnfr"]
 [ext_resource type="PackedScene" uid="uid://boyoantmlv2oy" path="res://Views/GUI/_Elements/pan_zoom_camera/pan_zoom_camera.tscn" id="2_0v8ja"]
 [ext_resource type="PackedScene" uid="uid://budm8k7r4k0s7" path="res://World/world_theatre.tscn" id="2_ldgto"]
 [ext_resource type="PackedScene" uid="uid://d2x5x78n5wvxs" path="res://Views/GUI/view_sea_gui.tscn" id="3_6i8nl"]

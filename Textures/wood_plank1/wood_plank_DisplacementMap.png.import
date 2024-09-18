@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmmsth1m74i5m"
-path.s3tc="res://.godot/imported/wood_plank_DisplacementMap.png-a153b654820f2aa201e26e1621683e88.s3tc.ctex"
-path.etc2="res://.godot/imported/wood_plank_DisplacementMap.png-a153b654820f2aa201e26e1621683e88.etc2.ctex"
+path.s3tc="res://.godot/imported/wood_plank_DisplacementMap.png-08693f454eece1503c9797cdef9b958b.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_plank_DisplacementMap.png-08693f454eece1503c9797cdef9b958b.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://wood_plank_DisplacementMap.png"
-dest_files=["res://.godot/imported/wood_plank_DisplacementMap.png-a153b654820f2aa201e26e1621683e88.s3tc.ctex", "res://.godot/imported/wood_plank_DisplacementMap.png-a153b654820f2aa201e26e1621683e88.etc2.ctex"]
+source_file="res://Textures/wood_plank1/wood_plank_DisplacementMap.png"
+dest_files=["res://.godot/imported/wood_plank_DisplacementMap.png-08693f454eece1503c9797cdef9b958b.s3tc.ctex", "res://.godot/imported/wood_plank_DisplacementMap.png-08693f454eece1503c9797cdef9b958b.etc2.ctex"]
 
 [params]
 

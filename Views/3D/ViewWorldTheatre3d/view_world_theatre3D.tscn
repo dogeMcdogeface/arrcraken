@@ -1,14 +1,14 @@
 [gd_scene load_steps=25 format=3 uid="uid://dyyvcs4as75wa"]
 
-[ext_resource type="Texture2D" uid="uid://bmtea2dgscdqe" path="res://wood plank.jpg" id="1_ehbul"]
+[ext_resource type="Texture2D" uid="uid://bmtea2dgscdqe" path="res://Textures/wood_plank1/wood plank.jpg" id="1_ehbul"]
 [ext_resource type="Script" path="res://Views/3D/ViewWorldTheatre3d/candl_light_3d.gd" id="2_4rs0o"]
 [ext_resource type="PackedScene" uid="uid://budm8k7r4k0s7" path="res://World/world_theatre.tscn" id="2_5ul53"]
 [ext_resource type="Script" path="res://Views/3D/ViewWorldTheatre3d/fog_volume.gd" id="3_0fsk2"]
 [ext_resource type="Script" path="res://Views/3D/ViewWorldTheatre3d/map_viewport_3d.gd" id="4_qnwvb"]
-[ext_resource type="Texture2D" uid="uid://5cwxfv72oi0d" path="res://wood_plank_SpecularMap.png" id="5_6n7qp"]
-[ext_resource type="Texture2D" uid="uid://d2ueyscpatl1h" path="res://wood_plank_AmbientOcclusionMap.png" id="5_084og"]
-[ext_resource type="Texture2D" uid="uid://cgw3g0jnej4bf" path="res://wood_plank_NormalMap.png" id="5_fptsb"]
-[ext_resource type="Texture2D" uid="uid://bmmsth1m74i5m" path="res://wood_plank_DisplacementMap.png" id="6_hlbxt"]
+[ext_resource type="Texture2D" uid="uid://5cwxfv72oi0d" path="res://Textures/wood_plank1/wood_plank_SpecularMap.png" id="5_6n7qp"]
+[ext_resource type="Texture2D" uid="uid://d2ueyscpatl1h" path="res://Textures/wood_plank1/wood_plank_AmbientOcclusionMap.png" id="5_084og"]
+[ext_resource type="Texture2D" uid="uid://cgw3g0jnej4bf" path="res://Textures/wood_plank1/wood_plank_NormalMap.png" id="5_fptsb"]
+[ext_resource type="Texture2D" uid="uid://bmmsth1m74i5m" path="res://Textures/wood_plank1/wood_plank_DisplacementMap.png" id="6_hlbxt"]
 
 [sub_resource type="Environment" id="Environment_npg2s"]
 volumetric_fog_enabled = true

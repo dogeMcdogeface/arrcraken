@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2ueyscpatl1h"
-path.s3tc="res://.godot/imported/wood_plank_AmbientOcclusionMap.png-17d7d99e9d06434b5368da462c8cf617.s3tc.ctex"
-path.etc2="res://.godot/imported/wood_plank_AmbientOcclusionMap.png-17d7d99e9d06434b5368da462c8cf617.etc2.ctex"
+path.s3tc="res://.godot/imported/wood_plank_AmbientOcclusionMap.png-169b355782851eb1cab318a6393bb3fc.s3tc.ctex"
+path.etc2="res://.godot/imported/wood_plank_AmbientOcclusionMap.png-169b355782851eb1cab318a6393bb3fc.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://wood_plank_AmbientOcclusionMap.png"
-dest_files=["res://.godot/imported/wood_plank_AmbientOcclusionMap.png-17d7d99e9d06434b5368da462c8cf617.s3tc.ctex", "res://.godot/imported/wood_plank_AmbientOcclusionMap.png-17d7d99e9d06434b5368da462c8cf617.etc2.ctex"]
+source_file="res://Textures/wood_plank1/wood_plank_AmbientOcclusionMap.png"
+dest_files=["res://.godot/imported/wood_plank_AmbientOcclusionMap.png-169b355782851eb1cab318a6393bb3fc.s3tc.ctex", "res://.godot/imported/wood_plank_AmbientOcclusionMap.png-169b355782851eb1cab318a6393bb3fc.etc2.ctex"]
 
 [params]
 

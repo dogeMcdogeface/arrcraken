@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://budm8k7r4k0s7"]
 
 [ext_resource type="Script" path="res://World/Wind.gd" id="1_qm5mn"]
-[ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/Map/Custom_Maps/world_map_caribbean.tscn" id="3_i4qrc"]
+[ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/world_map_caribbean.tscn" id="3_i4qrc"]
 [ext_resource type="PackedScene" uid="uid://bqr0n6cn4413q" path="res://World/Entities/navigation_entity.tscn" id="3_xpd10"]
 
 [node name="world_theatre" type="Node2D"]
@@ -21,15 +21,21 @@ metadata/_edit_lock_ = true
 
 [node name="navigation_entity" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(-10, 0)
+linear_accel = 20.0
+linear_speed = 20.0
 optimize_path = true
 debug = true
 
 [node name="navigation_entity2" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(30, 0)
+linear_accel = 20.0
+linear_speed = 20.0
 optimize_path = true
 debug = true
 
 [node name="navigation_entity3" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
 position = Vector2(-91, 0)
+linear_accel = 20.0
+linear_speed = 20.0
 optimize_path = true
 debug = true

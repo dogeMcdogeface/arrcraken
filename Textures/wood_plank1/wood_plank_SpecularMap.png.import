@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bashykd2i81rs"
-path="res://.godot/imported/ship.png-232cf3806b465084ad9b06c70afe8991.ctex"
+uid="uid://5cwxfv72oi0d"
+path="res://.godot/imported/wood_plank_SpecularMap.png-c356df33e60ad5827438c00f6044a41f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ship.png"
-dest_files=["res://.godot/imported/ship.png-232cf3806b465084ad9b06c70afe8991.ctex"]
+source_file="res://Textures/wood_plank1/wood_plank_SpecularMap.png"
+dest_files=["res://.godot/imported/wood_plank_SpecularMap.png-c356df33e60ad5827438c00f6044a41f.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=0
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

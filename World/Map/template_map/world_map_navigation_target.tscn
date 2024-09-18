@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://v31fq6ne0dos"]
 
-[ext_resource type="Texture2D" uid="uid://crmtylfp4d8s" path="res://port.png" id="1_j72wo"]
-[ext_resource type="Script" path="res://World/Map/world_map_navigation_target.gd" id="1_xiy77"]
+[ext_resource type="Texture2D" uid="uid://crmtylfp4d8s" path="res://Textures/port.png" id="1_j72wo"]
+[ext_resource type="Script" path="res://World/Map/template_map/world_map_navigation_target.gd" id="1_xiy77"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fcxnf"]
 radius = 68.0074
