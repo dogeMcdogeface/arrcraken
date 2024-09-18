@@ -131,8 +131,7 @@ func get_unique(node: Node) -> Dictionary:
 
 	
 @export var debug :bool = true
-var debug_string = "debuggable_nodes: %s fps: %-10.3f"
+var debug_string = "debuggable_nodes: %s "
 @onready var debug_args = func(): return [
 	debuggable_nodes.size(),
-	Engine.get_frames_per_second(),
 	]

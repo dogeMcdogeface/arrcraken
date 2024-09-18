@@ -34,7 +34,8 @@ func _ready():
 #func _process(delta):
 	#pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	var delta = _delta * Globals.world_time_scale
 	if continuous_pathing:
 		set_navigation_target(next_target.global_position)
 		
@@ -46,7 +47,10 @@ func _physics_process(delta):
 	compute_wind_effect()
 	compute_velocity(delta)
 	
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	#if collision:
+		#print("I collided with ", collision.get_collider().name)
+	#move_and_slide()
 
 ################# BEHAVIOUR ###########################################################
 #Code handling the behaviour of a navigating entity (ships/players/creatures)

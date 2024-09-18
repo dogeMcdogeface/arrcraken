@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://budm8k7r4k0s7"]
+[gd_scene load_steps=4 format=3 uid="uid://budm8k7r4k0s7"]
 
 [ext_resource type="Script" path="res://World/Wind.gd" id="1_qm5mn"]
 [ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/world_map_caribbean.tscn" id="3_i4qrc"]
 [ext_resource type="PackedScene" uid="uid://bqr0n6cn4413q" path="res://World/Entities/navigation_entity.tscn" id="3_xpd10"]
-[ext_resource type="PackedScene" uid="uid://dnqk0nls5mtho" path="res://Debug/GlobalsEditor.tscn" id="4_5a7mr"]
 
 [node name="world_theatre" type="Node2D"]
 
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_qm5mn")
-direction = Vector2(1, 0)
-paused = true
 debug = true
 
 [node name="world_map" parent="." instance=ExtResource("3_i4qrc")]
@@ -36,6 +33,3 @@ debug = true
 position = Vector2(-91, 0)
 optimize_path = true
 debug = true
-
-[node name="GlobalsEditor" parent="." instance=ExtResource("4_5a7mr")]
-_world_time_scale = 5.0
