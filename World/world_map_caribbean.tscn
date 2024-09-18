@@ -32,10 +32,10 @@ polygon = PackedVector2Array(-148.57, 1751.2, -1565.46, -148.242, -1104.64, -433
 polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(13, 12, 14)]
 
 [node name="shallow_water" parent="." index="2"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_b07ws")
 
 [node name="deep_water" parent="." index="3"]
-visible = true
 navigation_polygon = SubResource("NavigationPolygon_j1wif")
 
 [node name="landmass_example" parent="NavigationObstacles" index="0"]

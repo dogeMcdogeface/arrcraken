@@ -4,6 +4,7 @@ extends Node
 @export var debug_interval = 0.1
 
 var debug_window
+var custom_profiler = DebugProfiler.new()
 
 var debuggable_nodes
 var debug_string_last
@@ -14,17 +15,19 @@ var duration_visual_v = ["█", "▇", "▆", "▅", "▄", "▃", "▂", "▁",
 var duration_visual_h = ["█", "▉", "▊", "▋", "▌", "▍", "▎", "▏", " "]
 
 func _ready():
-	debuggable_nodes = GetAllTreeNodes()
-	print(debuggable_nodes)
 	debug_window = preload("res://Debug/debug_window.tscn").instantiate()
 	add_child(debug_window)
+	debuggable_nodes = GetAllTreeNodes()
+	print(debuggable_nodes)
+	
+	EngineDebugger.register_profiler("custom_profiler",custom_profiler)
+	EngineDebugger.profiler_enable("custom_profiler", true)
+	debuggable_nodes.insert(1, custom_profiler)
 	pass
 
-func _process(delta):
-	debug_elapsed += delta
-	if debug_interval > debug_elapsed: return
-	debug_elapsed = 0
 
+func _process(delta):
+	if  Engine.get_process_frames() % int(Engine.max_fps * debug_interval) != 0: return
 
 	var debug_string_new = ""
 	for node in debuggable_nodes:
@@ -128,9 +131,8 @@ func get_unique(node: Node) -> Dictionary:
 
 	
 @export var debug :bool = true
-var debug_string = "debuggable_nodes: %s fps: %-10.3f pps: %-10.3f"
+var debug_string = "debuggable_nodes: %s fps: %-10.3f"
 @onready var debug_args = func(): return [
 	debuggable_nodes.size(),
 	Engine.get_frames_per_second(),
-	Engine.physics_ticks_per_second
 	]
