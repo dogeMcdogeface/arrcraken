@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://obnkyab40m02"]
+
+[ext_resource type="Script" path="res://view_map_gui.gd" id="1_87le0"]
+[ext_resource type="PackedScene" uid="uid://ba2k213xm7i3n" path="res://global_map.tscn" id="1_l0euc"]
+
+[node name="view_map_gui" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_87le0")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+offset_right = 2000.0
+offset_bottom = 2000.0
+scale = Vector2(0.4, 0.4)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(2000, 2000)
+render_target_update_mode = 4
+
+[node name="global_map" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_l0euc")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="HScrollBar" type="HScrollBar" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0

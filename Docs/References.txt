@@ -1,0 +1,12 @@
+## Navigation
+- [Using Navigation Agents](https://docs.godotengine.org/en/stable/tutorials/navigation/navigation_using_navigationagents.html)
+- [Using Agent Avoidance](https://docs.godotengine.org/en/4.0/tutorials/navigation/navigation_using_agent_avoidance.html)
+
+## GDScript
+- [Global Scope](https://docs.godotengine.org/en/stable/classes/class_@globalscope.html)
+- [GDScript Exports](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_exports.html)
+
+## Common Nodes
+- [Vector2 Class](https://docs.godotengine.org/en/stable/classes/class_vector2.html)
+- [Node Class](https://docs.godotengine.org/en/stable/classes/class_node.html)
+- [SubViewport Class](https://docs.godotengine.org/en/stable/classes/class_subviewport.html)

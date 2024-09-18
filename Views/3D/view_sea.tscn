@@ -1,0 +1,139 @@
+[gd_scene load_steps=25 format=3 uid="uid://e47a2r71d851"]
+
+[ext_resource type="Texture2D" uid="uid://fn21ijwimost" path="res://114870866_114266907036805_821154035906431306_n.jpg" id="1_3y2b5"]
+[ext_resource type="PackedScene" uid="uid://obnkyab40m02" path="res://Views/GUI/_Elements/zoom_pan_viewer/zoom_pan_viewer.tscn" id="1_bex1w"]
+[ext_resource type="PackedScene" uid="uid://xyjd4eddjsou" path="res://Views/3D/drag_camera_3d.tscn" id="2_71a6h"]
+[ext_resource type="PackedScene" uid="uid://d2x5x78n5wvxs" path="res://Views/GUI/view_sea_gui.tscn" id="2_kpayt"]
+[ext_resource type="Texture2D" uid="uid://rqq2ys3msb0x" path="res://map.png" id="3_2xk20"]
+[ext_resource type="Shader" path="res://Views/3D/sea_map.gdshader" id="3_6wv1w"]
+[ext_resource type="Shader" path="res://Views/3D/sea_geometry.gdshader" id="3_8ypyj"]
+[ext_resource type="Shader" path="res://Views/3D/sea_grid.gdshader" id="4_5rtb8"]
+[ext_resource type="Script" path="res://World/Entities/sea_entity.gd" id="4_jsi10"]
+[ext_resource type="Script" path="res://World/Wind.gd" id="8_wc3bn"]
+[ext_resource type="Script" path="res://Views/3D/sea_grid.gd" id="10_wclix"]
+[ext_resource type="Script" path="res://Views/3D/player_model.gd" id="12_ec01y"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dgqab"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2n3te"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_dgqab")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wb7bi"]
+render_priority = 0
+shader = ExtResource("3_8ypyj")
+shader_parameter/height_scale = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_2n3te")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lnoso"]
+material = SubResource("ShaderMaterial_wb7bi")
+size = Vector2(20, 20)
+subdivide_width = 200
+subdivide_depth = 200
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yy67m"]
+shader = ExtResource("3_6wv1w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wis2f"]
+shader = ExtResource("3_6wv1w")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ildux"]
+render_priority = 0
+shader = ExtResource("4_5rtb8")
+shader_parameter/gridColor = null
+shader_parameter/checkerColor = null
+shader_parameter/fadeStart = 10.0
+shader_parameter/fadeEnd = 50.0
+shader_parameter/unitSize = 1.0
+shader_parameter/subdivisions = 5
+shader_parameter/majorLineThickness = 2.0
+shader_parameter/minorLineThickness = 1.0
+shader_parameter/minorLineAlpha = 0.3
+shader_parameter/centerOffset = Vector3(0, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pw07o"]
+material = SubResource("ShaderMaterial_ildux")
+size = Vector2(100, 100)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ybqiw"]
+sky_top_color = Color(0.360118, 0.686408, 0.904482, 1)
+ground_bottom_color = Color(0.143072, 0.20366, 0.403229, 1)
+
+[sub_resource type="Sky" id="Sky_dl6b4"]
+sky_material = SubResource("ProceduralSkyMaterial_ybqiw")
+
+[sub_resource type="Environment" id="Environment_o6t18"]
+sky = SubResource("Sky_dl6b4")
+sky_rotation = Vector3(0, -1.97048, 0)
+ambient_light_source = 3
+reflected_light_source = 2
+
+[sub_resource type="PrismMesh" id="PrismMesh_kxext"]
+
+[node name="view_sea" type="Node3D"]
+
+[node name="view_map_gui" parent="." instance=ExtResource("1_bex1w")]
+offset_left = 844.0
+offset_right = -8.0
+offset_bottom = -348.0
+locked = true
+
+[node name="view_sea_gui" parent="." instance=ExtResource("2_kpayt")]
+
+[node name="sea" type="Node3D" parent="."]
+
+[node name="sea_texture" type="Sprite3D" parent="sea"]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 10, 0, -10, -4.37114e-07, 0, 0, 0)
+visible = false
+texture = ExtResource("1_3y2b5")
+
+[node name="sea_geometry" type="MeshInstance3D" parent="sea"]
+mesh = SubResource("PlaneMesh_lnoso")
+skeleton = NodePath("../..")
+
+[node name="sea_map" type="Sprite3D" parent="sea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_yy67m")
+material_overlay = SubResource("ShaderMaterial_wis2f")
+pixel_size = 1.61
+texture = ExtResource("3_2xk20")
+
+[node name="sea_grid" type="MeshInstance3D" parent="sea" groups=["player_position_listeners"]]
+mesh = SubResource("PlaneMesh_pw07o")
+skeleton = NodePath("../..")
+script = ExtResource("10_wclix")
+
+[node name="drag_camera3d" parent="." instance=ExtResource("2_71a6h")]
+limit_zoom = Vector2(30, 80)
+debug = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o6t18")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 200, 0)
+light_energy = 0.677
+shadow_enabled = true
+shadow_reverse_cull_face = true
+shadow_blur = 2.01
+
+[node name="player_model" type="StaticBody3D" parent="." groups=["player_position_listeners"]]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2.71035, 0)
+script = ExtResource("12_ec01y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player_model"]
+transform = Transform3D(-6.55671e-07, 30, 8.74228e-07, 0, -1.31134e-06, 20, 15, 1.31134e-06, 3.82137e-14, 0, 0, 0)
+mesh = SubResource("PrismMesh_kxext")
+
+[node name="Player" type="Node" parent="." groups=["wind_listeners"]]
+script = ExtResource("4_jsi10")
+movement_type = 1
+debug = true
+
+[node name="Wind" type="Node" parent="."]
+script = ExtResource("8_wc3bn")
+direction = Vector2(1, 0)
+variance_r = 0.0
+variance_m = 0.0
+debug = true
