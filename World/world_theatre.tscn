@@ -38,4 +38,3 @@ optimize_path = true
 debug = true
 
 [node name="GlobalsEditor" parent="." instance=ExtResource("4_5a7mr")]
-_world_time_scale = 5.0

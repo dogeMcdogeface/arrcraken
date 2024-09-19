@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2ud5b8ywvqra"]
+
+[ext_resource type="Script" path="res://addons/detail_time_tracker/detail_time_tracker_dock.gd" id="1_j41e1"]
+
+[node name="DetailTimeTrackerDock" type="MarginContainer"]
+offset_right = 202.0
+offset_bottom = 301.0
+script = ExtResource("1_j41e1")
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 2
+columns = 3
+column_titles_visible = true

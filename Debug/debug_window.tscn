@@ -1,14 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://dka2w0cro6fy"]
 
-[ext_resource type="Script" path="res://Debug/debug_window.gd" id="1_icxnn"]
 [ext_resource type="FontFile" uid="uid://ck0ql3ong03r4" path="res://Fonts/ConsolaMono.ttf" id="2_t186g"]
+
+[sub_resource type="GDScript" id="GDScript_eqqik"]
+script/source = "extends Window
+
+@onready var TextArea = $Container/TextArea
+"
 
 [node name="DebugWindow" type="Window"]
 auto_translate_mode = 1
 initial_position = 3
 size = Vector2i(800, 500)
 current_screen = 0
-script = ExtResource("1_icxnn")
+script = SubResource("GDScript_eqqik")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
