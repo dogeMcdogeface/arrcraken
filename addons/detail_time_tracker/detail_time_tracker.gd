@@ -52,7 +52,7 @@ func _process(delta):
 	var editing_node = EditorInterface.get_edited_scene_root()
 	var editing_node_name = "unknown_node"
 	if editing_node != null and editing_node.has_method("get_name"):
-		editing_node.get_name()
+		editing_node_name = editing_node.get_name()
 	var editing_script = EditorInterface.get_script_editor().get_current_script()
 	
 	var is_focused = false
