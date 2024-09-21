@@ -11,7 +11,7 @@ var debug_string_last
 var debug_elapsed = 0
 
 var warning_duration = 5000
-var duration_visual_v = ["█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", " "]
+var duration_visual_v = ["█", "▇", "▆", "▅", "▄", "▃", "▂", "▁", "▔"]
 var duration_visual_h = ["█", "▉", "▊", "▋", "▌", "▍", "▎", "▏", " "]
 
 func _ready():
@@ -131,7 +131,8 @@ func get_unique(node: Node) -> Dictionary:
 
 	
 @export var debug :bool = true
-var debug_string = "debuggable_nodes: %s "
+var debug_string = "debuggable_nodes: %s world date: %s"
 @onready var debug_args = func(): return [
 	debuggable_nodes.size(),
+	Globals.get_date_string()
 	]

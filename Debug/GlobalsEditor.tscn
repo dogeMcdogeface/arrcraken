@@ -1,6 +1,26 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnqk0nls5mtho"]
 
-[ext_resource type="Script" path="res://Globals.gd" id="1_s37pl"]
+[sub_resource type="GDScript" id="GDScript_4kvpv"]
+script/source = "extends Node
+
+@export var min_world_time_scale: float = 0.0
+@export var max_world_time_scale: float = 1000
+@export_range(0.0, 1000)  var _world_time_scale: float = 1:
+	set(value):
+		value = clamp(value, min_world_time_scale, max_world_time_scale)
+		_world_time_scale = value
+		Globals.world_time_scale = value
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [node name="GlobalsEditor" type="Node"]
-script = ExtResource("1_s37pl")
+script = SubResource("GDScript_4kvpv")

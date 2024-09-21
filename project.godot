@@ -20,7 +20,8 @@ run/physics_ticks_per_second=60
 [autoload]
 
 Debug="*res://Debug/Debug.gd"
-Globals="*res://Globals.gd"
+Globals="*res://Globals/Global.gd"
+Economy="*res://Globals/Economy.gd"
 
 [display]
 

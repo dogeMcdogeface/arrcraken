@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds221dfb6tng8"]
+[gd_scene load_steps=15 format=3 uid="uid://ds221dfb6tng8"]
 
 [ext_resource type="PackedScene" uid="uid://bqcebjaw3kte2" path="res://World/Map/Template/world_map_template.tscn" id="1_xf1is"]
 [ext_resource type="PackedScene" uid="uid://dbp82hyh7qdij" path="res://World/Map/Template/world_map_navigation_obstacle.tscn" id="2_jqy1e"]
@@ -23,14 +23,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1580, -151, -153, 1762
 [sub_resource type="Resource" id="Resource_8v05x"]
 script = ExtResource("4_ih13c")
 coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_si8tn"]
-script = ExtResource("4_ih13c")
-coin = 10.0
 wood = 0.0
 stone = 0.0
 food = 0.0
@@ -157,7 +149,6 @@ vertices = PackedVector2Array(823, 887, 1015, 865, 1318, 959, 1310, 1031, 1235, 
 [node name="WorldMapCity1" parent="NavigationTargets/Cities" index="0" instance=ExtResource("4_xw66o")]
 position = Vector2(-1112, 947)
 inventory = SubResource("Resource_8v05x")
-production = SubResource("Resource_si8tn")
 debug = true
 label = "WorldMapCity"
 

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds221dfb6tng8"]
+[gd_scene load_steps=14 format=3 uid="uid://ds221dfb6tng8"]
 
 [ext_resource type="PackedScene" uid="uid://bqcebjaw3kte2" path="res://World/Map/Template/world_map_template.tscn" id="1_xf1is"]
 [ext_resource type="PackedScene" uid="uid://dbp82hyh7qdij" path="res://World/Map/Template/world_map_navigation_obstacle.tscn" id="2_jqy1e"]
-[ext_resource type="Script" path="res://Inventory.gd" id="4_ih13c"]
+[ext_resource type="Script" path="res://inventory_resources.gd" id="4_ih13c"]
 [ext_resource type="PackedScene" uid="uid://b8pc0h1j5mivk" path="res://World/Map/Elements/world_map_city.tscn" id="4_xw66o"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_b07ws"]
@@ -20,78 +20,74 @@ vertices = PackedVector2Array(-148.57, 1751.2, -1565.46, -148.242, -1104.64, -43
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(13, 12, 14)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1580, -151, -153, 1762, 1995, 1431, 3512, 1809, 3905, 1272, 3335, 559, 699, 957, -1104, -446), PackedVector2Array(-2628, -725, -1986, -855, -863, -1353, -1594, -2510, -3893, -2039, -4001, -553, -3516, -75)])
 
-[sub_resource type="Resource" id="Resource_8v05x"]
-script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_si8tn"]
-script = ExtResource("4_ih13c")
-coin = 10.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
 [sub_resource type="Resource" id="Resource_wbn2j"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"coin": 0.0,
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [sub_resource type="Resource" id="Resource_a21oj"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"coin": 0.0,
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [sub_resource type="Resource" id="Resource_f06fj"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"coin": 0.0,
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
-[sub_resource type="Resource" id="Resource_vn5cf"]
+[sub_resource type="Resource" id="Resource_nmsa0"]
 resource_local_to_scene = true
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"coin": 0.0,
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [sub_resource type="Resource" id="Resource_juln5"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [sub_resource type="Resource" id="Resource_y2tel"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [sub_resource type="Resource" id="Resource_1ewmm"]
 script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
+items = {
+"coin": 0.0,
+"food": 0.0,
+"guns": 0.0,
+"stone": 0.0,
+"wood": 0.0
+}
 
 [node name="world_map" instance=ExtResource("1_xf1is")]
 
@@ -156,8 +152,6 @@ vertices = PackedVector2Array(823, 887, 1015, 865, 1318, 959, 1310, 1031, 1235, 
 
 [node name="WorldMapCity1" parent="NavigationTargets/Cities" index="0" instance=ExtResource("4_xw66o")]
 position = Vector2(-1112, 947)
-inventory = SubResource("Resource_8v05x")
-production = SubResource("Resource_si8tn")
 debug = true
 label = "WorldMapCity"
 
@@ -179,7 +173,7 @@ production = SubResource("Resource_f06fj")
 
 [node name="WorldMapCity6" parent="NavigationTargets/Cities" index="5" instance=ExtResource("4_xw66o")]
 position = Vector2(-908, -2019)
-production = SubResource("Resource_vn5cf")
+production = SubResource("Resource_nmsa0")
 
 [node name="WorldMapCity7" parent="NavigationTargets/Cities" index="6" instance=ExtResource("4_xw66o")]
 position = Vector2(-408, -2290)

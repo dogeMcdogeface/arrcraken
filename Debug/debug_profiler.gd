@@ -17,13 +17,12 @@ func get_name():
 	return get_class()
 
 var debug :bool = true
-var debug_string = "\
+var debug_string = func(): return "\
 time_scale:       %6.3f 			| world_time_scale: %6.3f
 fps:              %4.0f				| max_physics_steps_per_frame: %-10.0f
 max_fps:          %4.0f				| physics_ticks_per_second:    %-2.0f
 frame_time  (ms): %6.3f (%-5.0f)	| process_time      (ms): %6.3f (%-4.0f)	
-physics_time(ms): %6.3f (%-5.0f)	| physics_frame_time(ms): %6.3f (%-4.0f)"
-var debug_args = func(): return [
+physics_time(ms): %6.3f (%-5.0f)	| physics_frame_time(ms): %6.3f (%-4.0f)" % [
 	Engine.time_scale,
 	Globals.world_time_scale,
 	Engine.get_frames_per_second(),

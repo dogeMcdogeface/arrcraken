@@ -2,35 +2,12 @@
 extends Container
 class_name WorldMap
 
-var properties = {
-	":custom_minimum_size": Globals.WorldMapProperties.size,
-	":size": Globals.WorldMapProperties.size,
-	":rotation": 0,
-	":scale": Vector2.ONE,
-	":pivot_offset": Vector2.ZERO,
+@onready var shallow_water = $shallow_water
+@onready var deep_water = $deep_water
+@onready var visual_shallow_water = $debug/visual_shallow_water
+@onready var visual_deep_water = $debug/visual_deep_water
+@onready var visual_connection_water = $debug/visual_connection_water
 
-	"TextureRect:position": Vector2.ZERO,
-	"TextureRect:size": Globals.WorldMapProperties.size,
-	"TextureRect:custom_minimum_size": Globals.WorldMapProperties.size,
-	"TextureRect:rotation": 0,
-	"TextureRect:scale": Vector2.ONE,
-	"TextureRect:pivot_offset": Vector2.ZERO,
-
-	"NavigationTargets:position": Globals.WorldMapProperties.size / 2,
-	"NavigationTargets:rotation": 0,
-	"NavigationTargets:scale": Vector2.ONE,
-	"NavigationTargets:skew": 0,
-
-	"shallow_water:position": Globals.WorldMapProperties.size / 2,
-	"shallow_water:rotation": 0,
-	"shallow_water:scale": Vector2.ONE,
-	"shallow_water:skew": 0,
-	
-	"deep_water:position": Globals.WorldMapProperties.size / 2,
-	"deep_water:rotation": 0,
-	"deep_water:scale": Vector2.ONE,
-	"deep_water:skew": 0
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -41,17 +18,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if  Engine.get_process_frames() % 60 == 0:
-		update_configuration_warnings()
 		if $debug.visible:
 			update_debug_navigation_visuals()
 		
-
-
-@onready var shallow_water = $shallow_water
-@onready var deep_water = $deep_water
-@onready var visual_shallow_water = $debug/visual_shallow_water
-@onready var visual_deep_water = $debug/visual_deep_water
-@onready var visual_connection_water = $debug/visual_connection_water
 
 
 var old_gateway_polygon = []
@@ -98,15 +67,3 @@ func update_debug_navigation_visuals():
 		#var regions = NavigationServer2D.map_get_regions(map)
 		#print(World2D ,NavigationServer2D.map_get_regions(maps[0])[0].get_id())
 	
-
-
-func _get_configuration_warnings():
-	var warnings = []
-	for key in properties:
-		var result = get_node_and_resource(key)
-		var node = result[0]
-		var property = result[2].get_subname(0)
-		if node.get(property) != properties[key]:
-			#node.set(property, properties[key])
-			warnings.append("WorldMap properties should not be changed directly. '%s' property '%s' must be: %s" % [node.name, property, properties[key]])
-	return warnings
