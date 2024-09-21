@@ -10,7 +10,6 @@
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_qm5mn")
 direction = Vector2(1, 0)
-paused = true
 debug = true
 
 [node name="world_map" parent="." instance=ExtResource("3_i4qrc")]
@@ -38,3 +37,4 @@ optimize_path = true
 debug = true
 
 [node name="GlobalsEditor" parent="." instance=ExtResource("4_5a7mr")]
+_world_time_scale = 10.0
