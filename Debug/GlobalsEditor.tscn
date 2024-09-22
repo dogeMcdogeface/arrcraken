@@ -11,9 +11,21 @@ script/source = "extends Node
 		_world_time_scale = value
 		Globals.world_time_scale = value
 
+@export var save_game: bool = false:
+	set(value):
+		save_game = false
+		if is_ready:Globals.save_state()
+		
+@export var load_game: bool = false:
+	set(value):
+		load_game = false
+		if is_ready:Globals.load_state()
 
+
+var is_ready = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	is_ready = true
 	pass # Replace with function body.
 
 
@@ -24,3 +36,4 @@ func _process(delta):
 
 [node name="GlobalsEditor" type="Node"]
 script = SubResource("GDScript_4kvpv")
+load_game = true

@@ -28,7 +28,7 @@ func _ready():
 
 func _process(delta):
 	if  Engine.get_process_frames() % int(Engine.max_fps * debug_interval) != 0: return
-
+	debuggable_nodes = GetAllTreeNodes()
 	var debug_string_new = ""
 	for node in debuggable_nodes:
 		debug_string_new += "-----------  %-20s -----------------\n" % node.get_name()
@@ -131,8 +131,10 @@ func get_unique(node: Node) -> Dictionary:
 
 	
 @export var debug :bool = true
-var debug_string = "debuggable_nodes: %s world date: %s"
+var debug_string = "debuggable_nodes: %s world date: %s
+market: %s"
 @onready var debug_args = func(): return [
 	debuggable_nodes.size(),
-	Globals.get_date_string()
+	Globals.get_date_string(),
+	Economy.global_market_prices
 	]

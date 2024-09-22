@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var navigation_targets = get_tree().get_nodes_in_group("navigation_targets")
-@onready var next_target = self
+@onready var navigation_target = self
 
 
 @export var linear_accel: float = 50.0
@@ -37,9 +37,9 @@ func _ready():
 func _physics_process(_delta):
 	var delta = _delta * Globals.world_time_scale
 	if continuous_pathing:
-		set_navigation_target(next_target.global_position)
+		set_navigation_target(navigation_target.global_position)
 		
-	if ("disabled" in next_target) and (next_target.disabled):
+	if ("disabled" in navigation_target) and (navigation_target.disabled):
 		_on_navigation_agent_2d_navigation_finished()
 	elif !navigation_agent.is_navigation_finished():
 		steer_towards_target(delta)
@@ -55,27 +55,70 @@ func _physics_process(_delta):
 ################# BEHAVIOUR ###########################################################
 #Code handling the behaviour of a navigating entity (ships/players/creatures)
 #describing high level behaviour such as choosing a destination, running away, trading etc
+enum Step {REACH_SELLER, BUYING, REACH_BUYER, SELLING}
+var state = Step.REACH_SELLER
+
+func decide_next_action():
+	match state:
+		Step.REACH_SELLER:
+			navigation_target = find_trade_seller()
+		Step.BUYING:
+			buy_from_seller()
+		Step.REACH_BUYER:
+			navigation_target = find_trade_seller()
+		Step.SELLING:
+			sell_to_buyer()
+		_:
+			navigation_target = find_random_target()
+	
+	if navigation_target == null or navigation_target.get("global_position") == null:
+		navigation_target = find_random_target()
+	
+	set_navigation_target(navigation_target.global_position)
+
+
+
+func find_trade_seller():
+	navigation_targets.shuffle()
+	for target in navigation_targets:
+		if !target.is_in_group("traders"):continue
+		for item in Economy.global_market_prices.get_existing_items():
+			var trader_price = target.prices.get(item)
+			var global_price = Economy.global_market_prices.get(item)
+			if trader_price < global_price * 0.9:
+				return target
+
+func find_trade_buyer():
+	pass
+func buy_from_seller():
+	pass
+func sell_to_buyer():
+	pass
+	
+	
+	
+func find_random_target():
+	return navigation_targets.pick_random()
+
 func _on_navigation_agent_2d_navigation_finished():
 	
-	if ("disabled" in next_target) and next_target.disabled:
+	if ("disabled" in navigation_target) and navigation_target.disabled:
 		#Target became unavailable
 		#TODO: Reset navigation somehow
-		Debug.warn([self, "Target became unavailable ",next_target, navigation_agent.target_position])
-		push_warning(self, "Target became unavailable ",next_target, navigation_agent.target_position)
-		next_target = navigation_targets.pick_random()
-		set_navigation_target(next_target.global_position)
+		Debug.warn([self, "Target became unavailable ",navigation_target, navigation_agent.target_position])
+		push_warning(self, "Target became unavailable ",navigation_target, navigation_agent.target_position)
 	elif navigation_agent.is_target_reached():
 		##do target stuff
 		##trade, fight etc
-		next_target = navigation_targets.pick_random()
-		set_navigation_target(next_target.global_position)
 		pass
 	elif ! navigation_agent.is_target_reachable():
 		#couldn't reach target
 		#TODO: Reset navigation somehow
-		Debug.warn([self, "Could not reach navigation target",next_target, navigation_agent.target_position])
-		push_warning(self, "Could not reach navigation target",next_target, navigation_agent.target_position)
+		Debug.warn([self, "Could not reach navigation target",navigation_target, navigation_agent.target_position])
+		push_warning(self, "Could not reach navigation target",navigation_target, navigation_agent.target_position)
 	
+	decide_next_action()
+
 #######################################################################################
 
 ################# NAVIGATION ##########################################################

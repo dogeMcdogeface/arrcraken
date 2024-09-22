@@ -5,27 +5,30 @@
 [ext_resource type="Texture2D" uid="uid://crmtylfp4d8s" path="res://Textures/port.png" id="2_ld5cd"]
 [ext_resource type="Script" path="res://Inventory.gd" id="3_h1iib"]
 
-[sub_resource type="Resource" id="Resource_242mw"]
+[sub_resource type="Resource" id="Resource_76446"]
+resource_local_to_scene = true
 script = ExtResource("3_h1iib")
-coin = 0.0
+coin = 1000.0
 wood = 0.0
 stone = 0.0
 food = 0.0
 guns = 0.0
 
-[sub_resource type="Resource" id="Resource_sg2jc"]
+[sub_resource type="Resource" id="Resource_l2kly"]
+resource_local_to_scene = true
 script = ExtResource("3_h1iib")
-coin = 0.0
+coin = 5.0
 wood = 0.0
 stone = 0.0
 food = 0.0
 guns = 0.0
 
-[node name="WorldMapCity" instance=ExtResource("1_krry4")]
+[node name="WorldMapCity" groups=["traders"] instance=ExtResource("1_krry4")]
 script = ExtResource("2_0scr4")
 size = 0
-inventory = SubResource("Resource_242mw")
-production = SubResource("Resource_sg2jc")
+money = 0
+inventory = SubResource("Resource_76446")
+production = SubResource("Resource_l2kly")
 debug = false
 label = "WorldMapNavigationTarget"
 
@@ -45,10 +48,10 @@ texture = ExtResource("2_ld5cd")
 expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="2"]
-offset_left = -226.0
+offset_left = -238.0
 offset_top = -216.0
-offset_right = 212.0
+offset_right = 278.0
 offset_bottom = 375.0
 theme_override_constants/line_separation = 0
 theme_override_font_sizes/normal_font_size = 70
-text = "asdd"
+text = "Info here"

@@ -37,6 +37,8 @@ enabled=PackedStringArray("res://addons/detail_time_tracker/plugin.cfg")
 
 navigation_targets=""
 navigation_obstacles=""
+Persist=""
+traders=""
 
 [input]
 

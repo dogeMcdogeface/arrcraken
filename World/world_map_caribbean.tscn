@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ds221dfb6tng8"]
+[gd_scene load_steps=57 format=3 uid="uid://ds221dfb6tng8"]
 
 [ext_resource type="PackedScene" uid="uid://bqcebjaw3kte2" path="res://World/Map/Template/world_map_template.tscn" id="1_xf1is"]
 [ext_resource type="PackedScene" uid="uid://dbp82hyh7qdij" path="res://World/Map/Template/world_map_navigation_obstacle.tscn" id="2_jqy1e"]
@@ -20,74 +20,451 @@ vertices = PackedVector2Array(-148.57, 1751.2, -1565.46, -148.242, -1104.64, -43
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(13, 12, 14)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1580, -151, -153, 1762, 1995, 1431, 3512, 1809, 3905, 1272, 3335, 559, 699, 957, -1104, -446), PackedVector2Array(-2628, -725, -1986, -855, -863, -1353, -1594, -2510, -3893, -2039, -4001, -553, -3516, -75)])
 
-[sub_resource type="Resource" id="Resource_8v05x"]
-script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_si8tn"]
-script = ExtResource("4_ih13c")
-coin = 10.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_wbn2j"]
-script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_a21oj"]
-script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_f06fj"]
-script = ExtResource("4_ih13c")
-coin = 0.0
-wood = 0.0
-stone = 0.0
-food = 0.0
-guns = 0.0
-
-[sub_resource type="Resource" id="Resource_vn5cf"]
+[sub_resource type="Resource" id="Resource_ccrba"]
 resource_local_to_scene = true
 script = ExtResource("4_ih13c")
-coin = 0.0
+coin = 1000.0
 wood = 0.0
 stone = 0.0
 food = 0.0
 guns = 0.0
 
-[sub_resource type="Resource" id="Resource_juln5"]
+[sub_resource type="Resource" id="Resource_7od6j"]
+resource_local_to_scene = true
 script = ExtResource("4_ih13c")
-coin = 0.0
+coin = 5.0
+wood = 100.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_7rmjw"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
 wood = 0.0
 stone = 0.0
 food = 0.0
 guns = 0.0
 
-[sub_resource type="Resource" id="Resource_y2tel"]
+[sub_resource type="Resource" id="Resource_xmobt"]
+resource_local_to_scene = true
 script = ExtResource("4_ih13c")
-coin = 0.0
+coin = 5.0
+wood = 0.0
+stone = 100.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_tsobu"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
 wood = 0.0
 stone = 0.0
 food = 0.0
 guns = 0.0
 
-[sub_resource type="Resource" id="Resource_1ewmm"]
+[sub_resource type="Resource" id="Resource_d43ak"]
+resource_local_to_scene = true
 script = ExtResource("4_ih13c")
-coin = 0.0
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 100.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_va6ny"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_nn18k"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 10.0
+
+[sub_resource type="Resource" id="Resource_ts5sd"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_k2e8r"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_n6xld"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_qb1so"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_e0dp3"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_ajd8o"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_7ed1o"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_flbfh"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_demb2"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_5fd2i"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_2ggbc"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_8rqs5"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_727pp"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_eqjya"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_rsnop"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_32d28"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_ln0q7"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_73xmv"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_qqna2"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_d817s"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_d35oc"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_i5v3w"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_yyo0e"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_rmqf2"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_dn15x"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_0hlly"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_b61hs"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_8lr6l"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_y0mbv"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_naaif"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_y4bi6"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_7eumj"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_vqes1"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_wdja5"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_e4ptt"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_ldmbh"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_rdhhn"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_3muul"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_7bixm"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_mtwjx"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_pe7rp"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 1000.0
+wood = 0.0
+stone = 0.0
+food = 0.0
+guns = 0.0
+
+[sub_resource type="Resource" id="Resource_qly3e"]
+resource_local_to_scene = true
+script = ExtResource("4_ih13c")
+coin = 5.0
 wood = 0.0
 stone = 0.0
 food = 0.0
@@ -156,121 +533,132 @@ vertices = PackedVector2Array(823, 887, 1015, 865, 1318, 959, 1310, 1031, 1235, 
 
 [node name="WorldMapCity1" parent="NavigationTargets/Cities" index="0" instance=ExtResource("4_xw66o")]
 position = Vector2(-1112, 947)
-inventory = SubResource("Resource_8v05x")
-production = SubResource("Resource_si8tn")
+inventory = SubResource("Resource_ccrba")
+production = SubResource("Resource_7od6j")
 debug = true
 label = "WorldMapCity"
 
 [node name="WorldMapCity2" parent="NavigationTargets/Cities" index="1" instance=ExtResource("4_xw66o")]
 position = Vector2(-1913, -222)
-inventory = SubResource("Resource_wbn2j")
-production = SubResource("Resource_a21oj")
+inventory = SubResource("Resource_7rmjw")
+production = SubResource("Resource_xmobt")
+label = "WorldMapCity2"
 
 [node name="WorldMapCity3" parent="NavigationTargets/Cities" index="2" instance=ExtResource("4_xw66o")]
-position = Vector2(-3417, 201)
+position = Vector2(-3417, 202)
+inventory = SubResource("Resource_tsobu")
+production = SubResource("Resource_d43ak")
 
 [node name="WorldMapCity4" parent="NavigationTargets/Cities" index="3" instance=ExtResource("4_xw66o")]
 position = Vector2(-3798, -2443)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_va6ny")
+production = SubResource("Resource_nn18k")
+label = "WorldMapCity4"
 
 [node name="WorldMapCity5" parent="NavigationTargets/Cities" index="4" instance=ExtResource("4_xw66o")]
 position = Vector2(-1993, -2735)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_ts5sd")
+production = SubResource("Resource_k2e8r")
 
 [node name="WorldMapCity6" parent="NavigationTargets/Cities" index="5" instance=ExtResource("4_xw66o")]
 position = Vector2(-908, -2019)
-production = SubResource("Resource_vn5cf")
+inventory = SubResource("Resource_n6xld")
+production = SubResource("Resource_qb1so")
 
 [node name="WorldMapCity7" parent="NavigationTargets/Cities" index="6" instance=ExtResource("4_xw66o")]
 position = Vector2(-408, -2290)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_e0dp3")
+production = SubResource("Resource_ajd8o")
 
 [node name="WorldMapCity8" parent="NavigationTargets/Cities" index="7" instance=ExtResource("4_xw66o")]
 position = Vector2(194, -1205)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_7ed1o")
+production = SubResource("Resource_flbfh")
 
 [node name="WorldMapCity9" parent="NavigationTargets/Cities" index="8" instance=ExtResource("4_xw66o")]
 position = Vector2(330, -620)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_demb2")
+production = SubResource("Resource_5fd2i")
 
 [node name="WorldMapCity10" parent="NavigationTargets/Cities" index="9" instance=ExtResource("4_xw66o")]
 position = Vector2(-424, -620)
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_2ggbc")
+production = SubResource("Resource_8rqs5")
 
 [node name="WorldMapCity11" parent="NavigationTargets/Cities" index="10" instance=ExtResource("4_xw66o")]
-position = Vector2(754, -106)
-inventory = SubResource("Resource_juln5")
-production = SubResource("Resource_y2tel")
+position = Vector2(754, -107)
+inventory = SubResource("Resource_727pp")
+production = SubResource("Resource_eqjya")
 
 [node name="WorldMapCity12" parent="NavigationTargets/Cities" index="11" instance=ExtResource("4_xw66o")]
-position = Vector2(278, 415)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+position = Vector2(278, 407)
+inventory = SubResource("Resource_rsnop")
+production = SubResource("Resource_32d28")
 
 [node name="WorldMapCity13" parent="NavigationTargets/Cities" index="12" instance=ExtResource("4_xw66o")]
 position = Vector2(1821, 377)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_ln0q7")
+production = SubResource("Resource_73xmv")
 
 [node name="WorldMapCity14" parent="NavigationTargets/Cities" index="13" instance=ExtResource("4_xw66o")]
 position = Vector2(1307, -512)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_qqna2")
+production = SubResource("Resource_d817s")
 
 [node name="WorldMapCity15" parent="NavigationTargets/Cities" index="14" instance=ExtResource("4_xw66o")]
 position = Vector2(2303, 30)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_d35oc")
+production = SubResource("Resource_i5v3w")
 
 [node name="WorldMapCity16" parent="NavigationTargets/Cities" index="15" instance=ExtResource("4_xw66o")]
 position = Vector2(3562, 2068)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_yyo0e")
+production = SubResource("Resource_rmqf2")
 
 [node name="WorldMapCity17" parent="NavigationTargets/Cities" index="16" instance=ExtResource("4_xw66o")]
 position = Vector2(2687, 2102)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_dn15x")
+production = SubResource("Resource_0hlly")
 
 [node name="WorldMapCity18" parent="NavigationTargets/Cities" index="17" instance=ExtResource("4_xw66o")]
 position = Vector2(2166, 1813)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_b61hs")
+production = SubResource("Resource_8lr6l")
 
 [node name="WorldMapCity19" parent="NavigationTargets/Cities" index="18" instance=ExtResource("4_xw66o")]
 position = Vector2(1729, 1830)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_y0mbv")
+production = SubResource("Resource_naaif")
 
 [node name="WorldMapCity20" parent="NavigationTargets/Cities" index="19" instance=ExtResource("4_xw66o")]
 position = Vector2(1682, 2419)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_y4bi6")
+production = SubResource("Resource_7eumj")
 
 [node name="WorldMapCity21" parent="NavigationTargets/Cities" index="20" instance=ExtResource("4_xw66o")]
 position = Vector2(1167, 1875)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_vqes1")
+production = SubResource("Resource_wdja5")
 
 [node name="WorldMapCity22" parent="NavigationTargets/Cities" index="21" instance=ExtResource("4_xw66o")]
 position = Vector2(575, 2482)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_e4ptt")
+production = SubResource("Resource_ldmbh")
 
 [node name="WorldMapCity23" parent="NavigationTargets/Cities" index="22" instance=ExtResource("4_xw66o")]
 position = Vector2(-288, 2338)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_rdhhn")
+production = SubResource("Resource_3muul")
 
 [node name="WorldMapCity24" parent="NavigationTargets/Cities" index="23" instance=ExtResource("4_xw66o")]
 position = Vector2(-1689, 2075)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_7bixm")
+production = SubResource("Resource_mtwjx")
 
 [node name="WorldMapCity25" parent="NavigationTargets/Cities" index="24" instance=ExtResource("4_xw66o")]
 position = Vector2(-1113, 1879)
-inventory = SubResource("Resource_1ewmm")
-production = SubResource("Resource_f06fj")
+inventory = SubResource("Resource_pe7rp")
+production = SubResource("Resource_qly3e")
 
 [node name="navigation_target_example" parent="NavigationTargets" index="1"]
 visible = false
