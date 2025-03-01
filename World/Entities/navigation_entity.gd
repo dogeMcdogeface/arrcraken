@@ -59,6 +59,7 @@ enum Step {REACH_SELLER, BUYING, REACH_BUYER, SELLING}
 var state = Step.REACH_SELLER
 
 func decide_next_action():
+	return
 	match state:
 		Step.REACH_SELLER:
 			navigation_target = find_trade_seller()

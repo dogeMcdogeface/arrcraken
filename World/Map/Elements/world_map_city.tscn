@@ -3,32 +3,28 @@
 [ext_resource type="PackedScene" uid="uid://v31fq6ne0dos" path="res://World/Map/Elements/world_map_navigation_target.tscn" id="1_krry4"]
 [ext_resource type="Script" path="res://World/Map/Elements/world_map_city.gd" id="2_0scr4"]
 [ext_resource type="Texture2D" uid="uid://crmtylfp4d8s" path="res://Textures/port.png" id="2_ld5cd"]
-[ext_resource type="Script" path="res://Inventory.gd" id="3_h1iib"]
+[ext_resource type="Script" path="res://Items/inventory.gd" id="6_2syku"]
 
-[sub_resource type="Resource" id="Resource_76446"]
-resource_local_to_scene = true
-script = ExtResource("3_h1iib")
-coin = 1000.0
+[sub_resource type="Resource" id="Resource_83ncd"]
+script = ExtResource("6_2syku")
 wood = 0.0
 stone = 0.0
-food = 0.0
-guns = 0.0
+garlic = 0.0
+gold = 0.0
 
-[sub_resource type="Resource" id="Resource_l2kly"]
-resource_local_to_scene = true
-script = ExtResource("3_h1iib")
-coin = 5.0
+[sub_resource type="Resource" id="Resource_3ste5"]
+script = ExtResource("6_2syku")
 wood = 0.0
 stone = 0.0
-food = 0.0
-guns = 0.0
+garlic = 0.0
+gold = 0.0
 
 [node name="WorldMapCity" groups=["traders"] instance=ExtResource("1_krry4")]
 script = ExtResource("2_0scr4")
 size = 0
 money = 0
-inventory = SubResource("Resource_76446")
-production = SubResource("Resource_l2kly")
+inventory = SubResource("Resource_83ncd")
+production = SubResource("Resource_3ste5")
 debug = false
 label = "WorldMapNavigationTarget"
 

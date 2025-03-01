@@ -1,0 +1,2 @@
+extends Behavior
+class_name NavigationTargetBehavior

@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://48q45072yp2k"]
+
+[ext_resource type="Texture2D" uid="uid://3yak1wrt150x" path="res://icon.svg" id="1_j5khe"]
+[ext_resource type="Script" path="res://World/Entities/entity_generic.gd" id="1_vw2at"]
+[ext_resource type="Script" path="res://Items/inventory.gd" id="5_s3j84"]
+
+[sub_resource type="Resource" id="Resource_q735v"]
+script = ExtResource("5_s3j84")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vy0e4"]
+radius = 193.569
+
+[node name="Entity_Generic" type="Area2D" groups=["entities"]]
+script = ExtResource("1_vw2at")
+label = "Entity_Generic"
+inventory = SubResource("Resource_q735v")
+
+[node name="Texture" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j5khe")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vy0e4")
+metadata/_edit_lock_ = true
+
+[node name="DebugLabel" type="RichTextLabel" parent="."]
+offset_left = -238.0
+offset_top = -216.0
+offset_right = 278.0
+offset_bottom = 375.0
+theme_override_constants/line_separation = 0
+theme_override_font_sizes/normal_font_size = 70
+text = "Info here"
+metadata/_edit_lock_ = true

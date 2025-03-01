@@ -12,6 +12,7 @@ func _process(delta):
 var global_market_prices: Inventory = Inventory.new()
 
 func update_market():
+	return
 	var traders = get_tree().get_nodes_in_group("traders")
 	global_market_prices = Inventory.new()
 	#get the global average price for each good

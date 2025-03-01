@@ -1,0 +1,60 @@
+[gd_scene load_steps=13 format=3 uid="uid://cyynd8747n82y"]
+
+[ext_resource type="PackedScene" uid="uid://48q45072yp2k" path="res://World/Entities/entity_generic.tscn" id="1_6ufr6"]
+[ext_resource type="Script" path="res://Items/inventory.gd" id="5_mwnr5"]
+[ext_resource type="Script" path="res://World/Behaviours/behavior_navigation_target.gd" id="6_lewpt"]
+[ext_resource type="Script" path="res://World/Behaviours/behavior_trader.gd" id="6_vhupd"]
+[ext_resource type="Script" path="res://World/Behaviours/behavior_producer.gd" id="7_wirpv"]
+
+[sub_resource type="Resource" id="Resource_d026b"]
+resource_local_to_scene = true
+script = ExtResource("5_mwnr5")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_aiaup"]
+resource_local_to_scene = true
+script = ExtResource("6_lewpt")
+
+[sub_resource type="Resource" id="Resource_0duk4"]
+script = ExtResource("5_mwnr5")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_rw4xr"]
+resource_local_to_scene = true
+script = ExtResource("5_mwnr5")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_2bkda"]
+resource_local_to_scene = true
+script = ExtResource("6_vhupd")
+prices = SubResource("Resource_rw4xr")
+desire = SubResource("Resource_0duk4")
+
+[sub_resource type="Resource" id="Resource_axroa"]
+resource_local_to_scene = true
+script = ExtResource("5_mwnr5")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_h0040"]
+resource_local_to_scene = true
+script = ExtResource("7_wirpv")
+rates = SubResource("Resource_axroa")
+
+[node name="Entity_Settlement" instance=ExtResource("1_6ufr6")]
+label = "Entity_Settlement"
+inventory = SubResource("Resource_d026b")
+navigation_target_behavior = SubResource("Resource_aiaup")
+trader_behavior = SubResource("Resource_2bkda")
+producer_behavior = SubResource("Resource_h0040")

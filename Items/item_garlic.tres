@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://1hmiy1uu6sj"]
+
+[ext_resource type="Script" path="res://Items/item.gd" id="1_jrdpq"]
+[ext_resource type="Texture2D" uid="uid://dd064jtojs1fp" path="res://Items/4t2lfeel.bmp" id="2_lbaif"]
+
+[resource]
+script = ExtResource("1_jrdpq")
+name = "Garlic"
+label = "it's garlic lol"
+thumbnail = ExtResource("2_lbaif")

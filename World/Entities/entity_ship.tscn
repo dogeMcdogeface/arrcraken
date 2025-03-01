@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhmerpngby7up"]
+
+[ext_resource type="PackedScene" uid="uid://48q45072yp2k" path="res://World/Entities/entity_generic.tscn" id="1_n2646"]
+[ext_resource type="Script" path="res://Items/inventory.gd" id="5_djf7f"]
+[ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Textures/ship.png" id="6_2ydd1"]
+
+[sub_resource type="Resource" id="Resource_au124"]
+resource_local_to_scene = true
+script = ExtResource("5_djf7f")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_res5r"]
+radius = 12.0
+height = 55.0
+
+[node name="Entity_Ship" instance=ExtResource("1_n2646")]
+label = "Entity_Ship"
+inventory = SubResource("Resource_au124")
+
+[node name="Texture" parent="." index="0"]
+offset_left = -75.0
+offset_top = -75.0
+offset_right = 75.0
+offset_bottom = 75.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_2ydd1")
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_res5r")

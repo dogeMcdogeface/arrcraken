@@ -1,29 +1,16 @@
-class_name Inventory extends Resource
+xtends Resource
+class_name Inventory
 
-@export var coin = .0
-@export var wood = .0
-@export var stone= .0
-@export var food= .0
-@export var guns= .0
-
-
-var _existing_items = _get_existing_items()
-
-func _to_string():
-	var txt = ""
-	var items = _existing_items
-	items.sort()
-	for item in items:
-		txt+= "%s: %04d, "%[item,get(item) ]
-	return txt
+@export var items = {
+	preload("res://Items/item_wood.tres"):0,
+	preload("res://Items/item_garlic.tres"):0,
+	preload("res://Items/item_stone.tres"):0,
+	}
 
 
-func _get_existing_items():
-	var result = []
-	for elem in get_script().get_script_property_list():
-		if elem.get("hint_string", "") != get_script().resource_path and !elem.get("name", "").begins_with("_"):
-			result.append(elem["name"])
-	return result
-
-func get_existing_items():
-	return _existing_items
+# Helper function to format inventory for better readability
+func to_debug_string() -> String:
+	var output = ""
+	for key in items.keys():
+		output += "%s: %4d\t" % [key.name, items[key]]
+	return output
