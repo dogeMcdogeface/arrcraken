@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://budm8k7r4k0s7"]
+[gd_scene load_steps=26 format=3 uid="uid://budm8k7r4k0s7"]
 
 [ext_resource type="Script" path="res://World/Wind.gd" id="1_qm5mn"]
 [ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/world_map_caribbean.tscn" id="3_i4qrc"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Items/inventory.gd" id="6_jaaul"]
 [ext_resource type="PackedScene" uid="uid://cyynd8747n82y" path="res://World/Entities/entity_settlement.tscn" id="6_wu2we"]
 [ext_resource type="Script" path="res://World/Behaviours/behavior_navigation_target.gd" id="7_f4ie1"]
-[ext_resource type="Resource" uid="uid://yypogxnglryc" path="res://World/Entities/settlement_small_desire.tres" id="8_xe3vo"]
 [ext_resource type="Script" path="res://World/Behaviours/behavior_producer.gd" id="9_iimh1"]
 
 [sub_resource type="Resource" id="Resource_0filq"]
@@ -23,6 +22,14 @@ gold = 2000.0
 resource_local_to_scene = true
 script = ExtResource("7_f4ie1")
 
+[sub_resource type="Resource" id="Resource_iavk3"]
+resource_local_to_scene = true
+script = ExtResource("6_jaaul")
+wood = 1000.0
+stone = 1000.0
+garlic = 1000.0
+gold = 5000.0
+
 [sub_resource type="Resource" id="Resource_7bqc5"]
 resource_local_to_scene = true
 script = ExtResource("6_jaaul")
@@ -35,7 +42,7 @@ gold = 0.0
 resource_local_to_scene = true
 script = ExtResource("4_kxd8m")
 prices = SubResource("Resource_7bqc5")
-desire = ExtResource("8_xe3vo")
+desire = SubResource("Resource_iavk3")
 
 [sub_resource type="Resource" id="Resource_1mlat"]
 script = ExtResource("6_jaaul")
@@ -61,6 +68,14 @@ gold = 4000.0
 resource_local_to_scene = true
 script = ExtResource("7_f4ie1")
 
+[sub_resource type="Resource" id="Resource_sl4ot"]
+resource_local_to_scene = true
+script = ExtResource("6_jaaul")
+wood = 1000.0
+stone = 1000.0
+garlic = 1000.0
+gold = 5000.0
+
 [sub_resource type="Resource" id="Resource_l86eu"]
 resource_local_to_scene = true
 script = ExtResource("6_jaaul")
@@ -73,7 +88,7 @@ gold = 0.0
 resource_local_to_scene = true
 script = ExtResource("4_kxd8m")
 prices = SubResource("Resource_l86eu")
-desire = ExtResource("8_xe3vo")
+desire = SubResource("Resource_sl4ot")
 
 [sub_resource type="Resource" id="Resource_3kltj"]
 script = ExtResource("6_jaaul")
@@ -123,8 +138,6 @@ metadata/_edit_lock_ = true
 
 [node name="Entity_Ship" parent="NavigationEntities" instance=ExtResource("3_ou7wx")]
 position = Vector2(-214, 587)
-description = ""
-disabled = false
 inventory = SubResource("Resource_e515c")
 
 [node name="navigation_entity1" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
