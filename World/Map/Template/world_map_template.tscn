@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqcebjaw3kte2"]
+[gd_scene load_steps=7 format=3 uid="uid://bqcebjaw3kte2"]
 
 [ext_resource type="Script" path="res://World/Map/Template/world_map_template.gd" id="1_4uogi"]
 [ext_resource type="Texture2D" uid="uid://rqq2ys3msb0x" path="res://map.png" id="1_mv6m7"]
 [ext_resource type="PackedScene" uid="uid://dbp82hyh7qdij" path="res://World/Map/Template/world_map_navigation_obstacle.tscn" id="2_epnws"]
-[ext_resource type="PackedScene" uid="uid://v31fq6ne0dos" path="res://World/Map/Elements/world_map_navigation_target.tscn" id="2_f2oxq"]
 [ext_resource type="Texture2D" uid="uid://dx2p5ibpy8ncn" path="res://Textures/Light/texture_09.png" id="3_puehv"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vbaus"]
@@ -98,17 +97,5 @@ metadata/_edit_lock_ = true
 [node name="landmass_example" parent="NavigationObstacles" instance=ExtResource("2_epnws")]
 position = Vector2(1143, 6)
 vertices = PackedVector2Array(-7919, -679, -7851, -1097, -7411, -1088)
-
-[node name="NavigationTargets" type="Node2D" parent="."]
-position = Vector2(5000, 5000)
-metadata/_edit_lock_ = true
-
-[node name="Cities" type="Node2D" parent="NavigationTargets"]
-
-[node name="navigation_target_example" parent="NavigationTargets" instance=ExtResource("2_f2oxq")]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(-6065, -1371)
-disabled = true
-label = "WorldMapNavigationTarget"
 
 [connection signal="child_order_changed" from="." to="." method="_on_child_order_changed"]

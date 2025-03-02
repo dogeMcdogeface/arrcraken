@@ -1,5 +1,8 @@
 extends Node
 
+################# GROUPS ##############################################################
+const TRADEGROUP = "traders"
+#######################################################################################
 
 ################# MAP #################################################################
 
@@ -42,21 +45,6 @@ func get_date_string():
 #######################################################################################
 
 
-func save_state():
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
-	for node in save_nodes:
-		var scene = PackedScene.new()
-		scene.pack(node)
-		print(node)
-		ResourceSaver.save(scene, "res://SavedGame/MyScene.tscn")
-
-
-func load_state():
-	#var main:PackedScene = load("res://SavedGame/MyScene.tscn")
-	#get_tree().root.get_child(3).get_child(2).replace_by(main.instantiate())
-	#get_tree().ViewWorldTheatre.world_theatre.change_scene_to_file("res://SavedGame/MyScene.tscn")
-	return
-	
 func _process(delta):
 	world_date += world_time_scale * delta
 	

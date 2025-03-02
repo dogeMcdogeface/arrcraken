@@ -18,10 +18,7 @@ const items_end_token = "items_end_token"
 var existing_items = extract_items()
 var item_to_resource = link_items_to_resources()
 
-func _init():
-	
-	print(extract_items())
-	print(item_to_resource)
+func _init(): pass
 
 
 func extract_items():
@@ -59,5 +56,5 @@ func get_existing_items():
 func to_debug_string() -> String:
 	var output = ""
 	for key in get_existing_items():
-		output += "%s: %4d\t" % [key, get_item(key)]
+		output += "%s: %6.1f\t" % [key, get_item(key)]
 	return output

@@ -136,5 +136,5 @@ market: %s"
 @onready var debug_args = func(): return [
 	debuggable_nodes.size(),
 	Globals.get_date_string(),
-	Economy.global_market_prices
+	Economy.global_market_prices.to_debug_string()
 	]
