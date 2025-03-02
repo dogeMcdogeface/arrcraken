@@ -42,8 +42,10 @@ func _exit_tree():
 	dock.free()
 
 var elapsed_time = 0
-var elapsed_time_save = 0
 var update_interval = 1
+var elapsed_time_save = 0
+var save_interval = 10
+
 func _process(delta):
 	if !Engine.is_editor_hint():return
 	elapsed_time += delta
@@ -93,7 +95,7 @@ func _process(delta):
 		activities.outside += delta
 	#print(activities)
 	dock.update(activities, get_aggregate_time)
-	if elapsed_time_save < update_interval*5:return
+	if elapsed_time_save < save_interval:return
 	elapsed_time_save = 0
 	var save_file = FileAccess.open(settings_path, FileAccess.WRITE)
 	var json_string = JSON.stringify(activities)
