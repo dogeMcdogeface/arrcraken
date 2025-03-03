@@ -5,6 +5,7 @@ class_name ProducerBehavior
 
 
 func _process(delta):
+	delta = Globals.world_time_scale * delta
 	produce(delta)
 
 

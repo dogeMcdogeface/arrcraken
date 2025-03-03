@@ -2,12 +2,13 @@ extends Behavior
 class_name TraderBehavior
 
 
-@export var prices: Inventory = Inventory.new()
-@export var desire: Inventory = Inventory.new()
+@export var desires: Inventory = Inventory.new()
+var prices: Inventory = Inventory.new()
 
 var TradeTimer = Timer.new()
 
 func _setup_local_to_scene():
+	print("EL TRADERO")
 	owner.add_to_group(Globals.TRADEGROUP)
 	_setup_trade_timer()
 
@@ -20,6 +21,7 @@ func _setup_trade_timer():
 
 
 func _process(delta):
+	delta = Globals.world_time_scale * delta
 	adjust_prices(delta)
 	
 func background_trade():
@@ -123,6 +125,6 @@ func adjust_prices(delta):
 	for item in prices.get_existing_items():
 		var amount = owner.inventory.get_item(item)
 		var price = prices.get_item(item)
-		var desire = desire.get_item(item)
+		var desire = desires.get_item(item)
 		var target_price = 10 + pow(1.002, desire - amount)
 		prices.set_item(item, target_price)

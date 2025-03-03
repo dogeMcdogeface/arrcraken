@@ -1,15 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://budm8k7r4k0s7"]
+[gd_scene load_steps=12 format=3 uid="uid://budm8k7r4k0s7"]
 
 [ext_resource type="Script" path="res://World/Wind.gd" id="1_qm5mn"]
+[ext_resource type="PackedScene" uid="uid://cyynd8747n82y" path="res://World/Entities/entity_settlement.tscn" id="2_oixgl"]
+[ext_resource type="Script" path="res://Items/inventory.gd" id="3_22qbx"]
 [ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/world_map_caribbean.tscn" id="3_i4qrc"]
-[ext_resource type="PackedScene" uid="uid://dhmerpngby7up" path="res://World/Entities/entity_ship.tscn" id="3_ou7wx"]
-[ext_resource type="PackedScene" uid="uid://bqr0n6cn4413q" path="res://World/Entities/navigation_entity.tscn" id="3_xpd10"]
+[ext_resource type="PackedScene" uid="uid://dhmerpngby7up" path="res://World/Entities/entity_ship.tscn" id="4_2c0y7"]
 [ext_resource type="PackedScene" uid="uid://dnqk0nls5mtho" path="res://Debug/GlobalsEditor.tscn" id="4_5a7mr"]
-[ext_resource type="Script" path="res://Items/inventory.gd" id="6_jaaul"]
 
-[sub_resource type="Resource" id="Resource_e515c"]
+[sub_resource type="Resource" id="Resource_s60qc"]
 resource_local_to_scene = true
-script = ExtResource("6_jaaul")
+script = ExtResource("3_22qbx")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 100.0
+
+[sub_resource type="Resource" id="Resource_ank62"]
+script = ExtResource("3_22qbx")
+wood = 100.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_7616m"]
+resource_local_to_scene = true
+script = ExtResource("3_22qbx")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 100.0
+
+[sub_resource type="Resource" id="Resource_lxjr1"]
+resource_local_to_scene = true
+script = ExtResource("3_22qbx")
+wood = 55.0
+stone = 0.0
+garlic = 0.0
+gold = 100.0
+
+[sub_resource type="Resource" id="Resource_xwqiu"]
+resource_local_to_scene = true
+script = ExtResource("3_22qbx")
 wood = 0.0
 stone = 0.0
 garlic = 0.0
@@ -25,27 +56,23 @@ offset_bottom = 5000.0
 
 [node name="SettlementEntities" type="Node2D" parent="."]
 
+[node name="Entity_Settlement" parent="SettlementEntities" instance=ExtResource("2_oixgl")]
+inventory = SubResource("Resource_s60qc")
+
+[node name="ProducerBehavior" parent="SettlementEntities/Entity_Settlement" index="4"]
+rates = SubResource("Resource_ank62")
+
+[node name="Entity_Settlement2" parent="SettlementEntities" instance=ExtResource("2_oixgl")]
+inventory = SubResource("Resource_7616m")
+
+[node name="Entity_Settlement3" parent="SettlementEntities" instance=ExtResource("2_oixgl")]
+inventory = SubResource("Resource_lxjr1")
+
 [node name="NavigationEntities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="Entity_Ship" parent="NavigationEntities" instance=ExtResource("3_ou7wx")]
-position = Vector2(-214, 587)
-inventory = SubResource("Resource_e515c")
-
-[node name="navigation_entity1" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
-position = Vector2(54, -267)
-optimize_path = true
-debug = true
-
-[node name="navigation_entity2" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
-position = Vector2(-536, 182)
-optimize_path = true
-debug = true
-
-[node name="navigation_entity3" parent="NavigationEntities" instance=ExtResource("3_xpd10")]
-position = Vector2(-363, -267)
-optimize_path = true
-debug = true
+[node name="Entity_Ship" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
+inventory = SubResource("Resource_xwqiu")
 
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_qm5mn")
@@ -55,3 +82,6 @@ debug = true
 [node name="GlobalsEditor" parent="." instance=ExtResource("4_5a7mr")]
 _world_time_scale = 10.0
 save_game = true
+
+[editable path="SettlementEntities/Entity_Settlement"]
+[editable path="SettlementEntities/Entity_Settlement2"]
