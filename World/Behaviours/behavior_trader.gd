@@ -29,7 +29,7 @@ func background_trade():
 
 func propose_trade(tradePartner) -> bool:
 	var comparason = compare_economies(tradePartner)
-	#print("comp: ",comparason)
+	print("comp: ",comparason)
 	#print("comparaseon: ", comparason.smallest_key, comparason.smallest_value, comparason.largest_key, comparason.largest_value )  # Output: Smallest key: "d"
 	
 	if comparason.smallest_key == comparason.largest_key: return false
@@ -74,7 +74,7 @@ func execute_trade(demand, offer, tradePartner):
 	tradePartner.inventory.set(offer.item, tradePartner.inventory.get(offer.item) + offer.amount)
 	
 	#print("Executing trade", owner, tradePartner)  
-	#print("Executing trade", demand, offer)  
+	print("Executing trade", demand, offer)  
 
 
 
