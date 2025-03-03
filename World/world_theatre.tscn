@@ -22,7 +22,7 @@ gold = 2000.0
 resource_local_to_scene = true
 script = ExtResource("7_f4ie1")
 
-[sub_resource type="Resource" id="Resource_81fa2"]
+[sub_resource type="Resource" id="Resource_x0oth"]
 resource_local_to_scene = true
 script = ExtResource("6_jaaul")
 wood = 1000.0
@@ -42,7 +42,7 @@ gold = 0.0
 resource_local_to_scene = true
 script = ExtResource("4_kxd8m")
 prices = SubResource("Resource_7bqc5")
-desire = SubResource("Resource_81fa2")
+desire = SubResource("Resource_x0oth")
 
 [sub_resource type="Resource" id="Resource_1mlat"]
 script = ExtResource("6_jaaul")
@@ -68,7 +68,7 @@ gold = 4000.0
 resource_local_to_scene = true
 script = ExtResource("7_f4ie1")
 
-[sub_resource type="Resource" id="Resource_uh1hw"]
+[sub_resource type="Resource" id="Resource_qpg1n"]
 resource_local_to_scene = true
 script = ExtResource("6_jaaul")
 wood = 1000.0
@@ -88,7 +88,7 @@ gold = 0.0
 resource_local_to_scene = true
 script = ExtResource("4_kxd8m")
 prices = SubResource("Resource_l86eu")
-desire = SubResource("Resource_uh1hw")
+desire = SubResource("Resource_qpg1n")
 
 [sub_resource type="Resource" id="Resource_3kltj"]
 script = ExtResource("6_jaaul")

@@ -54,6 +54,8 @@ rates = SubResource("Resource_axroa")
 
 [node name="Entity_Settlement" instance=ExtResource("1_6ufr6")]
 label = "Entity_Settlement"
+description = ""
+disabled = false
 inventory = SubResource("Resource_d026b")
 navigation_target_behavior = SubResource("Resource_aiaup")
 trader_behavior = SubResource("Resource_2bkda")
