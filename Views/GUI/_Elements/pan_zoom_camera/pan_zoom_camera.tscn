@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://boyoantmlv2oy"]
 
-[ext_resource type="Script" path="res://Views/GUI/_Elements/pan_zoom_camera/pan_zoom_camera.gd" id="1_33hhy"]
+[ext_resource type="Script" uid="uid://cfvefjlwup407" path="res://Views/GUI/_Elements/pan_zoom_camera/pan_zoom_camera.gd" id="1_33hhy"]
 
 [node name="pan_zoom_camera" type="Camera2D"]
 limit_left = -10000

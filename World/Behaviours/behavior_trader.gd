@@ -5,24 +5,21 @@ class_name TraderBehavior
 @export var desires: Inventory = Inventory.new()
 var prices: Inventory = Inventory.new()
 
-var TradeTimer = Timer.new()
+@export var TradeDelay : float = 1
+var TradeDelayElapsed = 0
 
-func _setup_local_to_scene():
-	print("EL TRADERO")
+
+func _ready():
 	owner.add_to_group(Globals.TRADEGROUP)
-	_setup_trade_timer()
-
-func _setup_trade_timer():
-	TradeTimer.wait_time = 0.1
-	TradeTimer.autostart = true
-	TradeTimer.one_shot = false
-	TradeTimer.timeout.connect(background_trade)
-	owner.add_child(TradeTimer)
 
 
 func _process(delta):
 	delta = Globals.world_time_scale * delta
 	adjust_prices(delta)
+	TradeDelayElapsed += delta
+	if(TradeDelayElapsed > TradeDelay * Globals.world_day_duration):
+		TradeDelayElapsed = 0
+		background_trade()
 	
 func background_trade():
 	var tradePartner = owner.get_tree().get_nodes_in_group(Globals.TRADEGROUP).pick_random()
@@ -31,8 +28,7 @@ func background_trade():
 
 func propose_trade(tradePartner) -> bool:
 	var comparason = compare_economies(tradePartner)
-	print("comp: ",comparason)
-	#print("comparaseon: ", comparason.smallest_key, comparason.smallest_value, comparason.largest_key, comparason.largest_value )  # Output: Smallest key: "d"
+	#print("comp: ",comparason)
 	
 	if comparason.smallest_key == comparason.largest_key: return false
 	#print("not trading the same item")
@@ -41,7 +37,7 @@ func propose_trade(tradePartner) -> bool:
 	# while offering the lowest value item that the partner wants most
 	var demand = {
 		item =  comparason.largest_key,
-		price = tradePartner.trader_behavior.prices.get_item(comparason.largest_key),
+		price = tradePartner.behaviors[TraderBehavior].prices.get_item(comparason.largest_key),
 		amount = 1,
 	}
 	var offer = {
@@ -61,7 +57,7 @@ func propose_trade(tradePartner) -> bool:
 	
 	if !evaluate_trade(demand, offer): return false
 	#print("offer accepted 1")
-	if !tradePartner.trader_behavior.evaluate_trade(offer, demand): return false #invert order for partner!
+	if !tradePartner.behaviors[TraderBehavior].evaluate_trade(offer, demand): return false #invert order for partner!
 	#print("offer accepted 2")
 	execute_trade(demand, offer, tradePartner)
 	
@@ -76,7 +72,7 @@ func execute_trade(demand, offer, tradePartner):
 	tradePartner.inventory.set(offer.item, tradePartner.inventory.get(offer.item) + offer.amount)
 	
 	#print("Executing trade", owner, tradePartner)  
-	print("Executing trade", demand, offer)  
+	print("Trading ", self.owner.name, "->",tradePartner.name ," ", demand, offer)  
 
 
 
@@ -95,7 +91,7 @@ func compare_economies(trade_partner):
 	var largest_value = null
 
 	for key in prices.get_existing_items():
-		var value = prices.get(key) - trade_partner.trader_behavior.prices.get(key)
+		var value = prices.get(key) - trade_partner.behaviors[TraderBehavior].prices.get(key)
 		
 		if value == 0: continue
 		if value < 0 and owner.inventory.get_item(key)<=0 :continue

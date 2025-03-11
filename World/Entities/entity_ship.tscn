@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dhmerpngby7up"]
 
 [ext_resource type="PackedScene" uid="uid://48q45072yp2k" path="res://World/Entities/entity_generic.tscn" id="1_n2646"]
-[ext_resource type="Script" path="res://Items/inventory.gd" id="5_djf7f"]
+[ext_resource type="Script" uid="uid://0ag11sgluu72" path="res://Items/inventory.gd" id="5_djf7f"]
 [ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Textures/ship.png" id="6_2ydd1"]
 
 [sub_resource type="Resource" id="Resource_au124"]

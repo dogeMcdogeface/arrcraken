@@ -18,7 +18,7 @@ func set_disabled(value: bool):
 ################# BEHAVIORS ###########################################################
 @export_category("Entity Behaviors")
 @export var inventory: Inventory
-@onready var behaviors = get_behaviors()
+@onready var behaviors = _discover_behaviors()
 
 
 ################# FUNCTIONS ###########################################################
@@ -29,7 +29,7 @@ func _ready(): pass
 
 
 # Returns all not empty behaviors for the entity
-func get_behaviors() -> Dictionary:
+func _discover_behaviors() -> Dictionary:
 	var behaviors_dict = {}
 	for child in self.get_children():
 		if child is Behavior:

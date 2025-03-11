@@ -1,20 +1,10 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=6 format=3 uid="uid://ctpmom2jpsg1"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://ctpmom2jpsg1"]
 
-[ext_resource type="Resource" uid="uid://cu2vusq08dewv" path="res://Items/item_wood.tres" id="1_tt7nn"]
-[ext_resource type="Resource" uid="uid://1hmiy1uu6sj" path="res://Items/item_garlic.tres" id="2_oyj23"]
-[ext_resource type="Resource" uid="uid://dci2f8p30g63" path="res://Items/item_stone.tres" id="3_0vh0d"]
-[ext_resource type="Script" path="res://Items/inventory.gd" id="3_kcqru"]
-[ext_resource type="Resource" uid="uid://8l6d4wa8bkj0" path="res://Items/item_gold.tres" id="4_lk0pe"]
+[ext_resource type="Script" uid="uid://0ag11sgluu72" path="res://Items/inventory.gd" id="3_kcqru"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("3_kcqru")
-items = {
-ExtResource("1_tt7nn"): 0.0,
-ExtResource("2_oyj23"): 0.0,
-ExtResource("3_0vh0d"): 0.0,
-ExtResource("4_lk0pe"): 0.0
-}
 wood = 0.0
 stone = 0.0
 garlic = 0.0

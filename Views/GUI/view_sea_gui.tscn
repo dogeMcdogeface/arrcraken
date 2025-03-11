@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2x5x78n5wvxs"]
 
-[ext_resource type="Script" path="res://Views/GUI/compass/compass.gd" id="1_blic7"]
+[ext_resource type="Script" uid="uid://cfdwhndbmdhvl" path="res://Views/GUI/compass/compass.gd" id="1_blic7"]
 [ext_resource type="Texture2D" uid="uid://b5ov2dexmwjdt" path="res://Views/GUI/compass/Compass.png" id="2_tonfo"]
 [ext_resource type="Texture2D" uid="uid://q3ptjlpf33bi" path="res://Views/GUI/compass/Compass_arrow.png" id="3_ga14j"]
 [ext_resource type="Texture2D" uid="uid://7f31v70g3i7o" path="res://Views/GUI/compass/Compass_dot.png" id="4_j0c5e"]

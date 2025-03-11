@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dbp82hyh7qdij"]
 
-[ext_resource type="Script" path="res://World/Map/Template/world_map_navigation_obstacle.gd" id="1_22p4c"]
+[ext_resource type="Script" uid="uid://6cd61ysr5oxh" path="res://World/Map/Template/world_map_navigation_obstacle.gd" id="1_22p4c"]
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" groups=["navigation_obstacles"]]
 affect_navigation_mesh = true

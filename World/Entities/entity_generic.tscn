@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://48q45072yp2k"]
 
 [ext_resource type="Texture2D" uid="uid://3yak1wrt150x" path="res://icon.svg" id="1_j5khe"]
-[ext_resource type="Script" path="res://World/Entities/entity_generic.gd" id="1_vw2at"]
-[ext_resource type="Script" path="res://Items/inventory.gd" id="5_s3j84"]
+[ext_resource type="Script" uid="uid://bltmwks1ovnwp" path="res://World/Entities/entity_generic.gd" id="1_vw2at"]
+[ext_resource type="Script" uid="uid://0ag11sgluu72" path="res://Items/inventory.gd" id="5_s3j84"]
 
 [sub_resource type="Resource" id="Resource_q735v"]
 script = ExtResource("5_s3j84")

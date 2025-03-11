@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://xyjd4eddjsou" path="res://Views/3D/drag_camera_3d.tscn" id="2_71a6h"]
 [ext_resource type="PackedScene" uid="uid://d2x5x78n5wvxs" path="res://Views/GUI/view_sea_gui.tscn" id="2_kpayt"]
 [ext_resource type="Texture2D" uid="uid://rqq2ys3msb0x" path="res://map.png" id="3_2xk20"]
-[ext_resource type="Shader" path="res://Views/3D/sea_map.gdshader" id="3_6wv1w"]
-[ext_resource type="Shader" path="res://Views/3D/sea_geometry.gdshader" id="3_8ypyj"]
-[ext_resource type="Shader" path="res://Views/3D/sea_grid.gdshader" id="4_5rtb8"]
-[ext_resource type="Script" path="res://World/Entities/sea_entity.gd" id="4_jsi10"]
-[ext_resource type="Script" path="res://World/Wind.gd" id="8_wc3bn"]
-[ext_resource type="Script" path="res://Views/3D/sea_grid.gd" id="10_wclix"]
-[ext_resource type="Script" path="res://Views/3D/player_model.gd" id="12_ec01y"]
+[ext_resource type="Shader" uid="uid://c3yr1i817gujj" path="res://Views/3D/sea_map.gdshader" id="3_6wv1w"]
+[ext_resource type="Shader" uid="uid://dv5bfute5p6df" path="res://Views/3D/sea_geometry.gdshader" id="3_8ypyj"]
+[ext_resource type="Shader" uid="uid://clqxqt6n2tp7e" path="res://Views/3D/sea_grid.gdshader" id="4_5rtb8"]
+[ext_resource type="Script" uid="uid://bjqhpj4ipkq35" path="res://World/Entities/sea_entity.gd" id="4_jsi10"]
+[ext_resource type="Script" uid="uid://degsbg0kfwfgh" path="res://World/Wind.gd" id="8_wc3bn"]
+[ext_resource type="Script" uid="uid://e5ow5k6bq26q" path="res://Views/3D/sea_grid.gd" id="10_wclix"]
+[ext_resource type="Script" uid="uid://o714dflnn00r" path="res://Views/3D/player_model.gd" id="12_ec01y"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_dgqab"]
 
@@ -39,8 +39,8 @@ shader = ExtResource("3_6wv1w")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ildux"]
 render_priority = 0
 shader = ExtResource("4_5rtb8")
-shader_parameter/gridColor = null
-shader_parameter/checkerColor = null
+shader_parameter/gridColor = Color(0, 0, 0, 1)
+shader_parameter/checkerColor = Color(0, 0, 0, 1)
 shader_parameter/fadeStart = 10.0
 shader_parameter/fadeEnd = 50.0
 shader_parameter/unitSize = 1.0

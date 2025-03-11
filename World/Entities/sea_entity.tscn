@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cq78jp7fs7opd"]
 
-[ext_resource type="Script" path="res://World/Entities/sea_entity.gd" id="1_rlsc4"]
+[ext_resource type="Script" uid="uid://bjqhpj4ipkq35" path="res://World/Entities/sea_entity.gd" id="1_rlsc4"]
 
 [node name="sea_entity" type="Node2D"]
 rotation = -1.09956
