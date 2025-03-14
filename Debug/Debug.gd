@@ -105,7 +105,8 @@ func get_heading_info(value):
 	else:
 		angle = value
 		index = int(remap(angle, -PI, PI, 0, wind_directions.size()))
-	
+	index =  index % wind_directions.size()
+	#print( "value ", value, "| angle ", angle,"| index ", index)
 	return {
 		"rad": angle,
 		"deg": rad_to_deg(angle),

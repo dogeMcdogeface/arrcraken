@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://budm8k7r4k0s7"]
+[gd_scene load_steps=15 format=3 uid="uid://budm8k7r4k0s7"]
 
 [ext_resource type="Script" uid="uid://degsbg0kfwfgh" path="res://World/Wind.gd" id="1_qm5mn"]
 [ext_resource type="PackedScene" uid="uid://cyynd8747n82y" path="res://World/Entities/entity_settlement.tscn" id="2_oixgl"]
@@ -54,6 +54,22 @@ stone = 0.0
 garlic = 0.0
 gold = 0.0
 
+[sub_resource type="Resource" id="Resource_t54x3"]
+resource_local_to_scene = true
+script = ExtResource("3_22qbx")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
+[sub_resource type="Resource" id="Resource_73ytf"]
+resource_local_to_scene = true
+script = ExtResource("3_22qbx")
+wood = 0.0
+stone = 0.0
+garlic = 0.0
+gold = 0.0
+
 [node name="world_theatre" type="Node2D" groups=["Persist"]]
 
 [node name="world_map" parent="." instance=ExtResource("3_i4qrc")]
@@ -79,7 +95,7 @@ inventory = SubResource("Resource_7616m")
 rates = SubResource("Resource_bs0hp")
 
 [node name="Entity_Settlement3" parent="SettlementEntities" instance=ExtResource("2_oixgl")]
-position = Vector2(-644, -642)
+position = Vector2(-603, -1147)
 inventory = SubResource("Resource_lxjr1")
 
 [node name="NavigationEntities" type="Node2D" parent="."]
@@ -88,6 +104,14 @@ metadata/_edit_lock_ = true
 [node name="Entity_Ship" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
 position = Vector2(-1009, -333)
 inventory = SubResource("Resource_xwqiu")
+
+[node name="Entity_Ship2" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
+position = Vector2(-1009, -333)
+inventory = SubResource("Resource_t54x3")
+
+[node name="Entity_Ship3" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
+position = Vector2(-1009, -333)
+inventory = SubResource("Resource_73ytf")
 
 [node name="Wind" type="Node" parent="."]
 script = ExtResource("1_qm5mn")

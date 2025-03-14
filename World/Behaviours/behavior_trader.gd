@@ -72,7 +72,7 @@ func execute_trade(demand, offer, tradePartner):
 	tradePartner.inventory.set(offer.item, tradePartner.inventory.get(offer.item) + offer.amount)
 	
 	#print("Executing trade", owner, tradePartner)  
-	print("Trading ", self.owner.name, "->",tradePartner.name ," ", demand, offer)  
+	#print("Trading ", self.owner.name, "->",tradePartner.name ," ", demand, offer)  
 
 
 

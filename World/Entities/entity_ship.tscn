@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhmerpngby7up"]
+[gd_scene load_steps=9 format=3 uid="uid://dhmerpngby7up"]
 
 [ext_resource type="PackedScene" uid="uid://48q45072yp2k" path="res://World/Entities/entity_generic.tscn" id="1_n2646"]
+[ext_resource type="Script" uid="uid://cjw514y3uo0ik" path="res://World/Behaviours/behavior_trader.gd" id="5_22u3f"]
 [ext_resource type="Script" uid="uid://0ag11sgluu72" path="res://Items/inventory.gd" id="5_djf7f"]
 [ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Textures/ship.png" id="6_2ydd1"]
+[ext_resource type="Script" uid="uid://wmr0qk36k7ix" path="res://World/Behaviours/behavior_navigator.gd" id="6_5uaj7"]
 
 [sub_resource type="Resource" id="Resource_au124"]
 resource_local_to_scene = true
@@ -16,8 +18,16 @@ gold = 0.0
 radius = 12.0
 height = 55.0
 
+[sub_resource type="Resource" id="Resource_8rg0s"]
+script = ExtResource("5_djf7f")
+wood = 2000.0
+stone = 2000.0
+garlic = 2000.0
+gold = 5000.0
+
 [node name="Entity_Ship" instance=ExtResource("1_n2646")]
 label = "Entity_Ship"
+class_size = 9
 inventory = SubResource("Resource_au124")
 
 [node name="Texture" parent="." index="0"]
@@ -32,3 +42,29 @@ texture = ExtResource("6_2ydd1")
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_res5r")
+
+[node name="TraderBehavior" type="Node" parent="." index="3"]
+script = ExtResource("5_22u3f")
+desires = SubResource("Resource_8rg0s")
+
+[node name="NavigatorBehavior" type="Node" parent="." index="4"]
+script = ExtResource("6_5uaj7")
+linear_speed = 100.0
+debug = true
+metadata/_custom_type_script = "uid://wmr0qk36k7ix"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
+path_desired_distance = 25.0
+target_desired_distance = 50.0
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 25.0
+neighbor_distance = 100.0
+time_horizon_obstacles = 1.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.86, 0.86, 0, 1)
+debug_path_custom_line_width = 10.0
+
+[connection signal="navigation_finished" from="NavigationAgent2D" to="NavigatorBehavior" method="_on_navigation_agent_2d_navigation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="NavigatorBehavior" method="_on_navigation_agent_2d_velocity_computed"]

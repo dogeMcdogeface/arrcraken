@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dti6rhv63a1sh"]
+[gd_scene load_steps=2 format=3 uid="uid://u081hqqruu6g"]
 
 [ext_resource type="Script" uid="uid://b00h22ssvjvhv" path="res://World/Behaviours/behavior_producer.gd" id="1_j7lm1"]
 

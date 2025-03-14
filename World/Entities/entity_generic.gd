@@ -9,6 +9,8 @@ extends Area2D
 
 @export var description:String 
 
+@export var class_size = 0
+
 @export var disabled:bool = false:  set = set_disabled
 func set_disabled(value: bool):
 	disabled = value
