@@ -1,39 +1,21 @@
 [gd_scene load_steps=7 format=3 uid="uid://wc874eoebddu"]
 
-[ext_resource type="Texture2D" uid="uid://8dx4wea2kiyb" path="res://Resurces/map_visual.png" id="1_8a836"]
-[ext_resource type="Texture2D" uid="uid://tqxoj41505sx" path="res://Resurces/map_logical.jpg" id="2_j8job"]
+[ext_resource type="PackedScene" uid="uid://dwlqprx0hblx2" path="res://World/world_map.tscn" id="1_62w18"]
+[ext_resource type="Texture2D" uid="uid://flm3e8w5eb4v" path="res://World/wind_texture.tres" id="2_3f78f"]
+[ext_resource type="Shader" uid="uid://r8j1lhpo4hbs" path="res://World/wind_illustrator.gdshader" id="2_j8job"]
+[ext_resource type="Script" uid="uid://bslnu0v5otuvx" path="res://World/wind.gd" id="2_k8do8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1ndb"]
-size = Vector2(10000, 10000)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
+shader = ExtResource("2_j8job")
+shader_parameter/normal_map = ExtResource("2_3f78f")
+shader_parameter/texture_size = Vector2(20, 20)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_8a836"]
-vertices = PackedVector2Array(4996.98, -4995.03, 4984.01, 5000.98, -4986.01, 4988.01, -4998.98, -5033.96)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-5009, -5044, -4996, 4998, 4994, 5011, 5007, -5005)])
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_8a836"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j8job"]
-noise = SubResource("FastNoiseLite_8a836")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j8job"]
+size = Vector2(20, 20)
 
 [node name="World" type="Node2D"]
 
-[node name="WorldMap" type="Area2D" parent="."]
-
-[node name="Shape" type="CollisionShape2D" parent="WorldMap"]
-shape = SubResource("RectangleShape2D_u1ndb")
-
-[node name="visual" type="Sprite2D" parent="WorldMap"]
-position = Vector2(-9.00029, -6.50043)
-texture = ExtResource("1_8a836")
-
-[node name="logical" type="Sprite2D" parent="WorldMap"]
-modulate = Color(1, 1, 1, 0.145098)
-texture = ExtResource("2_j8job")
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WorldMap"]
-visible = false
-navigation_polygon = SubResource("NavigationPolygon_8a836")
+[node name="WorldMap" parent="." instance=ExtResource("1_62w18")]
 
 [node name="Settlements" type="Node2D" parent="."]
 
@@ -42,18 +24,40 @@ navigation_polygon = SubResource("NavigationPolygon_8a836")
 [node name="WorldProperties" type="Node" parent="."]
 
 [node name="Wind" type="Node" parent="."]
+script = ExtResource("2_k8do8")
+resolution = 40
+x_scroll = 2.0
+y_scroll = 2.0
+z_scroll = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="Wind"]
-visible = false
+[node name="WindNoise" type="TextureRect" parent="Wind"]
+modulate = Color(1, 1, 1, 0.282353)
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5576.0
-offset_top = -5324.0
-offset_right = 4424.0
-offset_bottom = 4676.0
+offset_left = -5000.0
+offset_top = -5000.0
+offset_right = 5000.0
+offset_bottom = 5000.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("NoiseTexture2D_j8job")
+texture = ExtResource("2_3f78f")
+
+[node name="WindIllustrator" type="TextureRect" parent="Wind"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_k8do8")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5000.0
+offset_top = -5000.0
+offset_right = 5000.0
+offset_bottom = 5000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_j8job")
