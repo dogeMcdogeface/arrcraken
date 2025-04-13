@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://wc874eoebddu"]
+
+[ext_resource type="Texture2D" uid="uid://8dx4wea2kiyb" path="res://Resurces/map_visual.png" id="1_8a836"]
+[ext_resource type="Texture2D" uid="uid://tqxoj41505sx" path="res://Resurces/map_logical.jpg" id="2_j8job"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1ndb"]
+size = Vector2(10000, 10000)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8a836"]
+vertices = PackedVector2Array(4996.98, -4995.03, 4984.01, 5000.98, -4986.01, 4988.01, -4998.98, -5033.96)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-5009, -5044, -4996, 4998, 4994, 5011, 5007, -5005)])
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8a836"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j8job"]
+noise = SubResource("FastNoiseLite_8a836")
+
+[node name="World" type="Node2D"]
+
+[node name="WorldMap" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="WorldMap"]
+shape = SubResource("RectangleShape2D_u1ndb")
+
+[node name="visual" type="Sprite2D" parent="WorldMap"]
+position = Vector2(-9.00029, -6.50043)
+texture = ExtResource("1_8a836")
+
+[node name="logical" type="Sprite2D" parent="WorldMap"]
+modulate = Color(1, 1, 1, 0.145098)
+texture = ExtResource("2_j8job")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WorldMap"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_8a836")
+
+[node name="Settlements" type="Node2D" parent="."]
+
+[node name="Ships" type="Node2D" parent="."]
+
+[node name="WorldProperties" type="Node" parent="."]
+
+[node name="Wind" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Wind"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5576.0
+offset_top = -5324.0
+offset_right = 4424.0
+offset_bottom = 4676.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_j8job")
