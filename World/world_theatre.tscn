@@ -108,6 +108,7 @@ direction = Vector2(1, 0)
 debug = true
 
 [node name="TextureRect" type="TextureRect" parent="Wind"]
+visible = false
 modulate = Color(1, 1, 1, 0.501961)
 texture_filter = 1
 anchors_preset = 8

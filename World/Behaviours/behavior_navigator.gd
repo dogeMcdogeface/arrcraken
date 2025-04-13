@@ -70,43 +70,6 @@ func _physics_process(delta: float) -> void:
 enum Step {REACH_SELLER, BUYING, REACH_BUYER, SELLING}
 var state = Step.REACH_SELLER
 
-func decide_next_action():
-	#match state:
-		#Step.REACH_SELLER:
-			#navigation_target = find_trade_seller()
-		#Step.BUYING:
-			#buy_from_seller()
-		#Step.REACH_BUYER:
-			#navigation_target = find_trade_seller()
-		#Step.SELLING:
-			#sell_to_buyer()
-		#_:
-			#navigation_target = find_random_target()
-	#if navigation_target == null or navigation_target.get("global_position") == null:
-		#navigation_target = find_random_target()
-	navigation_target = find_random_target()
-	print(navigation_target)
-
-	set_navigation_target(navigation_target.global_position)
-
-
-
-func find_trade_seller():
-	navigation_targets.shuffle()
-	for target in navigation_targets:
-		if !target.is_in_group("traders"):continue
-		for item in Economy.global_market_prices.get_existing_items():
-			var trader_price = target.prices.get(item)
-			var global_price = Economy.global_market_prices.get(item)
-			if trader_price < global_price * 0.9:
-				return target
-
-func find_trade_buyer():
-	pass
-func buy_from_seller():
-	pass
-func sell_to_buyer():
-	pass
 	
 func find_random_target():
 	print(navigation_targets)
@@ -128,8 +91,7 @@ func _on_navigation_agent_2d_navigation_finished():
 		#TODO: Reset navigation somehow
 		Debug.warn([self, "Could not reach navigation target",navigation_target, navigation_agent.target_position])
 		push_warning(self, "Could not reach navigation target",navigation_target, navigation_agent.target_position)
-	
-	decide_next_action()
+	#decide_next_action()
 
 #######################################################################################
 
@@ -150,7 +112,6 @@ func steer_towards_target(delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var target_rotation = owner.global_position.angle_to_point(next_path_position)
 	owner.rotation = rotate_toward(owner.rotation, target_rotation, delta * spinny_speed )
-	#velocity = global_position.direction_to(next_path_position) * linear_speed
 #######################################################################################
 
 ################# MOVEMENT ############################################################
@@ -205,5 +166,6 @@ sail cfg:	x: %-10.3f y: %-10.3f dot: %-10.3f rev: %s
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	#print(safe_velocity)
 	velocity = safe_velocity
 	pass # Replace with function body.
