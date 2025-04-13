@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds221dfb6tng8" path="res://World/world_map_caribbean.tscn" id="3_i4qrc"]
 [ext_resource type="PackedScene" uid="uid://dhmerpngby7up" path="res://World/Entities/entity_ship.tscn" id="4_2c0y7"]
 [ext_resource type="PackedScene" uid="uid://dnqk0nls5mtho" path="res://Debug/GlobalsEditor.tscn" id="4_5a7mr"]
+[ext_resource type="Texture2D" uid="uid://ia025quxpeym" path="res://World/wind_texture.tres" id="6_t54x3"]
 
 [sub_resource type="Resource" id="Resource_s60qc"]
 resource_local_to_scene = true
@@ -37,14 +38,6 @@ stone = 50.0
 garlic = 0.0
 gold = 0.0
 metadata/_custom_type_script = "uid://0ag11sgluu72"
-
-[sub_resource type="Resource" id="Resource_lxjr1"]
-resource_local_to_scene = true
-script = ExtResource("3_22qbx")
-wood = 55.0
-stone = 0.0
-garlic = 0.0
-gold = 100.0
 
 [sub_resource type="Resource" id="Resource_xwqiu"]
 resource_local_to_scene = true
@@ -94,10 +87,6 @@ inventory = SubResource("Resource_7616m")
 [node name="ProducerBehavior" parent="SettlementEntities/Entity_Settlement2" index="5"]
 rates = SubResource("Resource_bs0hp")
 
-[node name="Entity_Settlement3" parent="SettlementEntities" instance=ExtResource("2_oixgl")]
-position = Vector2(-603, -1147)
-inventory = SubResource("Resource_lxjr1")
-
 [node name="NavigationEntities" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -106,21 +95,37 @@ position = Vector2(-1009, -333)
 inventory = SubResource("Resource_xwqiu")
 
 [node name="Entity_Ship2" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
-position = Vector2(-1009, -333)
+position = Vector2(-1238, 673)
 inventory = SubResource("Resource_t54x3")
 
 [node name="Entity_Ship3" parent="NavigationEntities" instance=ExtResource("4_2c0y7")]
-position = Vector2(-1009, -333)
+position = Vector2(-804, -102)
 inventory = SubResource("Resource_73ytf")
 
-[node name="Wind" type="Node" parent="."]
+[node name="Wind" type="Node" parent="." groups=["world_properties"]]
 script = ExtResource("1_qm5mn")
 direction = Vector2(1, 0)
 debug = true
 
+[node name="TextureRect" type="TextureRect" parent="Wind"]
+modulate = Color(1, 1, 1, 0.501961)
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5576.0
+offset_top = -5324.0
+offset_right = 4424.0
+offset_bottom = 4676.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_t54x3")
+metadata/_edit_lock_ = true
+
 [node name="GlobalsEditor" parent="." instance=ExtResource("4_5a7mr")]
 _world_time_scale = 10.0
-save_game = true
 
 [editable path="SettlementEntities/Entity_Settlement"]
 [editable path="SettlementEntities/Entity_Settlement2"]

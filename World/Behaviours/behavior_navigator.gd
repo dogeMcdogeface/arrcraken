@@ -3,6 +3,9 @@ class_name NavigatorBehavior
 
 @onready var navigation_agent: NavigationAgent2D = get_node("../NavigationAgent2D") 
 
+@onready var wind = get_tree().get_nodes_in_group(Globals.WORLDPROPERTIES).filter(func(n): return n.name == "Wind")[0]
+
+
 @onready var navigation_targets = get_tree().get_nodes_in_group(Globals.NAVTARGETGROUP)
 @onready var navigation_target = owner
 
@@ -31,7 +34,6 @@ var velocity = Vector2(0, 0)
 
 
 func _ready():
-	#modulate =  Debug.get_unique(self).color
 	navigation_agent.debug_path_custom_color = Debug.get_unique(self).color
 	set_navigation_target(owner.global_position)
 	
@@ -154,23 +156,21 @@ func steer_towards_target(delta):
 ################# MOVEMENT ############################################################
 #Code handling the movement of a navigating entity (ships/players/creatures)
 #Describing wind effects on movement, water resistance etc
-var wind = Vector2.ZERO
+var local_wind = Vector2.ZERO
 var force_on_sail = Vector2.ZERO
 var dot_to_wind = .0
 var reverse_sail = false
 var reverse_sail_factor = 0.5
 
-func _on_wind_updated(new_wind: Vector2):
-	wind = new_wind
-	
 func compute_wind_effect():
-	dot_to_wind = wind.dot(Vector2.from_angle(owner.rotation))
+	local_wind = wind.direction
+	dot_to_wind = local_wind.dot(Vector2.from_angle(owner.rotation))
 	if dot_to_wind <= 0.1:
 		reverse_sail = true
 		force_on_sail = Vector2.from_angle(owner.rotation) * reverse_sail_factor
 	else:
 		reverse_sail = false
-		force_on_sail = wind.project(Vector2.from_angle(owner.rotation))
+		force_on_sail = local_wind.project(Vector2.from_angle(owner.rotation))
 
 func compute_velocity(delta):
 	var target_velocity = linear_speed * force_on_sail
@@ -205,4 +205,5 @@ sail cfg:	x: %-10.3f y: %-10.3f dot: %-10.3f rev: %s
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
 	pass # Replace with function body.

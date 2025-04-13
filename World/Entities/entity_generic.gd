@@ -24,7 +24,9 @@ func set_disabled(value: bool):
 
 
 ################# FUNCTIONS ###########################################################
-func _ready(): pass
+func _ready(): 
+	modulate =  Debug.get_unique(self).color
+
 #func _process(delta: float) -> void: 
 	#if Engine.is_editor_hint(): return
 	#delta = Globals.world_time_scale * delta

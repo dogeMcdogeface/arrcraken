@@ -50,6 +50,7 @@ desires = SubResource("Resource_8rg0s")
 [node name="NavigatorBehavior" type="Node" parent="." index="4"]
 script = ExtResource("6_5uaj7")
 linear_speed = 100.0
+optimize_path = true
 debug = true
 metadata/_custom_type_script = "uid://wmr0qk36k7ix"
 
@@ -58,9 +59,8 @@ path_desired_distance = 25.0
 target_desired_distance = 50.0
 path_postprocessing = 1
 avoidance_enabled = true
-radius = 25.0
-neighbor_distance = 100.0
-time_horizon_obstacles = 1.0
+radius = 50.0
+time_horizon_agents = 3.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.86, 0.86, 0, 1)
