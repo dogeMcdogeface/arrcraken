@@ -47,6 +47,7 @@ size_2d_override_stretch = true
 position = Vector2(6000, 6000)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.92, 0.92)

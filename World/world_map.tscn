@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwlqprx0hblx2"]
+[gd_scene load_steps=6 format=3 uid="uid://dwlqprx0hblx2"]
 
 [ext_resource type="Texture2D" uid="uid://8dx4wea2kiyb" path="res://Resurces/map_visual.png" id="1_0ndpf"]
 [ext_resource type="Texture2D" uid="uid://tqxoj41505sx" path="res://Resurces/map_logical.jpg" id="2_uoc70"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ndpf"]
+size = Vector2(10000, 10000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1ndb"]
 size = Vector2(10000, 10000)
@@ -12,6 +15,10 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-5009, -5044, -4996, 4998, 4994, 5011, 5007, -5005)])
 
 [node name="WorldMap" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ndpf")
+one_way_collision_margin = 5.9
 
 [node name="Shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_u1ndb")

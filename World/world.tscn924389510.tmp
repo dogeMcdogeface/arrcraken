@@ -30,8 +30,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="entity_inert" type="Area2D" parent="Ships"]
-z_index = 10
-position = Vector2(-249, -1349)
+position = Vector2(4816, 735)
 script = ExtResource("2_yf0ba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/entity_inert"]
@@ -41,18 +40,18 @@ metadata/_edit_lock_ = true
 
 [node name="WorldTime" type="Node" parent="."]
 script = ExtResource("2_bkhv4")
-_world_time_scale = 9.333
+_world_time_scale = 0.0
 
 [node name="WorldWind" type="Node" parent="."]
 script = ExtResource("2_k8do8")
-resolution = 40
+resolution = 10
 x_scroll = 2.0
 y_scroll = 2.0
 z_scroll = 1.0
-scale = 1000
 
 [node name="WindNoise" type="TextureRect" parent="WorldWind"]
-modulate = Color(1, 1, 1, 0.258824)
+visible = false
+modulate = Color(1, 1, 1, 0.282353)
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
