@@ -51,6 +51,11 @@ func colorToWindVector(c:Color):
 
 func getInPos( pos:Vector2 ):
 	var positionInWindTexture = (pos + Globals.WorldMapSize/2 ) / Globals.WorldMapSize * resolution
+	if(positionInWindTexture.x < 0 
+	or positionInWindTexture.y < 0
+	or positionInWindTexture.x > resolution 
+	or positionInWindTexture.y > resolution ):
+		return Vector2.ZERO
 	print(positionInWindTexture)
 	var val = wind_texture_image.get_pixelv(positionInWindTexture)
 	return colorToWindVector(val)

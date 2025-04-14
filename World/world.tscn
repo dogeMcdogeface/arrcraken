@@ -21,6 +21,7 @@ size = Vector2(20, 20)
 [node name="World" type="Node2D"]
 
 [node name="WorldMap" parent="." instance=ExtResource("1_62w18")]
+working_resolution = 100
 metadata/_edit_lock_ = true
 
 [node name="Settlements" type="Node2D" parent="."]
@@ -31,7 +32,7 @@ metadata/_edit_lock_ = true
 
 [node name="entity_inert" type="Area2D" parent="Ships"]
 z_index = 10
-position = Vector2(-249, -1349)
+position = Vector2(-15, 1792)
 script = ExtResource("2_yf0ba")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ships/entity_inert"]
