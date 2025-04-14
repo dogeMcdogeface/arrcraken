@@ -19,8 +19,7 @@ func _ready() -> void:
 	$WindNoise.texture.width = resolution
 	$WindIllustrator.material.set_shader_parameter("texture_size", Vector2(resolution,resolution))
 
-
-var wind_texture_image:Image = Image.create_empty(resolution,resolution,false, Image.Format.FORMAT_RGB8 )
+@onready var wind_texture_image:Image = Image.create_empty(resolution,resolution,false, Image.Format.FORMAT_RGB8 )
 
 func _process(delta: float) -> void:
 	delta = delta * Globals.WorldTime.scale
@@ -46,7 +45,9 @@ func colorToWindVector(c:Color):
 	var angle = c.g * 2 * PI
 	var v = Vector2.from_angle(angle) * length
 	return v
-	
+
+func towardsCenterVector(p:Vector2):
+	return (Vector2(resolution,resolution)/2 - p).normalized() * scale
 
 
 func getInPos( pos:Vector2 ):
@@ -55,8 +56,8 @@ func getInPos( pos:Vector2 ):
 	or positionInWindTexture.y < 0
 	or positionInWindTexture.x > resolution 
 	or positionInWindTexture.y > resolution ):
-		return Vector2.ZERO
-	print(positionInWindTexture)
+		return towardsCenterVector(positionInWindTexture)
+
 	var val = wind_texture_image.get_pixelv(positionInWindTexture)
 	return colorToWindVector(val)
 	
