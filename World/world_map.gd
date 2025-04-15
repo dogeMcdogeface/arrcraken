@@ -23,6 +23,7 @@ extends Area2D
 @onready var debugpoly_lan = $DebugPolygons/Land
 
 
+@onready var sprite_visual = $Textures/visual
 @onready var sprite_logical = $Textures/logical
 @onready var sprite_logical_small = $Textures/logical_small
 
@@ -167,5 +168,6 @@ func update_texture_sizes():
 		Vector2( Globals.WorldMapSize).reflect(Vector2(0,1))/2 ,
 	]
 	
+	sprite_visual.scale = Globals.WorldMapSize/sprite_visual.texture.get_size()
 	sprite_logical.scale = Globals.WorldMapSize/sprite_logical.texture.get_size()
 	sprite_logical_small.scale = Globals.WorldMapSize/sprite_logical_small.texture.get_size()

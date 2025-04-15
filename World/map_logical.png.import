@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tqxoj41505sx"
-path="res://.godot/imported/map_logical.jpg-c37b94e2bf63d7c888c5462089e1b204.ctex"
+uid="uid://dm1577ge5a5dk"
+path="res://.godot/imported/map_logical.png-2157b2e86a08b4ec78a98f69d03fff3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resurces/map_logical.jpg"
-dest_files=["res://.godot/imported/map_logical.jpg-c37b94e2bf63d7c888c5462089e1b204.ctex"]
+source_file="res://World/map_logical.png"
+dest_files=["res://.godot/imported/map_logical.png-2157b2e86a08b4ec78a98f69d03fff3a.ctex"]
 
 [params]
 

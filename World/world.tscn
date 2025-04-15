@@ -42,6 +42,7 @@ metadata/_edit_lock_ = true
 
 [node name="WorldTime" type="Node" parent="."]
 script = ExtResource("2_bkhv4")
+_world_time_scale = 11.616
 
 [node name="WorldWind" type="Node" parent="."]
 script = ExtResource("2_k8do8")
