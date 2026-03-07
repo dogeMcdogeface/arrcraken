@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://yhmu5r8ld1da"]
+
+[ext_resource type="PackedScene" uid="uid://bw1y28jbtat0x" path="res://Entities/entity.tscn" id="1_vnbnn"]
+[ext_resource type="Texture2D" uid="uid://crmtylfp4d8s" path="res://Resurces/Textures/port.png" id="2_hms3l"]
+[ext_resource type="Script" uid="uid://cdjjti01tssem" path="res://Entities/Behaviours/behaviour_trader.gd" id="3_tudj5"]
+[ext_resource type="Script" uid="uid://dhk7a6dmp0hkt" path="res://Entities/Behaviours/behaviour_producer.gd" id="4_orah2"]
+[ext_resource type="Script" uid="uid://e15qebu5ehti" path="res://Entities/Items/item_wood.gd" id="4_q22ef"]
+[ext_resource type="Script" uid="uid://bll66a6rlrqdi" path="res://Entities/inventory.gd" id="5_orah2"]
+
+[node name="Settlement" unique_id=2127210789 instance=ExtResource("1_vnbnn")]
+
+[node name="icon" parent="." index="1" unique_id=2004982285]
+texture = ExtResource("2_hms3l")
+
+[node name="Behaviour_Trader" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=70789910]
+script = ExtResource("3_tudj5")
+metadata/_custom_type_script = "uid://cdjjti01tssem"
+
+[node name="Behaviour_Producer" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="1" unique_id=97658351]
+script = ExtResource("4_orah2")
+metadata/_custom_type_script = "uid://dhk7a6dmp0hkt"
+
+[node name="InventoryItem_Wood" type="Node" parent="Behaviours/Behaviour_Producer" index="0" unique_id=1884802893]
+script = ExtResource("4_q22ef")
+metadata/_custom_type_script = "uid://e15qebu5ehti"
+
+[node name="Inventory" parent="." index="3" unique_id=911565618]
+script = ExtResource("5_orah2")
+
+[node name="InventoryItem_Wood" type="Node" parent="Inventory" index="0" unique_id=1232131351]
+script = ExtResource("4_q22ef")
+metadata/_custom_type_script = "uid://e15qebu5ehti"

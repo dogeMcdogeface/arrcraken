@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://i1lwfmixt0o0"]
+
+[ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="1_vlt7j"]
+
+[resource]
+script = ExtResource("1_vlt7j")
+id = &"stone"
+display_name = "Stone"
+metadata/_custom_type_script = "uid://mngp6nnfkp4f"

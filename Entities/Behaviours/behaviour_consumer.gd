@@ -1,0 +1,22 @@
+class_name Behaviour_Consumer extends Behaviour
+
+
+@export var consumption_period:float = 2 #how many days the consumption cycle lasts
+@export var inventory := InventoryItemList_float.new()
+
+var lastDate
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	lastDate = Globals.WorldTime.world_date
+
+
+func update():
+	var dateDelta = Globals.WorldTime.world_date - lastDate
+	if dateDelta < (Globals.WorldTime.world_day_duration * consumption_period):
+		return
+	lastDate =  Globals.WorldTime.world_date
+	
+	for item in entity.inventory.items:
+		var consumed = inventory.items[item] * dateDelta / Globals.WorldTime.world_day_duration
+		entity.inventory.items[item] -= consumed

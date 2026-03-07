@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cogqdenlv4oyy"]
+
+[ext_resource type="Script" uid="uid://p6cvfxhhtob0" path="res://Views/GUI/view_price_curve_graph.gd" id="1_4w8p6"]
+[ext_resource type="Script" uid="uid://b7foabmw2645c" path="res://Views/GUI/price_curve_graph.gd" id="2_r6fvm"]
+[ext_resource type="Script" uid="uid://beltitimrv7yy" path="res://Entities/Items/price_calculator.gd" id="3_r6fvm"]
+
+[sub_resource type="Resource" id="Resource_r6fvm"]
+script = ExtResource("3_r6fvm")
+k_normal = 1.005
+metadata/_custom_type_script = "uid://beltitimrv7yy"
+
+[sub_resource type="SystemFont" id="SystemFont_4w8p6"]
+
+[node name="view_PriceCurveGraph" type="Control" unique_id=1932467223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4w8p6")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=441095817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offsets = PackedInt32Array(-86)
+split_offset = -86
+
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer" unique_id=141049526]
+visible = false
+layout_mode = 2
+columns = 2
+
+[node name="PriceCurveGraph" type="Control" parent="HSplitContainer" unique_id=868974911]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_r6fvm")
+price_calculator = SubResource("Resource_r6fvm")
+font = SubResource("SystemFont_4w8p6")
+metadata/_custom_type_script = "uid://b7foabmw2645c"

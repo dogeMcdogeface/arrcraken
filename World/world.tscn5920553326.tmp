@@ -14,7 +14,8 @@
 [ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="11_f23eu"]
 [ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="12_oeat8"]
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
-[ext_resource type="Script" uid="uid://bkloyj4k83k1g" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
+[ext_resource type="Resource" uid="uid://i0mpuhrs5odo" path="res://Entities/Behaviours/settlement_desire_1.tres" id="15_oeat8"]
+[ext_resource type="Script" uid="uid://d4ag5ytmfgnpw" path="res://Entities/Items/item_list.gd" id="15_xw5lg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
 shader = ExtResource("2_j8job")
@@ -24,48 +25,55 @@ shader_parameter/texture_size = Vector2(20, 20)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j8job"]
 size = Vector2(20, 20)
 
+[sub_resource type="Resource" id="Resource_f23eu"]
+resource_local_to_scene = true
+script = ExtResource("15_xw5lg")
+item_stone = 55.0
+items = Dictionary[ExtResource("11_f23eu"), int]({
+ExtResource("12_oeat8"): 55,
+ExtResource("13_5xkvv"): 0
+})
+metadata/_custom_type_script = "uid://d4ag5ytmfgnpw"
+
 [sub_resource type="Resource" id="Resource_oeat8"]
 resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 2.0
-item_wood = 10.0
+script = ExtResource("15_xw5lg")
+item_stone = 1.0
 items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 2.0,
-ExtResource("13_5xkvv"): 10.0
+ExtResource("12_oeat8"): 1.0,
+ExtResource("13_5xkvv"): 0.0
 })
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
+metadata/_custom_type_script = "uid://d4ag5ytmfgnpw"
 
 [sub_resource type="Resource" id="Resource_5xkvv"]
 resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 1.0
-item_wood = 5.0
+script = ExtResource("15_xw5lg")
+item_stone = 2.0
+item_wood = 2.0
 items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 1.0,
-ExtResource("13_5xkvv"): 5.0
+ExtResource("12_oeat8"): 2.0,
+ExtResource("13_5xkvv"): 2.0
 })
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
+metadata/_custom_type_script = "uid://d4ag5ytmfgnpw"
 
 [sub_resource type="Resource" id="Resource_0lysu"]
 resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_wood = 10.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 0.0,
-ExtResource("13_5xkvv"): 10.0
+script = ExtResource("15_xw5lg")
+items = Dictionary[ExtResource("11_f23eu"), int]({
+ExtResource("12_oeat8"): 0,
+ExtResource("13_5xkvv"): 0
 })
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
+metadata/_custom_type_script = "uid://d4ag5ytmfgnpw"
 
 [sub_resource type="Resource" id="Resource_26uyv"]
 resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 1.0
-item_wood = 5.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 1.0,
-ExtResource("13_5xkvv"): 5.0
+script = ExtResource("15_xw5lg")
+item_stone = 2.0
+items = Dictionary[ExtResource("11_f23eu"), int]({
+ExtResource("12_oeat8"): 2,
+ExtResource("13_5xkvv"): 0
 })
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
+metadata/_custom_type_script = "uid://d4ag5ytmfgnpw"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidgh"]
 radius = 100.0
@@ -155,7 +163,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Settlement" parent="Settlements" unique_id=2127210789 instance=ExtResource("2_eidgh")]
-position = Vector2(1978, 2324)
+inventory = SubResource("Resource_f23eu")
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="0" unique_id=97658351]
 inventory = SubResource("Resource_oeat8")
@@ -163,14 +171,17 @@ inventory = SubResource("Resource_oeat8")
 [node name="Behaviour_Consumer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="1" unique_id=1825729538]
 inventory = SubResource("Resource_5xkvv")
 
-[node name="Settlement2" parent="Settlements" unique_id=1715003357 instance=ExtResource("2_eidgh")]
-position = Vector2(-1383, 1585)
+[node name="Behaviour_Trader" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="2" unique_id=70789910]
+desire = ExtResource("15_oeat8")
 
-[node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1715003357, 427234832) index="0" unique_id=97658351]
+[node name="Settlement2" parent="Settlements" unique_id=562386916 instance=ExtResource("2_eidgh")]
 inventory = SubResource("Resource_0lysu")
 
-[node name="Behaviour_Consumer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1715003357, 427234832) index="1" unique_id=1825729538]
+[node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(562386916, 427234832) index="0" unique_id=97658351]
 inventory = SubResource("Resource_26uyv")
+
+[node name="Behaviour_Trader" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(562386916, 427234832) index="2" unique_id=70789910]
+desire = ExtResource("15_oeat8")
 
 [node name="Ships" type="Node2D" parent="." unique_id=136401531]
 metadata/_edit_lock_ = true

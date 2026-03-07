@@ -4,17 +4,12 @@
 [ext_resource type="Script" uid="uid://dns73ct5fsoi5" path="res://World/world.gd" id="1_eidgh"]
 [ext_resource type="Texture2D" uid="uid://flm3e8w5eb4v" path="res://World/wind_texture.tres" id="2_3f78f"]
 [ext_resource type="Script" uid="uid://cgs606emregb4" path="res://World/WorldTime.gd" id="2_bkhv4"]
-[ext_resource type="PackedScene" uid="uid://yhmu5r8ld1da" path="res://Entities/entity_settlement.tscn" id="2_eidgh"]
 [ext_resource type="Shader" uid="uid://r8j1lhpo4hbs" path="res://World/wind_illustrator.gdshader" id="2_j8job"]
 [ext_resource type="Script" uid="uid://bslnu0v5otuvx" path="res://World/WorldWind.gd" id="2_k8do8"]
 [ext_resource type="Script" uid="uid://cdsviypjsa7e5" path="res://World/entity_inert.gd" id="2_yf0ba"]
 [ext_resource type="Script" uid="uid://cg1nobym64vsv" path="res://World/WorldEconomy.gd" id="3_lo5ox"]
 [ext_resource type="PackedScene" uid="uid://8yjybe8vf2sr" path="res://World/view_time_info.tscn" id="7_0wqet"]
 [ext_resource type="PackedScene" uid="uid://cjixaoycqdj7c" path="res://World/view_economy_info.tscn" id="7_h2aik"]
-[ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="11_f23eu"]
-[ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="12_oeat8"]
-[ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
-[ext_resource type="Script" uid="uid://bkloyj4k83k1g" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
 shader = ExtResource("2_j8job")
@@ -23,49 +18,6 @@ shader_parameter/texture_size = Vector2(20, 20)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j8job"]
 size = Vector2(20, 20)
-
-[sub_resource type="Resource" id="Resource_oeat8"]
-resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 2.0
-item_wood = 10.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 2.0,
-ExtResource("13_5xkvv"): 10.0
-})
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
-
-[sub_resource type="Resource" id="Resource_5xkvv"]
-resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 1.0
-item_wood = 5.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 1.0,
-ExtResource("13_5xkvv"): 5.0
-})
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
-
-[sub_resource type="Resource" id="Resource_0lysu"]
-resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_wood = 10.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 0.0,
-ExtResource("13_5xkvv"): 10.0
-})
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
-
-[sub_resource type="Resource" id="Resource_26uyv"]
-resource_local_to_scene = true
-script = ExtResource("14_f23eu")
-item_stone = 1.0
-item_wood = 5.0
-items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 1.0,
-ExtResource("13_5xkvv"): 5.0
-})
-metadata/_custom_type_script = "uid://bkloyj4k83k1g"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidgh"]
 radius = 100.0
@@ -154,24 +106,6 @@ metadata/_edit_lock_ = true
 [node name="Settlements" type="Node2D" parent="." unique_id=633085945]
 metadata/_edit_lock_ = true
 
-[node name="Settlement" parent="Settlements" unique_id=2127210789 instance=ExtResource("2_eidgh")]
-position = Vector2(1978, 2324)
-
-[node name="Behaviour_Producer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="0" unique_id=97658351]
-inventory = SubResource("Resource_oeat8")
-
-[node name="Behaviour_Consumer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="1" unique_id=1825729538]
-inventory = SubResource("Resource_5xkvv")
-
-[node name="Settlement2" parent="Settlements" unique_id=1715003357 instance=ExtResource("2_eidgh")]
-position = Vector2(-1383, 1585)
-
-[node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1715003357, 427234832) index="0" unique_id=97658351]
-inventory = SubResource("Resource_0lysu")
-
-[node name="Behaviour_Consumer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1715003357, 427234832) index="1" unique_id=1825729538]
-inventory = SubResource("Resource_26uyv")
-
 [node name="Ships" type="Node2D" parent="." unique_id=136401531]
 metadata/_edit_lock_ = true
 
@@ -184,6 +118,3 @@ script = ExtResource("2_yf0ba")
 shape = SubResource("CircleShape2D_eidgh")
 debug_color = Color(0.984223, 0, 0.345625, 0.42)
 metadata/_edit_lock_ = true
-
-[editable path="Settlements/Settlement"]
-[editable path="Settlements/Settlement2"]

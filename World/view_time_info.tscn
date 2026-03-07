@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://8yjybe8vf2sr"]
+
+[ext_resource type="Script" uid="uid://dc1sa6ssyaq1e" path="res://World/view_time_info.gd" id="1_bl21n"]
+
+[node name="TimeInfo" type="HFlowContainer" unique_id=1329427335]
+script = ExtResource("1_bl21n")
+
+[node name="Label" type="Label" parent="." unique_id=169710594]
+layout_mode = 2
+text = "Ass"

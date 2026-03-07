@@ -1,4 +1,4 @@
-[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://flm3e8w5eb4v"]
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://flm3e8w5eb4v"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_8a836"]
 seed = 3636
@@ -7,8 +7,8 @@ frequency = 0.012
 [resource]
 width = 20
 height = 20
-in_3d_space = true
 generate_mipmaps = false
+noise = SubResource("FastNoiseLite_8a836")
+in_3d_space = true
 as_normal_map = true
 bump_strength = 32.0
-noise = SubResource("FastNoiseLite_8a836")

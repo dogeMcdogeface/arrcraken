@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="InventoryItemList_float" format=3 uid="uid://cvwbq0317khtg"]
+
+[ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="1_lltvm"]
+[ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="2_thvyl"]
+[ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="3_2x5yj"]
+[ext_resource type="Script" uid="uid://bkloyj4k83k1g" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="4_qwlcm"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("4_qwlcm")
+item_stone = 300.0
+item_wood = 800.0
+items = Dictionary[ExtResource("1_lltvm"), float]({
+ExtResource("2_thvyl"): 300.0,
+ExtResource("3_2x5yj"): 800.0
+})
+metadata/_custom_type_script = "uid://bkloyj4k83k1g"
