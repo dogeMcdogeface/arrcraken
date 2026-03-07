@@ -2,6 +2,8 @@ extends Node
 class_name WorldEconomy
 
 
+var update_period := 0.25 #how many days the economy cycle lasts
+
 var item_list:InventoryItemList_float = InventoryItemList_float.new()
 
 

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://db1x1bngttts6"]
+
+[ext_resource type="Script" uid="uid://b7foabmw2645c" path="res://Views/GUI/price_curve_graph.gd" id="1_6ka8n"]
+[ext_resource type="Script" uid="uid://beltitimrv7yy" path="res://Entities/Items/price_calculator.gd" id="2_sjffl"]
+
+[sub_resource type="Resource" id="Resource_r6fvm"]
+script = ExtResource("2_sjffl")
+price_normal = 199.995
+price_oversupply = 50.185
+stock_scarcity = 18.87
+stock_normal = 58.705
+stock_oversupply = 100.005
+k_scarcity = 2.035
+k_oversupply = 0.565
+metadata/_custom_type_script = "uid://beltitimrv7yy"
+
+[sub_resource type="SystemFont" id="SystemFont_4w8p6"]
+subpixel_positioning = 0
+
+[sub_resource type="Gradient" id="Gradient_r6fvm"]
+offsets = PackedFloat32Array(0, 0.35813954, 0.7255814, 1)
+colors = PackedColorArray(1, 0.85490197, 0, 1, 0.46666667, 0.8117647, 0, 1, 0, 0.7764706, 1, 1, 0.95686275, 0.32941177, 0.23137255, 1)
+
+[node name="PriceCurveGraph" type="Control" unique_id=616861089]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_6ka8n")
+price_calculator = SubResource("Resource_r6fvm")
+font = SubResource("SystemFont_4w8p6")
+region_gradient = SubResource("Gradient_r6fvm")
+metadata/_custom_type_script = "uid://b7foabmw2645c"

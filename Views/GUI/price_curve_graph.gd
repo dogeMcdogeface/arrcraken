@@ -2,7 +2,7 @@ extends Control
 class_name PriceCurveGraph
 
 
-@export var price_calculator: PriceCalculator = PriceCalculator.new()
+@export var price_calculator: PriceCalculator
 
 @export_group("Graph")
 
@@ -16,29 +16,38 @@ class_name PriceCurveGraph
 @export var y_margin_ratio := 0.1
 
 @export var show_markers := true
-@export var marker_radius := 4
 @export var marker_line_width := 2
 
 
 @export var font_size := 12
 @export var font:Font
 
-@export var scarcity_color = Color(1.0, 0.6, 0.2)
-@export var normal_color   = Color(0.2, 0.8, 0.3)
-@export var surplus_color  = Color(0.2, 0.6, 1.0)
+@export var region_gradient: Gradient
+
+
+var dynamic_prices = {}
+
+func get_region_color(index:int, total:int) -> Color:
+	if region_gradient == null:
+		return Color.WHITE
+
+	var t = float(index) / max(total - 1, 1)
+	var saturated = region_gradient.sample(t)
+	saturated.s = 1
+	return saturated
 
 
 var _last_hash: int = 0
 func _process(delta):
 	if !is_instance_valid(price_calculator):
 		return
-
+	
 	var groups = _extract_groups()
 	if groups.is_empty():
 		return
 
 	var new_hash = hash(groups)
-
+	
 	if new_hash != _last_hash:
 		_last_hash = new_hash
 		queue_redraw()
@@ -111,17 +120,17 @@ func _draw():
 	if groups == {}:
 		return
 	
-	var region_colors = [
-		scarcity_color,
-		normal_color,
-		surplus_color
-	]
+	var tmp_price_calculator:PriceCalculator = price_calculator.duplicate()
+	tmp_price_calculator.global_market_influence = 0
 
 	var stock_ranges = groups.get("Stock Ranges", [])
 	var price_ranges = groups.get("Price Ranges", [])
 
 	if stock_ranges.is_empty() or price_ranges.is_empty():
 		return
+
+	var ranges_max = max(stock_ranges.size(), price_ranges.size())
+
 
 	var w = size.x
 	var h = size.y
@@ -139,7 +148,7 @@ func _draw():
 
 	for i in range(samples + 1):
 		var x = (float(i) / samples) * max_stock
-		var p = price_calculator.calculate_price(x)
+		var p = tmp_price_calculator.calculate_price(x, true)
 
 		if p < min_price:
 			min_price = p
@@ -166,7 +175,7 @@ func _draw():
 		var x0 = 0.0 if i == 0 else stock_ranges[i-1].value
 		var x1 = stock_ranges[i].value
 
-		var color = region_colors[i % region_colors.size()]
+		var color = get_region_color(i, ranges_max)
 
 		draw_region(x0, x1, color, x_min, x_max, w, h)
 
@@ -250,7 +259,7 @@ func _draw():
 
 		var t = float(i) / (steps - 1)
 		var x = lerp(x_min, x_max, t)
-		var price := price_calculator.calculate_price(x)
+		var price := tmp_price_calculator.calculate_price(x, true)
 
 		var px = world_to_screen_x(x, x_min, x_max, w)
 		var py = world_to_screen_y(price, y_min, y_max, h)
@@ -267,9 +276,9 @@ func _draw():
 		for i in range(stock_ranges.size()):
 
 			var entry = stock_ranges[i]
-			var color = region_colors[i % region_colors.size()]
+			var color = get_region_color(i, ranges_max)
 
-			draw_marker(
+			draw_vertical_marker(
 				entry.value,
 				entry.name,
 				color,
@@ -280,7 +289,7 @@ func _draw():
 	for i in range(price_ranges.size()):
 
 		var entry = price_ranges[i]
-		var color = region_colors[i % region_colors.size()]
+		var color = get_region_color(i, ranges_max)
 
 		draw_horizontal_marker(
 			entry.value,
@@ -314,14 +323,33 @@ func _draw():
 			font_size + 2,
 			Color.WHITE
 		)
-
-
+	
+	for trader in dynamic_prices:
+		draw_marker(
+			dynamic_prices[trader].stock,
+			dynamic_prices[trader].price,
+			trader.entity.display_name,
+			Color.from_hsv(trader.get_instance_id() % 360 / 360., 0.5, 1, 0.8),
+			6,
+			x_min,x_max,y_min,y_max,w,h
+		)
+	
+	draw_marker(
+		x_max-20,
+		y_max,
+		price_calculator.item.display_name,
+		Color.WHITE,
+		0,
+		x_min,x_max,y_min,y_max,w,h
+	)
 
 
 func draw_marker(
 	x_value: float,
+	y_value: float,
 	label: String,
 	color: Color,
+	radius: float,
 	x_min: float,
 	x_max: float,
 	y_min: float,
@@ -333,30 +361,86 @@ func draw_marker(
 	if x_value < x_min or x_value > x_max:
 		return
 
-	var y_value = price_calculator.calculate_price(x_value)
 
 	var px = world_to_screen_x(x_value, x_min, x_max, w)
 	var py = world_to_screen_y(y_value, y_min, y_max, h)
 
-	draw_line(
-		Vector2(px,0),
-		Vector2(px,h),
-		Color(color.r,color.g,color.b,0.35),
-		1
-	)
 
-	draw_circle(Vector2(px,py), marker_radius, color)
+
+	draw_circle(Vector2(px,py), radius, color)
 
 	if font:
 		draw_string(
 			font,
-			Vector2(px + 6, py - 6).floor(),
+			Vector2(px + radius, py - radius).floor(),
 			label,
 			HORIZONTAL_ALIGNMENT_LEFT,
 			-1,
 			font_size,
 			color
 		)
+		draw_string_outline(
+			font,
+			Vector2(px + radius, py - radius).floor(),
+			label,
+			HORIZONTAL_ALIGNMENT_LEFT,
+			-1,
+			font_size,
+			1,
+			color
+		)
+
+func draw_vertical_marker(
+	x_value: float,
+	label: String,
+	color: Color,
+	x_min: float,
+	x_max: float,
+	y_min: float,
+	y_max: float,
+	w: float,
+	h: float
+):
+	if x_value < x_min or x_value > x_max:
+		return
+
+	# Only draw if the Y axis exists in the view
+	if not (0 >= y_min and 0 <= y_max):
+		return
+
+	var px = world_to_screen_x(x_value, x_min, x_max, w)
+	var axis_y = world_to_screen_y(0, y_min, y_max, h)
+
+	# horizontal guide (BOTTOM SIDE ONLY)
+	draw_line(
+		Vector2(px, 0),
+		Vector2(px, h),
+		Color(color.r, color.g, color.b, 0.5),
+		1
+	)
+
+	# tick on axis
+	draw_line(
+		Vector2(px, axis_y - 4),
+		Vector2(px, axis_y + 4),
+		color,
+		3
+	)
+
+	# label
+	var text_width = font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+	
+	if font:
+		draw_string(
+			font,
+			Vector2( px-text_width - 4, axis_y + font_size*2).floor(),
+			label,
+			HORIZONTAL_ALIGNMENT_LEFT,
+			text_width,
+			font_size,
+			color
+		)
+
 
 func draw_horizontal_marker(
 	y_value: float,
