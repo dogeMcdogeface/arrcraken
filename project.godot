@@ -16,11 +16,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="arrcraken"
 config/version={
-"friendly_name": "WendingSite",
+"friendly_name": "NearingWork",
 "major": 0.0,
 "minor": 1.0,
-"release_timestamp": 1772985261.417,
-"sub": 103.0
+"release_timestamp": 1772985457.238,
+"sub": 104.0
 }
 run/main_scene="uid://xhgtb1y4vslj"
 config/features=PackedStringArray("4.6", "Forward Plus")
