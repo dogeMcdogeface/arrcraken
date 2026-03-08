@@ -18,10 +18,12 @@ metadata/_edit_lock_ = true
 
 [node name="Behaviour_Storage" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1290599698]
 script = ExtResource("4_lpowi")
+update_interval = -1.0
 metadata/_custom_type_script = "uid://bauun7ns5b1g6"
 
 [node name="Behaviour_Producer" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="1" unique_id=97658351]
 script = ExtResource("4_orah2")
+update_interval = 0.5
 metadata/_custom_type_script = "uid://dhk7a6dmp0hkt"
 
 [node name="Behaviour_Consumer" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="2" unique_id=1825729538]
@@ -30,5 +32,5 @@ metadata/_custom_type_script = "uid://dsxf4p5gpoi50"
 
 [node name="Behaviour_Trader" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="3" unique_id=70789910]
 script = ExtResource("3_tudj5")
-active = null
+update_interval = 0.5
 metadata/_custom_type_script = "uid://cdjjti01tssem"

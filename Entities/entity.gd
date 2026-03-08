@@ -21,6 +21,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$display_name_label.text = display_name
-	for behaviour in behaviours:
-		behaviours[behaviour].update()
+	#for behaviour in behaviours:
+		#behaviours[behaviour].update()
 	pass
