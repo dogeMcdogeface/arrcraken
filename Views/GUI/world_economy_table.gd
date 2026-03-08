@@ -112,15 +112,10 @@ func _process(delta: float) -> void:
 
 
 func _on_resized():
-	print("resizing")
 	var base_width = size.x / columns
 	for c in columns:
 		set_column_expand(c, true)
 		set_column_custom_minimum_width(c, base_width)
-
-
-
-
 
 
 var root: TreeItem
@@ -298,163 +293,55 @@ func update_totals():
 		col += subcolumns.size()
 
 
+@export var line_color:Color = Color.GREEN
+@export var fill_gradient: Gradient
+
 func draw_price_graph(rect: Rect2, history: Array):
 	if history.is_empty():
 		return
 
-	var min_val = 0
-	var max_val = max(history.max(), 500)
+	var min_val := 0
+	var max_val = max(history.max(), 500.0)
 
-	if max_val == min_val:
-		max_val += 0.001
+	var w := rect.size.x
+	var h := rect.size.y
+	var pos := rect.position
+	var count := history.size()
+	var bottom_y := pos.y + h
 
-	var w = rect.size.x
-	var h = rect.size.y
-	var count = history.size()
-
-	var prev_point: Vector2
+	var poly := PackedVector2Array()
+	var colors := PackedColorArray()
+	var line_points: Array[Vector2] = []
 
 	for i in range(count):
-		var x = rect.position.x + (float(i) / (count - 1)) * w
+		var x := pos.x + float(i) / (count - 1) * w
 		var v = history[i]
+		var y = bottom_y - ((v - min_val) / max(max_val - min_val, 0.01)) * h
 
-		var y_norm = (v - min_val) / (max_val - min_val)
-		var y = rect.position.y + h - y_norm * h
+		var p := Vector2(x, y)
+		poly.append(p)
+		colors.append(fill_gradient.sample(1.0 - (y - pos.y) / h))
 
-		var p = Vector2(x, y)
+		line_points.append(p)
 
-		if i > 0:
-			draw_line(prev_point, p, Color.GREEN, 1.5)
+	for i in range(count - 1, -1, -1):
+		poly.append(Vector2(line_points[i].x, bottom_y))
+		colors.append(fill_gradient.sample(0.0))
 
-		prev_point = p
+	draw_polygon(poly, colors)
 
-#func update_tree():
-#
-	#var item_list = economy.item_list.items
-	#var traders = economy.traders 
-#
-	#clear()
-#
-	#columns = 1 + item_list.size() * subcolumns.size()
-	#hide_root = true
-#
-	#var root = create_item()
-	#column_titles_visible = false
-#
-	## --------------------------------------------------
-	## HEADER ROW 1 (RESOURCE GROUPS)
-	## --------------------------------------------------
-#
-	#var header1 = create_item(root)
-	#header1.set_text(0, "Trader")
-#
-	#var col := 1
-	#for item in item_list:
-#
-		#var text_col := 0
-		#if subcolumns.size() % 2 == 1:
-			## odd -> middle column
-			#text_col = col + subcolumns.size() / 2
-			#header1.set_text_alignment(text_col, HORIZONTAL_ALIGNMENT_CENTER)
-		#else:
-			## even -> first half column (left of center pair)
-			#text_col = col + (subcolumns.size() / 2) - 1
-			#header1.set_text_alignment(text_col, HORIZONTAL_ALIGNMENT_RIGHT)
-		#header1.set_text(text_col, item.display_name)
-#
-#
-		#header1.set_custom_color(text_col, Color.WHITE)
-		#
-		#var color = Color(0.018, 0.018, 0.018, 1.0)
-		#if (col/subcolumns.size() % 2):
-			#color = Color(0.069, 0.069, 0.069, 1.0)
-		#
-		#for i in subcolumns.size():
-			#header1.set_custom_bg_color(col + i, color)
-#
-		#col += subcolumns.size()
-#
-#
-	## --------------------------------------------------
-	## HEADER ROW 2 (AMOUNT / VALUE)
-	## --------------------------------------------------
-#
-	#var header2 = create_item(root)
-#
-	#col = 1
-	#for item in item_list:
-#
-		#for s in subcolumns.size():
-			#var col_def = subcolumns[s]
-			#header2.set_text(col + s, col_def.title)
-#
-		#var start_color = Color(0.144, 0.144, 0.144, 1.0)
-		#var end_color = Color(0.248, 0.248, 0.248, 1.0)
-		#for i in subcolumns.size():
-			#var t = float(i) / float(subcolumns.size() - 1)
-			#var color = start_color.lerp(end_color, t)
-			#header2.set_custom_bg_color(col + i, color)
-#
-		#col += subcolumns.size()
-#
-#
-#
-	## --------------------------------------------------
-	## DATA
-	## --------------------------------------------------
-#
-	#for trader: Behaviour_Trader in traders:
-#
-		#var row = create_item(root)
-		#row.set_text(0, trader.entity.display_name)
-#
-		#col = 1
-#
-		#for item in item_list:
-#
-			#for s in subcolumns.size():
-				#var col_def = subcolumns[s]
-				#var value = col_def.get.call(trader, item)
-				#
-				#if col_def.has("draw"):
-					#row.set_cell_mode(col + s, TreeItem.CELL_MODE_CUSTOM)
-					#row.set_custom_draw_callback(
-						#col + s,
-						#func(item_obj: TreeItem, rect: Rect2):
-							#col_def.draw.call(item_obj, rect, value)
-					#)
-				#elif col_def.has("format"):
-					#row.set_text(col + s, col_def.format.call(value))
-				#else:
-					#row.set_text(col + s, str(value))
-#
-			#col += subcolumns.size()
-#
-#
-	## --------------------------------------------------
-	## TOTAL ROW
-	## --------------------------------------------------
-#
-	#var total_row = create_item(root)
-	#total_row.set_text(0, "TOTAL")
-	#total_row.set_custom_bg_color(0, Color(0.1,0.1,0.1))
-#
-	#col = 1
-#
-#
-	#for item in item_list:
-		#for s in subcolumns.size():
-			#var col_def = subcolumns[s]
-			#if col_def.total == null:
-				#continue
-			#var value =  col_def.total.call(item)
-			#if col_def.has("format"):
-				#total_row.set_text(col + s, col_def.format.call(value))
-			#else:
-				#total_row.set_text(col + s, str(value))
-		## darker background so it stands out
-		#for s in subcolumns.size():
-			#total_row.set_custom_bg_color(col + s, Color(0.1,0.1,0.1))
-#
-		#col += subcolumns.size()
-#
+	for i in range(1, line_points.size()):
+		draw_line(line_points[i - 1], line_points[i], line_color, -1, true)
+
+	var price := str(int(history[count - 1]))
+	var font := get_theme_font("font")
+	var size := get_theme_font_size("font_size")
+
+	var ascent := font.get_ascent(size)
+	var descent := font.get_descent(size)
+	var text_size := font.get_string_size(price, HORIZONTAL_ALIGNMENT_LEFT, -1, size)
+
+	var center := pos + rect.size * 0.5
+	var text_pos := Vector2(center.x - text_size.x * 0.5, center.y + (ascent - descent) * 0.5)
+
+	draw_string(font, text_pos, price, HORIZONTAL_ALIGNMENT_CENTER, -1, size, get_theme_color("font_color"))

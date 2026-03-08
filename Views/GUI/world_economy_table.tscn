@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://g3wa80gk84ma" path="res://Views/GUI/world_economy_table.gd" id="1_aa3lk"]
 
+[sub_resource type="Gradient" id="Gradient_3brpk"]
+interpolation_mode = 2
+interpolation_color_space = 2
+colors = PackedColorArray(0.55, 0.2566667, 0, 0.36078432, 0.56983334, 1, 0.110000014, 0.18039216)
+
 [node name="WorldEconomyTable" type="Tree" unique_id=441247804]
 custom_minimum_size = Vector2(400, 0)
 size_flags_horizontal = 3
@@ -11,3 +16,5 @@ allow_reselect = true
 hide_folding = true
 select_mode = 2
 script = ExtResource("1_aa3lk")
+line_color = Color(0.14509805, 0.6313726, 0.1764706, 1)
+fill_gradient = SubResource("Gradient_3brpk")

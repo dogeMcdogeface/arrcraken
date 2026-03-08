@@ -17,6 +17,8 @@ layout_mode = 2
 
 [node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1839170601]
 layout_mode = 2
+split_offsets = PackedInt32Array(-100)
+split_offset = -100
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer" unique_id=2040607675]
 layout_mode = 2
@@ -25,6 +27,7 @@ size_flags_horizontal = 3
 [node name="WorldEconomyTable" parent="HSplitContainer/ScrollContainer" unique_id=441247804 node_paths=PackedStringArray("priceCurve") instance=ExtResource("2_q4wbs")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+scroll_vertical_enabled = false
 priceCurve = NodePath("../../PriceCurveGraph")
 
 [node name="PriceCurveGraph" parent="HSplitContainer" unique_id=616861089 instance=ExtResource("2_ou3i8")]
