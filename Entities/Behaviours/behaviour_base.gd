@@ -1,9 +1,13 @@
 class_name Behaviour extends Node
 
-@export var active:bool = true
+@export var is_paused:bool = false
+
+#@export_range(0.0, 365.0, 0.1, "suffix:days")
+#var update_interval: float = 2
+#var world_timer:=WorldTimer.new()
+
 
 var entity: Entity
-
 var entity_storage: Behaviour_Storage:
 	get:
 		if entity and entity.behaviours.has(Behaviour_Storage):

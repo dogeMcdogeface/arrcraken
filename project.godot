@@ -16,11 +16,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="arrcraken"
 config/version={
-"friendly_name": "BendingNode",
+"friendly_name": "BlendingEstuary",
 "major": 0.0,
 "minor": 1.0,
-"release_timestamp": 1772937805.186,
-"sub": 16.0
+"release_timestamp": 1772970619.426,
+"sub": 30.0
 }
 run/main_scene="uid://xhgtb1y4vslj"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -32,6 +32,10 @@ run/physics_ticks_per_second=60
 
 Globals="*res://Globals/globals.gd"
 BuildVersion="*uid://m3oekra8b62c"
+
+[debug]
+
+gdscript/warnings/integer_division=0
 
 [display]
 

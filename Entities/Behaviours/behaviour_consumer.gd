@@ -1,22 +1,18 @@
 class_name Behaviour_Consumer extends Behaviour
 
+@export_range(0.0, 365.0, 0.1, "suffix:days")
+var consumption_interval:float = 2 #how many days the consumption cycle lasts
+@onready var world_timer:=WorldTimer.new(consumption_interval)
 
-@export var consumption_period:float = 2 #how many days the consumption cycle lasts
 @export var inventory := InventoryItemList_float.new()
-
-var lastDate
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	lastDate = Globals.WorldTime.world_date
+	pass
 
 
 func update():
-	var dateDelta = Globals.WorldTime.world_date - lastDate
-	if dateDelta < (Globals.WorldTime.world_day_duration * consumption_period):
-		return
-	lastDate =  Globals.WorldTime.world_date
-	
-	for item in entity_storage.inventory.items:
-		var consumed = inventory.items[item] * dateDelta / Globals.WorldTime.world_day_duration
-		entity_storage.inventory.items[item] -= consumed
+	if world_timer.tick(is_paused):
+		for item in entity_storage.inventory.items:
+			var consumed = inventory.items[item] * world_timer.elapsed_days
+			entity_storage.inventory.items[item] -= consumed

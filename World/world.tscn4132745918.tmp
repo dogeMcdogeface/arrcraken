@@ -155,6 +155,7 @@ metadata/_edit_lock_ = true
 
 [node name="Settlement" parent="Settlements" unique_id=2127210789 instance=ExtResource("2_eidgh")]
 position = Vector2(2636, 1561)
+display_name = null
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="1" unique_id=97658351]
 inventory = SubResource("Resource_f23eu")
@@ -162,14 +163,21 @@ inventory = SubResource("Resource_f23eu")
 [node name="Behaviour_Consumer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="2" unique_id=1825729538]
 inventory = SubResource("Resource_oeat8")
 
+[node name="Behaviour_Trader" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="3" unique_id=70789910]
+active = true
+
 [node name="Settlement2" parent="Settlements" unique_id=1464969064 instance=ExtResource("2_eidgh")]
 position = Vector2(-1561, 1347)
+display_name = null
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="1" unique_id=97658351]
 inventory = SubResource("Resource_5xkvv")
 
 [node name="Behaviour_Consumer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="2" unique_id=1825729538]
 inventory = SubResource("Resource_kcyjf")
+
+[node name="Behaviour_Trader" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="3" unique_id=70789910]
+active = true
 
 [node name="Ships" type="Node2D" parent="." unique_id=136401531]
 metadata/_edit_lock_ = true
