@@ -2,7 +2,14 @@ class_name Behaviour extends Node
 
 @export var active:bool = true
 
-var entity:Entity
+var entity: Entity
+
+var entity_storage: Behaviour_Storage:
+	get:
+		if entity and entity.behaviours.has(Behaviour_Storage):
+			return entity.behaviours[Behaviour_Storage]
+		return null
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,6 +17,10 @@ func _ready() -> void:
 
 
 func update():
+	pass
+
+
+func _on_entity_set(_entity: Entity):
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

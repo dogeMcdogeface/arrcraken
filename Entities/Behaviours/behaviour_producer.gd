@@ -16,6 +16,6 @@ func update():
 		return
 	lastDate =  Globals.WorldTime.world_date
 	
-	for item in entity.inventory.items:
+	for item in entity_storage.inventory.items:
 		var produced = inventory.items[item] * dateDelta / Globals.WorldTime.world_day_duration
-		entity.inventory.items[item] += produced
+		entity_storage.inventory.items[item] += produced

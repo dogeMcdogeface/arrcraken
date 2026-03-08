@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://b4egq5qtllyly"]
+
+[ext_resource type="Script" uid="uid://bbobxmvyf64g8" path="res://addons/build_version_manager/build_version_manager_dock.gd" id="1_jlsrw"]
+
+[node name="VersionManager" type="MarginContainer" unique_id=128015314]
+offset_right = 202.0
+offset_bottom = 301.0
+script = ExtResource("1_jlsrw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1378604112]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1307534773]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=793314073]
+layout_mode = 2
+text = "Current Version:"
+
+[node name="Label_curr_version" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=1331157281]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer" unique_id=1079834414]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/GridContainer" unique_id=1044074907]
+layout_mode = 2
+text = "Increase Sub on Save"
+
+[node name="Checkbox_sub_on_save" type="CheckBox" parent="VBoxContainer/GridContainer" unique_id=1010835863]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/GridContainer" unique_id=1850536105]
+layout_mode = 2
+text = "Increase Sub on Export"
+
+[node name="Checkbox_sub_on_export" type="CheckBox" parent="VBoxContainer/GridContainer" unique_id=201963389]
+layout_mode = 2
+button_pressed = true
+
+[node name="Button_reset" type="Button" parent="VBoxContainer" unique_id=1835093387]
+layout_mode = 2
+text = "Reset Version History"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1930162429]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer" unique_id=2023838559]
+layout_mode = 2
+columns = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=1476954709]
+layout_mode = 2
+text = "MAJOR"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=1428754914]
+layout_mode = 2
+text = "MINOR"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=205132414]
+layout_mode = 2
+text = "SUB"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=1173350458]
+layout_mode = 2
+text = "FRIENDLY"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=855801392]
+layout_mode = 2
+text = "DATE"
+horizontal_alignment = 1
+
+[node name="Button_major" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=1287464144]
+layout_mode = 2
+text = "+"
+
+[node name="Button_minor" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=2133886347]
+layout_mode = 2
+text = "+"
+
+[node name="Button_sub" type="Button" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=1286501325]
+layout_mode = 2
+text = "+"
+
+[node name="LineEdit_friendly" type="LineEdit" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=391510768]
+layout_mode = 2
+
+[node name="Label_date" type="Label" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=338512549]
+layout_mode = 2
+text = "22/22/22"
+
+[node name="Spacer" type="Node" parent="VBoxContainer/ScrollContainer/GridContainer" unique_id=2100420904]
+
+[connection signal="pressed" from="VBoxContainer/Button_reset" to="." method="_on_button_reset_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/Button_major" to="." method="_on_button_major_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/Button_minor" to="." method="_on_button_minor_pressed"]
+[connection signal="pressed" from="VBoxContainer/ScrollContainer/GridContainer/Button_sub" to="." method="_on_button_sub_pressed"]

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItemList_float" format=3 uid="uid://d1uxh6oakprjg"]
+
+[ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="1_2l3hj"]
+[ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="2_bhlbr"]
+[ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="3_f4fme"]
+[ext_resource type="Script" uid="uid://3dtubqe67x2h" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="4_c0bca"]
+
+[resource]
+script = ExtResource("4_c0bca")
+item_stone = 500.0
+item_wood = 500.0
+metadata/_custom_type_script = "uid://3dtubqe67x2h"

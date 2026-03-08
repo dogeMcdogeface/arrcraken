@@ -156,6 +156,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Settlement" parent="Settlements" unique_id=2127210789 instance=ExtResource("2_eidgh")]
+display_name = null
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="0" unique_id=97658351]
 inventory = SubResource("Resource_f23eu")
@@ -164,6 +165,7 @@ inventory = SubResource("Resource_f23eu")
 inventory = SubResource("Resource_oeat8")
 
 [node name="Settlement2" parent="Settlements" unique_id=1464969064 instance=ExtResource("2_eidgh")]
+display_name = null
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="0" unique_id=97658351]
 inventory = SubResource("Resource_5xkvv")

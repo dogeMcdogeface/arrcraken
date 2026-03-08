@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xhgtb1y4vslj"]
+[gd_scene format=3 uid="uid://xhgtb1y4vslj"]
 
 [ext_resource type="Script" uid="uid://b0mkyhgofckq1" path="res://Views/GUI/fps_label.gd" id="1_qwmvo"]
 [ext_resource type="PackedScene" uid="uid://wc874eoebddu" path="res://World/world.tscn" id="1_s34ht"]
@@ -18,7 +18,7 @@ fill_to = Vector2(0.6, 0)
 [sub_resource type="ViewportTexture" id="ViewportTexture_s34ht"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" unique_id=2037593425]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,9 +26,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1884934435]
 
-[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+[node name="FPSLabel" type="Label" parent="CanvasLayer" unique_id=123551264]
 top_level = true
 offset_right = 83.0
 offset_bottom = 23.0
@@ -36,22 +36,22 @@ size_flags_horizontal = 4
 text = "000000000"
 script = ExtResource("1_qwmvo")
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1224966105]
 disable_3d = true
 transparent_bg = true
 size = Vector2i(1000, 1000)
 size_2d_override = Vector2i(12000, 12000)
 size_2d_override_stretch = true
 
-[node name="World" parent="SubViewport" instance=ExtResource("1_s34ht")]
+[node name="World" parent="SubViewport" unique_id=1762825067 instance=ExtResource("1_s34ht")]
 position = Vector2(6000, 6000)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1202749107]
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1517997946]
 motion_scale = Vector2(0.92, 0.92)
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2" unique_id=598987898]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -66,9 +66,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 texture = ExtResource("2_oyxc1")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=512013146]
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" unique_id=1048006026]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -82,7 +82,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_06qh2")
 
-[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" unique_id=443256092]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -96,7 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_06qh2")
 
-[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+[node name="TextureRect3" type="TextureRect" parent="ParallaxBackground/ParallaxLayer" unique_id=1089462892]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -110,5 +110,5 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_s34ht")
 
-[node name="pan_zoom_camera" parent="." instance=ExtResource("3_oyxc1")]
+[node name="pan_zoom_camera" parent="." unique_id=1514893027 instance=ExtResource("3_oyxc1")]
 zoom = Vector2(0.4, 0.4)

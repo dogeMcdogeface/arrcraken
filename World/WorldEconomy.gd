@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	item_list_average_price = InventoryItemList_float.new()
 	for item in item_list.items:
 		for trader in traders:
-			item_list_totals.items[item] += trader.entity.inventory.items[item]
+			item_list_totals.items[item] += trader.entity_storage.inventory.items[item]
 			item_list_average_price.items[item] += trader.price_calculators.items[item].price / traders.size()
 	
 	pass

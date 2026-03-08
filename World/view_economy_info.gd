@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 	{
 		"title": "Amount",
 		"get": func(trader, item): 
-			return trader.entity.inventory.items.get(item, 0),
+			return trader.entity_storage.inventory.items.get(item, 0),
 		"format": func(v): return "%.0f" % v,
 		"total": func(item): 
 			return economy.item_list_totals.items.get(item, 0),
