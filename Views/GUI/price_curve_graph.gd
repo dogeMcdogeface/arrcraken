@@ -336,8 +336,8 @@ func _draw():
 	
 	if price_calculator.item:
 		draw_marker(
-			x_max-20,
-			y_max,
+			x_max-200,
+			y_max-font_size,
 			price_calculator.item.display_name,
 			Color.WHITE,
 			0,

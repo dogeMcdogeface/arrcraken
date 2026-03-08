@@ -16,11 +16,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="arrcraken"
 config/version={
-"friendly_name": "GoldenUnderway",
+"friendly_name": "PlacingTurnway",
 "major": 0.0,
 "minor": 1.0,
-"release_timestamp": 1772986115.29,
-"sub": 108.0
+"release_timestamp": 1772997599.353,
+"sub": 109.0
 }
 run/main_scene="uid://xhgtb1y4vslj"
 config/features=PackedStringArray("4.6", "Forward Plus")

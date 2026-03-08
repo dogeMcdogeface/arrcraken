@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjixaoycqdj7c"]
 
-[ext_resource type="Script" uid="uid://cy8y1x2xrljw8" path="res://World/view_economy_info.gd" id="1_05na8"]
 [ext_resource type="PackedScene" uid="uid://db1x1bngttts6" path="res://Views/GUI/price_curve_graph.tscn" id="2_ou3i8"]
+[ext_resource type="PackedScene" uid="uid://1tq2xbg5fpfo" path="res://Views/GUI/world_economy_table.tscn" id="2_q4wbs"]
 
 [node name="EconomyInfo" type="MarginContainer" unique_id=1090804320]
 anchors_preset = 15
@@ -11,21 +11,22 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_05na8")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1481079052]
 layout_mode = 2
-current_tab = 0
 
-[node name="Tree" type="Tree" parent="TabContainer" unique_id=857853381]
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=1839170601]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer" unique_id=2040607675]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-column_titles_visible = true
-metadata/_tab_index = 0
 
-[node name="PriceCurveGraph" parent="TabContainer" unique_id=616861089 instance=ExtResource("2_ou3i8")]
-visible = false
+[node name="WorldEconomyTable" parent="HSplitContainer/ScrollContainer" unique_id=441247804 node_paths=PackedStringArray("priceCurve") instance=ExtResource("2_q4wbs")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+priceCurve = NodePath("../../PriceCurveGraph")
+
+[node name="PriceCurveGraph" parent="HSplitContainer" unique_id=616861089 instance=ExtResource("2_ou3i8")]
 layout_mode = 2
 price_calculator = null
-metadata/_tab_index = 1

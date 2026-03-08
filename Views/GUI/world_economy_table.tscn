@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://1tq2xbg5fpfo"]
+
+[ext_resource type="Script" uid="uid://g3wa80gk84ma" path="res://Views/GUI/world_economy_table.gd" id="1_aa3lk"]
+
+[node name="WorldEconomyTable" type="Tree" unique_id=441247804]
+custom_minimum_size = Vector2(400, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+column_titles_visible = true
+allow_reselect = true
+hide_folding = true
+select_mode = 2
+script = ExtResource("1_aa3lk")
