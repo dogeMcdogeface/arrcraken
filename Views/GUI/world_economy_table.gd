@@ -328,7 +328,8 @@ func draw_price_graph(rect: Rect2, history: Array):
 		poly.append(Vector2(line_points[i].x, bottom_y))
 		colors.append(fill_gradient.sample(0.0))
 
-	draw_polygon(poly, colors)
+	if(poly.size()>2):
+		draw_polygon(poly, colors)
 
 	for i in range(1, line_points.size()):
 		draw_line(line_points[i - 1], line_points[i], line_color, -1, true)
