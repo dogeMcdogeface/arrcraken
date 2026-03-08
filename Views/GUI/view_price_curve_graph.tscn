@@ -2,6 +2,19 @@
 
 [ext_resource type="Script" uid="uid://p6cvfxhhtob0" path="res://Views/GUI/view_price_curve_graph.gd" id="1_4w8p6"]
 [ext_resource type="PackedScene" uid="uid://db1x1bngttts6" path="res://Views/GUI/price_curve_graph.tscn" id="2_4w8p6"]
+[ext_resource type="Script" uid="uid://beltitimrv7yy" path="res://Entities/Items/price_calculator.gd" id="3_r6fvm"]
+
+[sub_resource type="Resource" id="Resource_r6fvm"]
+script = ExtResource("3_r6fvm")
+price_normal = 199.995
+price_oversupply = 50.185
+stock_scarcity = 18.87
+stock_normal = 58.705
+stock_oversupply = 100.005
+k_scarcity = 0.81
+k_normal = 0.485
+k_oversupply = 3.355
+metadata/_custom_type_script = "uid://beltitimrv7yy"
 
 [node name="view_PriceCurveGraph" type="Control" unique_id=1932467223]
 layout_mode = 3
@@ -29,3 +42,4 @@ columns = 2
 
 [node name="PriceCurveGraph" parent="HSplitContainer" unique_id=616861089 instance=ExtResource("2_4w8p6")]
 layout_mode = 2
+price_calculator = SubResource("Resource_r6fvm")

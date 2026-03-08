@@ -5,7 +5,21 @@
 [ext_resource type="Script" uid="uid://cdjjti01tssem" path="res://Entities/Behaviours/behaviour_trader.gd" id="3_tudj5"]
 [ext_resource type="Script" uid="uid://bauun7ns5b1g6" path="res://Entities/Behaviours/behaviour_storage.gd" id="4_lpowi"]
 [ext_resource type="Script" uid="uid://dhk7a6dmp0hkt" path="res://Entities/Behaviours/behaviour_producer.gd" id="4_orah2"]
+[ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="4_yoyaf"]
+[ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="5_dr7x7"]
 [ext_resource type="Script" uid="uid://dsxf4p5gpoi50" path="res://Entities/Behaviours/behaviour_consumer.gd" id="5_lpowi"]
+[ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="6_h513b"]
+[ext_resource type="Script" uid="uid://d0cbp1okch4tv" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="7_kpfyk"]
+
+[sub_resource type="Resource" id="Resource_ua3v1"]
+resource_local_to_scene = true
+script = ExtResource("7_kpfyk")
+item_stone = 500.0
+item_wood = 500.0
+items = Dictionary[ExtResource("4_yoyaf"), float]({
+ExtResource("5_dr7x7"): 500.0,
+ExtResource("6_h513b"): 500.0
+})
 
 [node name="Settlement" unique_id=2127210789 instance=ExtResource("1_vnbnn")]
 
@@ -18,6 +32,7 @@ metadata/_edit_lock_ = true
 
 [node name="Behaviour_Storage" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1290599698]
 script = ExtResource("4_lpowi")
+size = SubResource("Resource_ua3v1")
 update_interval = -1.0
 metadata/_custom_type_script = "uid://bauun7ns5b1g6"
 
@@ -28,9 +43,10 @@ metadata/_custom_type_script = "uid://dhk7a6dmp0hkt"
 
 [node name="Behaviour_Consumer" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="2" unique_id=1825729538]
 script = ExtResource("5_lpowi")
+update_interval = 2.0
 metadata/_custom_type_script = "uid://dsxf4p5gpoi50"
 
 [node name="Behaviour_Trader" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="3" unique_id=70789910]
 script = ExtResource("3_tudj5")
-update_interval = 0.5
+update_interval = 0.25
 metadata/_custom_type_script = "uid://cdjjti01tssem"

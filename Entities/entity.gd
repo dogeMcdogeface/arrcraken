@@ -10,7 +10,8 @@ var behaviours = {}
 func _ready() -> void:
 	if !display_name:
 		display_name = name
-		
+	
+	$display_name_label.text = display_name
 	for node in $Behaviours.get_children():
 		if node is Behaviour:
 			node.entity = self
@@ -20,7 +21,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$display_name_label.text = display_name
-	#for behaviour in behaviours:
-		#behaviours[behaviour].update()
 	pass

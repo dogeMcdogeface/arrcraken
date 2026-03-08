@@ -334,14 +334,15 @@ func _draw():
 			x_min,x_max,y_min,y_max,w,h
 		)
 	
-	draw_marker(
-		x_max-20,
-		y_max,
-		price_calculator.item.display_name,
-		Color.WHITE,
-		0,
-		x_min,x_max,y_min,y_max,w,h
-	)
+	if price_calculator.item:
+		draw_marker(
+			x_max-20,
+			y_max,
+			price_calculator.item.display_name,
+			Color.WHITE,
+			0,
+			x_min,x_max,y_min,y_max,w,h
+		)
 
 
 func draw_marker(

@@ -23,5 +23,6 @@ func _process(delta: float) -> void:
 		if buckets[bucket].timer.tick():
 			#print("updating ", bucket)
 			for behaviour:Behaviour in buckets[bucket].behaviours:
-				behaviour.process_tick(buckets[bucket].timer)
+				if !behaviour.is_paused:
+					behaviour.process_tick(buckets[bucket].timer)
 	pass

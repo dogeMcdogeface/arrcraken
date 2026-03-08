@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="11_f23eu"]
 [ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="12_oeat8"]
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
-[ext_resource type="Script" uid="uid://ciq545glu6vwl" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
+[ext_resource type="Script" uid="uid://d0cbp1okch4tv" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
 shader = ExtResource("2_j8job")
@@ -29,20 +29,20 @@ size = Vector2(20, 20)
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 10.0
-item_wood = 10.0
+item_wood = 17.0
 items = Dictionary[ExtResource("11_f23eu"), float]({
 ExtResource("12_oeat8"): 10.0,
-ExtResource("13_5xkvv"): 10.0
+ExtResource("13_5xkvv"): 17.0
 })
 
 [sub_resource type="Resource" id="Resource_5xkvv"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
-item_stone = 20.0
-item_wood = 8.0
+item_stone = 5.0
+item_wood = 5.0
 items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 20.0,
-ExtResource("13_5xkvv"): 8.0
+ExtResource("12_oeat8"): 5.0,
+ExtResource("13_5xkvv"): 5.0
 })
 
 [sub_resource type="Resource" id="Resource_kcyjf"]
@@ -58,13 +58,12 @@ ExtResource("13_5xkvv"): 20.0
 [sub_resource type="Resource" id="Resource_xw5lg"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
-item_stone = 3.0
+item_stone = 20.0
 item_wood = 10.0
 items = Dictionary[ExtResource("11_f23eu"), float]({
-ExtResource("12_oeat8"): 3.0,
+ExtResource("12_oeat8"): 20.0,
 ExtResource("13_5xkvv"): 10.0
 })
-metadata/_custom_type_script = "uid://13f4wf1v4k8p"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eidgh"]
 radius = 100.0
@@ -165,7 +164,6 @@ inventory = SubResource("Resource_oeat8")
 
 [node name="Behaviour_Consumer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="2" unique_id=1825729538]
 inventory = SubResource("Resource_5xkvv")
-update_interval = 0.5
 
 [node name="Settlement2" parent="Settlements" unique_id=1464969064 instance=ExtResource("2_eidgh")]
 position = Vector2(-1561, 1347)

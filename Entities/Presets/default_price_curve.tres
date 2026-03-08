@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PriceCalculator" format=3 uid="uid://dkfca6s5duwnd"]
+
+[ext_resource type="Script" uid="uid://beltitimrv7yy" path="res://Entities/Items/price_calculator.gd" id="1_ur1mx"]
+
+[resource]
+script = ExtResource("1_ur1mx")
+price_normal = 199.995
+price_oversupply = 50.185
+stock_scarcity = 18.87
+stock_normal = 58.705
+stock_oversupply = 100.005
+k_scarcity = 0.38
+k_normal = 0.485
+k_oversupply = 3.355
+metadata/_custom_type_script = "uid://beltitimrv7yy"
