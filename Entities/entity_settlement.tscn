@@ -9,8 +9,12 @@
 
 [node name="Settlement" unique_id=2127210789 instance=ExtResource("1_vnbnn")]
 
+[node name="display_name_label" parent="." index="0" unique_id=2099494858]
+metadata/_edit_lock_ = true
+
 [node name="icon" parent="." index="1" unique_id=2004982285]
 texture = ExtResource("2_hms3l")
+metadata/_edit_lock_ = true
 
 [node name="Behaviour_Storage" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1290599698]
 script = ExtResource("4_lpowi")

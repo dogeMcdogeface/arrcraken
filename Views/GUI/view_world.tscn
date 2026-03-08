@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b0mkyhgofckq1" path="res://Views/GUI/fps_label.gd" id="1_qwmvo"]
 [ext_resource type="PackedScene" uid="uid://wc874eoebddu" path="res://World/world.tscn" id="1_s34ht"]
+[ext_resource type="Script" uid="uid://2h2ea8gocdqm" path="res://addons/build_version_manager/version_label.gd" id="2_5rllc"]
 [ext_resource type="Texture2D" uid="uid://bmtea2dgscdqe" path="res://Resurces/Textures/wood_plank1/wood plank.jpg" id="2_oyxc1"]
 [ext_resource type="Texture2D" uid="uid://pjbnv2nijprc" path="res://Resurces/map_background.png" id="3_06qh2"]
 [ext_resource type="PackedScene" uid="uid://boyoantmlv2oy" path="res://Views/GUI/pan_zoom_camera.tscn" id="3_oyxc1"]
+
+[sub_resource type="SystemFont" id="SystemFont_5rllc"]
 
 [sub_resource type="Gradient" id="Gradient_oyxc1"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.290196)
@@ -35,6 +38,21 @@ offset_bottom = 23.0
 size_flags_horizontal = 4
 text = "000000000"
 script = ExtResource("1_qwmvo")
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer" unique_id=1069704342]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("SystemFont_5rllc")
+theme_override_font_sizes/font_size = 12
+text = "Version
+"
+script = ExtResource("2_5rllc")
+metadata/_custom_type_script = "uid://2h2ea8gocdqm"
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1224966105]
 disable_3d = true
