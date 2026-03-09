@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="11_f23eu"]
 [ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="12_oeat8"]
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
-[ext_resource type="Script" uid="uid://ddth6x5mrw6np" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
+[ext_resource type="Script" uid="uid://dipsyispw6e2w" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
 [ext_resource type="PackedScene" uid="uid://bs531x5xabcm5" path="res://Entities/entity_drifter.tscn" id="15_f23eu"]
 [ext_resource type="PackedScene" uid="uid://mlrb1i4miudx" path="res://Entities/entity_vessel.tscn" id="15_oeat8"]
 
