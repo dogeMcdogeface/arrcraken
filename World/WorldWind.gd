@@ -1,4 +1,5 @@
 extends Node
+class_name WorldWind
 
 @export var resolution:int = 20
 @export var x_scroll = 0.01
@@ -10,7 +11,9 @@ var z = 0
 
 @export_category("Conversions")
 ## DECIDE WHAT THE HELL A WIND IS. FORCE? SPEED ... 
-@export var scale = 10 
+@export var max_wind_speed_in_units_per_day = 10 
+
+
 
 func _ready() -> void:
 	Globals.Wind = self
@@ -40,24 +43,25 @@ func _process(delta: float) -> void:
 	wind_texture_image = $WindNoise.texture.get_image()
 
 
-func colorToWindVector(c:Color):
-	var length = c.r * scale
+func colorToWindSample(c:Color) -> WindSample:
+	var length = c.r * max_wind_speed_in_units_per_day
 	var angle = c.g * 2 * PI
 	var v = Vector2.from_angle(angle) * length
-	return v
+	var shear = remap(c.b, 0.8 , 1. , -PI, +PI)
+	return WindSample.new(v, shear)
 
 func towardsCenterVector(p:Vector2):
-	return (Vector2(resolution,resolution)/2 - p).normalized() * scale
+	return (Vector2(resolution,resolution)/2 - p).normalized() * max_wind_speed_in_units_per_day
 
 
-func getInPos( pos:Vector2 ):
+func getInPos( pos:Vector2 ) -> WindSample:
 	var positionInWindTexture = (pos + Globals.WorldMapSize/2 ) / Globals.WorldMapSize * resolution
-	if(positionInWindTexture.x < 0 
-	or positionInWindTexture.y < 0
-	or positionInWindTexture.x >= resolution 
-	or positionInWindTexture.y >= resolution ):
-		return towardsCenterVector(positionInWindTexture)
+	if(positionInWindTexture.x <= 0 
+	or positionInWindTexture.y <= 0
+	or positionInWindTexture.x >= resolution -1
+	or positionInWindTexture.y >= resolution -1):
+		return  WindSample.new(towardsCenterVector(positionInWindTexture))
 
 	var val = wind_texture_image.get_pixelv(positionInWindTexture)
-	return colorToWindVector(val)
+	return colorToWindSample(val)
 	

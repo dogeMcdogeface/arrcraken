@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bs531x5xabcm5"]
+
+[ext_resource type="PackedScene" uid="uid://bw1y28jbtat0x" path="res://Entities/entity.tscn" id="1_01gds"]
+[ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Resurces/Textures/ship.png" id="2_a8u53"]
+[ext_resource type="Script" uid="uid://cp8kymmkunfuo" path="res://Entities/Behaviours/behaviour_sail.gd" id="3_a8u53"]
+
+[node name="Drifter" unique_id=2127210789 instance=ExtResource("1_01gds")]
+
+[node name="display_name_label" parent="." index="0" unique_id=2099494858]
+offset_top = -600.0
+offset_bottom = -272.0
+pivot_offset = Vector2(789, 600)
+size_flags_horizontal = 0
+
+[node name="icon" parent="." index="1" unique_id=2004982285]
+offset_left = -198.2919
+offset_top = -165.5
+offset_right = 198.2919
+offset_bottom = 165.5
+size_flags_horizontal = 4
+texture = ExtResource("2_a8u53")
+
+[node name="Behaviour_Sail" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1299946221]
+script = ExtResource("3_a8u53")
+body_orientation_factor = 0.0
+update_interval = 0.0
+metadata/_custom_type_script = "uid://cp8kymmkunfuo"

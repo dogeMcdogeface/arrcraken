@@ -7,4 +7,4 @@ var World: World
 var WorldTime: WorldTime
 var WorldEconomy: WorldEconomy
 var BehaviourManager:BehaviourManager
-var Wind
+var Wind:WorldWind

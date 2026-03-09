@@ -12,6 +12,8 @@ func _ready() -> void:
 		display_name = name
 	
 	$display_name_label.text = display_name
+	$display_name_label.pivot_offset = -$display_name_label.position
+
 	for node in $Behaviours.get_children():
 		if node is Behaviour:
 			node.entity = self
@@ -21,4 +23,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$display_name_label.rotation = -rotation
 	pass
