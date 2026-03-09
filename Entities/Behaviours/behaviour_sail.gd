@@ -2,7 +2,7 @@ class_name Behaviour_Sail
 extends Behaviour
 
 # Sail properties
-@export var sail_orientation := Vector2.UP # Local forward direction
+@export_range(0, 360, 0.1, "radians_as_degrees") var sail_orientation: float = PI  # Degrees, clockwise from right
 @export_range(0.0, 1.0) var sail_orientation_factor := 1.0 # How much wind depends on sail orientation
 @export_range(0.0, 1.0) var body_orientation_factor := 0.8 # How much entity resists sideways motion
 
@@ -12,8 +12,8 @@ func process_tick(world_timer:WorldTimer):
 	
 	# Normalize vectors
 	var wind_dir = wind.vector.normalized()
-	var sail_dir = sail_orientation.normalized()
-	var body_dir = Vector2(cos(entity.rotation), sin(entity.rotation)).normalized() # assuming rotation_vector points forward
+	var body_dir = Vector2.from_angle(entity.rotation).normalized() # assuming rotation_vector points forward
+	var sail_dir = Vector2.from_angle(entity.rotation + sail_orientation).normalized()
 	
 	# Wind push factor based on sail orientation
 	var alignment = abs(wind_dir.dot(sail_dir)) # 1 = aligned, 0 = perpendicular
@@ -27,6 +27,5 @@ func process_tick(world_timer:WorldTimer):
 	var effective_push = forward_component + sideways_component * (1 - body_orientation_factor)
 	
 	# Apply movement
-	print(wind_push , "	", wind.vector)
 	entity.position += effective_push
-#	entity.rotation += wind.shear * delta
+	entity.rotation += wind.shear * delta

@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D normal_map; // The 20x20 normal map
 uniform vec2 texture_size = vec2(20.0, 20.0); // Size of the input texture
+uniform vec2 override_vector = vec2(0.0, 0.0); // If non-zero, use this vector instead of texture
 
 void fragment() {
     vec2 uv = UV;
@@ -11,17 +12,27 @@ void fragment() {
     ivec2 cell_id = ivec2(floor(cell_uv));
     vec2 local_uv = fract(cell_uv);
 
-    // Get data from texture
-    vec2 texel_coord = (vec2(cell_id) + 0.5) / texture_size;
-    vec4 normal_data = texture(normal_map, texel_coord);
+    // Determine angle
+    float angle = 0.0;
+    float line_length = 0.0;
 
-    float red = normal_data.r;
-    float green = normal_data.g;
-    float blue = normal_data.b;
+    if (override_vector.x != 0.0 || override_vector.y != 0.0) {
+        // Use override vector
+        angle = atan(override_vector.y, override_vector.x);
+        line_length = length(override_vector) * 0.9; // scale to match texture representation
+    } else {
+        // Get data from texture
+        vec2 texel_coord = (vec2(cell_id) + 0.5) / texture_size;
+        vec4 normal_data = texture(normal_map, texel_coord);
 
-    // Higher precision angle using G + B
-    float angle = green * 6.28318530718; // radians
-    float line_length = red * 0.9;
+        float red = normal_data.r;
+        float green = normal_data.g;
+        float blue = normal_data.b;
+
+        // Higher precision angle using G
+        angle = green * 6.28318530718; // radians
+        line_length = red * 0.9;
+    }
 
     vec2 centered = local_uv - 0.5;
 

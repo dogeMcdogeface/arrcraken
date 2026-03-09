@@ -12,13 +12,14 @@
 [ext_resource type="Script" uid="uid://mngp6nnfkp4f" path="res://Entities/Items/item_base.gd" id="11_f23eu"]
 [ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="12_oeat8"]
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
-[ext_resource type="Script" uid="uid://dccsfm3ak7hfv" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
+[ext_resource type="Script" uid="uid://ddth6x5mrw6np" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
 [ext_resource type="PackedScene" uid="uid://bs531x5xabcm5" path="res://Entities/entity_drifter.tscn" id="15_f23eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
 shader = ExtResource("2_j8job")
 shader_parameter/normal_map = ExtResource("2_3f78f")
 shader_parameter/texture_size = Vector2(20, 20)
+shader_parameter/override_vector = Vector2(0, 0)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j8job"]
 size = Vector2(20, 20)
@@ -130,13 +131,14 @@ metadata/_custom_type_script = "uid://b8pqirv77ww2o"
 
 [node name="WorldWind" type="Node" parent="." unique_id=706682443]
 script = ExtResource("2_k8do8")
-resolution = 40
 x_scroll = 0.0
 y_scroll = 0.0
 z_scroll = 2.0
 max_wind_speed_in_units_per_day = 1000
+override_wind_degrees = 1.6458454846306527
 
 [node name="WindNoise" type="TextureRect" parent="WorldWind" unique_id=1290661017]
+visible = false
 modulate = Color(1, 1, 1, 0.258824)
 texture_filter = 1
 anchors_preset = 8
@@ -234,8 +236,18 @@ inventory = SubResource("Resource_dqu5g")
 [node name="Ships" type="Node2D" parent="." unique_id=136401531]
 metadata/_edit_lock_ = true
 
-[node name="Drifter" parent="Ships" unique_id=675415923 instance=ExtResource("15_f23eu")]
+[node name="Adrift" parent="Ships" unique_id=675415923 instance=ExtResource("15_f23eu")]
+rotation = 1.5707964
+
+[node name="Behaviour_Sail" parent="Ships/Adrift/Behaviours" parent_id_path=PackedInt32Array(675415923, 427234832) index="0" unique_id=1299946221]
+sail_orientation_factor = 0.0
+body_orientation_factor = 0.0
+
+[node name="Sail" parent="Ships" unique_id=517010215 instance=ExtResource("15_f23eu")]
+position = Vector2(603, 3157)
+rotation = 1.5707964
 
 [editable path="Settlements/Settlement"]
 [editable path="Settlements/Settlement2"]
 [editable path="Settlements/Settlement3"]
+[editable path="Ships/Adrift"]
