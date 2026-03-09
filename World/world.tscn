@@ -136,7 +136,7 @@ x_scroll = 0.0
 y_scroll = 0.0
 z_scroll = 2.0
 max_wind_speed_in_units_per_day = 1000
-override_wind_degrees = 3.743731245527837
+override_wind_degrees = 1.6475908138826472
 
 [node name="WindNoise" type="TextureRect" parent="WorldWind" unique_id=1290661017]
 visible = false

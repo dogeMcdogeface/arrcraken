@@ -15,49 +15,144 @@ extends Behaviour
 func process_tick(world_timer:WorldTimer):
 	var delta = world_timer.elapsed_days
 	var wind = Globals.Wind.getInPos(entity.position)
-	
-	# Normalize vectors
-	var wind_dir = wind.vector.normalized()
-	var body_dir = Vector2.from_angle(entity.rotation).normalized() # assuming rotation_vector points forward
-	var sail_dir = Vector2.from_angle(entity.rotation + sail_orientation).normalized()
-	
-	# Wind push factor based on sail orientation
-	var alignment = abs(wind_dir.dot(sail_dir)) # 1 = aligned, 0 = perpendicular
-	var push_factor = lerp(1.0, 0.0, sail_orientation_factor * alignment)
-	# Now push_factor is 1 if wind perpendicular, 0 if wind fully aligned (depending on wind_importance)
-	var wind_push = wind.vector * push_factor * delta
-	
-	# Entity forward direction
-	# Projection of wind onto the ship forward axis
-	var forward_dot = body_dir.dot(wind_push)
 
-	# Forward thrust from tailwind only
-	var forward_component = body_dir * max(0.0, forward_dot) * body_orientation_factor
+	# ---------------------------------------------------------
+	# Basic direction vectors
+	# ---------------------------------------------------------
+	var wind_vec = wind.vector
+	var wind_dir = wind_vec.normalized()
+	var wind_speed = wind_vec.length()
 
-	# Pure sideways drift
-	var sideways_component = wind_push - body_dir * forward_dot
+	var body_dir = Vector2.from_angle(entity.rotation).normalized() # forward
 
-	# If wind was pushing backwards, convert some of it into weak forward thrust
-	if forward_dot < 0.0:
-		var converted = -forward_dot 
-		sideways_component += body_dir * converted
+	# Direction along the sail cloth
+	var sail_axis = Vector2.from_angle(entity.rotation + sail_orientation).normalized()
 
-	# Apply sideways resistance
-	var effective_push = forward_component + sideways_component * (1.0 - body_orientation_factor)
-	
-	# Apply movement
+	# Direction the sail is facing (aerodynamic normal)
+	var sail_dir = sail_axis.rotated(PI / 2.0)
+
+
+	auto_trim_sail(wind_vec ,delta)
+
+	# ---------------------------------------------------------
+	# EFFECT 1: WIND DRAG ON THE SAIL (perpendicular impact)
+	# ---------------------------------------------------------
+	# This models the classic "wind pushing the sail like a wall".
+	# Maximum force occurs when wind is perpendicular to the sail surface.
+
+	# Dot tells us how aligned wind is with the sail axis
+	var sail_alignment = abs(wind_dir.dot(sail_dir)) # 1 = aligned, 0 = perpendicular
+
+	# When aligned, drag should be small. When perpendicular, drag is large.
+	var perpendicular_factor = 1.0 - sail_alignment
+
+	# Blend with orientation factor:
+	# if sail_orientation_factor = 0 -> sail orientation ignored
+	var drag_factor = lerp(1.0, perpendicular_factor, sail_orientation_factor)
+
+	var sail_drag_force = wind_vec * drag_factor
+
+
+	# ---------------------------------------------------------
+	# EFFECT 2: SAIL LIFT (sail acting like a wing)
+	# ---------------------------------------------------------
+	# When wind hits the sail at an angle, it produces a force
+	# perpendicular to the airflow (like an airplane wing).
+	# This is what allows sailing somewhat against the wind.
+
+	# Lift strength depends on how oblique the wind is to the sail
+	var lift_strength = sail_alignment * (1.0 - sail_alignment)
+
+	# Direction of lift: perpendicular to wind
+	var lift_dir = wind_dir.rotated(PI / 2.0)
+
+	# Choose the lift direction that actually pushes the boat forward
+	if lift_dir.dot(body_dir) < 0:
+		lift_dir = -lift_dir
+
+	var sail_lift_force = lift_dir * wind_speed * lift_strength * sail_orientation_factor
+
+
+	# ---------------------------------------------------------
+	# COMBINE SAIL FORCES
+	# ---------------------------------------------------------
+	var sail_force = (sail_drag_force + sail_lift_force) * delta
+
+
+	# ---------------------------------------------------------
+	# EFFECT 3: HULL / BODY INTERACTION WITH WATER
+	# ---------------------------------------------------------
+	# The hull resists sideways motion but allows forward motion.
+	# This is essentially keel + water drag behavior.
+
+	var forward_dot = body_dir.dot(sail_force)
+
+	# Forward movement component
+	var forward_component = body_dir * max(0.0, forward_dot)
+
+	# Sideways drift component
+	var sideways_component = sail_force - body_dir * forward_dot
+
+	# Hull resists sideways motion depending on body_orientation_factor
+	sideways_component *= (1.0 - body_orientation_factor)
+
+	var effective_push = forward_component + sideways_component
+
+
+	# ---------------------------------------------------------
+	# APPLY MOVEMENT
+	# ---------------------------------------------------------
 	entity.position += effective_push
-	#entity.rotation += wind.shear * delta
-	
-	# Steering towards the target rotation
+
+
+	# ---------------------------------------------------------
+	# STEERING TOWARDS TARGET ROTATION
+	# ---------------------------------------------------------
 	var angle_diff = fposmod((target_rotation - entity.rotation), (2 * PI))
 	if angle_diff > PI:
-		angle_diff -= 2 * PI  # Make the angle difference fall within [-PI, PI]
+		angle_diff -= 2 * PI
 
-	# Apply a smoothing factor for rotation
 	var target_rotation_step = angle_diff * rotation_resistance_factor * delta
 	entity.rotation += target_rotation_step
 
-	# Wind shear effect on rotation (consider how much the wind affects rotation)
-	var wind_shear_rotation = wind.shear * shear_factor * delta 
+
+	# ---------------------------------------------------------
+	# WIND SHEAR ROTATION EFFECT (UNCHANGED)
+	# ---------------------------------------------------------
+	var wind_shear_rotation = wind.shear * shear_factor * delta
 	entity.rotation += wind_shear_rotation
+
+
+	# ---------------------------------------------------------
+	# VISUAL SAIL ROTATION
+	# ---------------------------------------------------------
+	if entity.get_node_or_null("%sail"):
+		entity.get_node("%sail").rotation = sail_orientation
+
+
+func auto_trim_sail(wind_vec: Vector2, delta: float, trim_speed := 2.0):
+	if wind_vec.length() == 0:
+		return
+	
+	# Wind direction
+	var wind_dir = wind_vec.normalized()
+	
+	# Ship forward direction
+	var body_dir = Vector2.from_angle(entity.rotation)
+	
+	# Wind relative to ship
+	var rel_angle = body_dir.angle_to(wind_dir)
+	
+	# Ideal sail angle (roughly perpendicular to wind)
+	var optimal_angle = rel_angle * 0.5
+	
+	# Clamp so sail never flips behind the mast
+	var max_sail_angle = PI * 0.45
+	optimal_angle = clamp(optimal_angle, -max_sail_angle, max_sail_angle)
+	
+	# Smoothly rotate sail toward optimal angle
+	sail_orientation = lerp_angle(
+		sail_orientation,
+		optimal_angle,
+		trim_speed * delta
+	)

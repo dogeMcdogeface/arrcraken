@@ -23,7 +23,7 @@ texture = ExtResource("2_a8u53")
 [node name="Behaviour_Sail" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1299946221]
 script = ExtResource("3_a8u53")
 sail_orientation = 1.5707963267948966
-sail_orientation_factor = 0.821
+sail_orientation_factor = 0.0
 body_orientation_factor = 0.381
 shear_factor = 0.05
 rotation_resistance_factor = 1.0
