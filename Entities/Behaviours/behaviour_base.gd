@@ -17,8 +17,8 @@ var entity_storage: Behaviour_Storage:
 		return null
 
 func get_behaviour(behaviour):
-		if entity and entity.behaviours.has(behaviour):
-			return entity.behaviours[behaviour]
+		if entity:
+			return entity.get_behaviour(behaviour)
 		return null
 
 

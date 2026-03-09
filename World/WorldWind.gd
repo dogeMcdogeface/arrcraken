@@ -55,7 +55,10 @@ func colorToWindSample(c:Color) -> WindSample:
 	var length = c.r * max_wind_speed_in_units_per_day
 	var angle = c.g * 2 * PI
 	var v = Vector2.from_angle(angle).normalized() * length
-	var shear = remap(c.b, 0.8 , 1. , -PI, +PI)
+	#var shear = remap(c.b, 0.8 , 1. , -PI, +PI)
+	#The blue channel stays high because of how tangent-space normals are encoded.
+	var shear = -PI + (c.b - 0.6) * (PI + PI) / (1 - 0.6)
+	
 	return WindSample.new(v, shear)
 
 func towardsCenterVector(p:Vector2):

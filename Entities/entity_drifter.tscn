@@ -25,5 +25,7 @@ script = ExtResource("3_a8u53")
 sail_orientation = 1.5707963267948966
 sail_orientation_factor = 0.821
 body_orientation_factor = 0.381
+shear_factor = 0.05
+rotation_resistance_factor = 1.0
 update_interval = 0.0
 metadata/_custom_type_script = "uid://cp8kymmkunfuo"

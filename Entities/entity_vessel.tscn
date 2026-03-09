@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://mlrb1i4miudx"]
+
+[ext_resource type="PackedScene" uid="uid://bw1y28jbtat0x" path="res://Entities/entity.tscn" id="1_7iy1c"]
+[ext_resource type="Script" uid="uid://cp8kymmkunfuo" path="res://Entities/Behaviours/behaviour_sail.gd" id="2_bfnhr"]
+[ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Resurces/Textures/ship.png" id="2_gg1x6"]
+[ext_resource type="Script" uid="uid://dh28yuh1lb7fq" path="res://Entities/Behaviours/behaviour_navigator.gd" id="4_b8k60"]
+
+[node name="Vessel" unique_id=2127210789 instance=ExtResource("1_7iy1c")]
+
+[node name="display_name_label" parent="." index="0" unique_id=2099494858]
+offset_top = -476.045
+offset_bottom = -148.04501
+
+[node name="icon" parent="." index="1" unique_id=2004982285]
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_gg1x6")
+
+[node name="Behaviour_Sail" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="0" unique_id=1207248544]
+script = ExtResource("2_bfnhr")
+sail_orientation = 1.5707963267948966
+sail_orientation_factor = 0.8
+shear_factor = 0.1
+rotation_resistance_factor = 1.0
+update_interval = 0.0
+metadata/_custom_type_script = "uid://cp8kymmkunfuo"
+
+[node name="Behaviour_Navigator" type="Node" parent="Behaviours" parent_id_path=PackedInt32Array(427234832) index="1" unique_id=247795526]
+script = ExtResource("4_b8k60")
+update_interval = 0.5
+metadata/_custom_type_script = "uid://dh28yuh1lb7fq"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="3" unique_id=2146008281]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true

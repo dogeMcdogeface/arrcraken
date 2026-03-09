@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="13_5xkvv"]
 [ext_resource type="Script" uid="uid://ddth6x5mrw6np" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="14_f23eu"]
 [ext_resource type="PackedScene" uid="uid://bs531x5xabcm5" path="res://Entities/entity_drifter.tscn" id="15_f23eu"]
+[ext_resource type="PackedScene" uid="uid://mlrb1i4miudx" path="res://Entities/entity_vessel.tscn" id="15_oeat8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8do8"]
 shader = ExtResource("2_j8job")
@@ -24,7 +25,7 @@ shader_parameter/override_vector = Vector2(0, 0)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j8job"]
 size = Vector2(20, 20)
 
-[sub_resource type="Resource" id="Resource_awrha"]
+[sub_resource type="Resource" id="Resource_f23eu"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 500.0
@@ -34,7 +35,7 @@ ExtResource("12_oeat8"): 500.0,
 ExtResource("13_5xkvv"): 500.0
 })
 
-[sub_resource type="Resource" id="Resource_f23eu"]
+[sub_resource type="Resource" id="Resource_oeat8"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 10.0
@@ -44,7 +45,7 @@ ExtResource("12_oeat8"): 10.0,
 ExtResource("13_5xkvv"): 17.0
 })
 
-[sub_resource type="Resource" id="Resource_oeat8"]
+[sub_resource type="Resource" id="Resource_5xkvv"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 5.0
@@ -54,7 +55,7 @@ ExtResource("12_oeat8"): 5.0,
 ExtResource("13_5xkvv"): 5.0
 })
 
-[sub_resource type="Resource" id="Resource_5xkvv"]
+[sub_resource type="Resource" id="Resource_kcyjf"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 500.0
@@ -64,7 +65,7 @@ ExtResource("12_oeat8"): 500.0,
 ExtResource("13_5xkvv"): 500.0
 })
 
-[sub_resource type="Resource" id="Resource_kcyjf"]
+[sub_resource type="Resource" id="Resource_xw5lg"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 5.0
@@ -74,7 +75,7 @@ ExtResource("12_oeat8"): 5.0,
 ExtResource("13_5xkvv"): 20.0
 })
 
-[sub_resource type="Resource" id="Resource_xw5lg"]
+[sub_resource type="Resource" id="Resource_0lysu"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 20.0
@@ -84,7 +85,7 @@ ExtResource("12_oeat8"): 20.0,
 ExtResource("13_5xkvv"): 10.0
 })
 
-[sub_resource type="Resource" id="Resource_0lysu"]
+[sub_resource type="Resource" id="Resource_26uyv"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 500.0
@@ -94,7 +95,7 @@ ExtResource("12_oeat8"): 500.0,
 ExtResource("13_5xkvv"): 500.0
 })
 
-[sub_resource type="Resource" id="Resource_26uyv"]
+[sub_resource type="Resource" id="Resource_dqu5g"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 5.0
@@ -104,7 +105,7 @@ ExtResource("12_oeat8"): 5.0,
 ExtResource("13_5xkvv"): 20.0
 })
 
-[sub_resource type="Resource" id="Resource_dqu5g"]
+[sub_resource type="Resource" id="Resource_o6lw0"]
 resource_local_to_scene = true
 script = ExtResource("14_f23eu")
 item_stone = 20.0
@@ -135,7 +136,7 @@ x_scroll = 0.0
 y_scroll = 0.0
 z_scroll = 2.0
 max_wind_speed_in_units_per_day = 1000
-override_wind_degrees = 1.6458454846306527
+override_wind_degrees = 3.743731245527837
 
 [node name="WindNoise" type="TextureRect" parent="WorldWind" unique_id=1290661017]
 visible = false
@@ -189,13 +190,13 @@ offset_right = 809.0
 offset_bottom = -417.0
 
 [node name="Behaviour_Storage" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="0" unique_id=1290599698]
-size = SubResource("Resource_awrha")
+size = SubResource("Resource_f23eu")
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="1" unique_id=97658351]
-inventory = SubResource("Resource_f23eu")
+inventory = SubResource("Resource_oeat8")
 
 [node name="Behaviour_Consumer" parent="Settlements/Settlement/Behaviours" parent_id_path=PackedInt32Array(2127210789, 427234832) index="2" unique_id=1825729538]
-inventory = SubResource("Resource_oeat8")
+inventory = SubResource("Resource_5xkvv")
 
 [node name="Settlement2" parent="Settlements" unique_id=1464969064 instance=ExtResource("2_eidgh")]
 position = Vector2(-1561, 1347)
@@ -207,13 +208,13 @@ offset_right = 809.0
 offset_bottom = -417.0
 
 [node name="Behaviour_Storage" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="0" unique_id=1290599698]
-size = SubResource("Resource_5xkvv")
+size = SubResource("Resource_kcyjf")
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="1" unique_id=97658351]
-inventory = SubResource("Resource_kcyjf")
+inventory = SubResource("Resource_xw5lg")
 
 [node name="Behaviour_Consumer" parent="Settlements/Settlement2/Behaviours" parent_id_path=PackedInt32Array(1464969064, 427234832) index="2" unique_id=1825729538]
-inventory = SubResource("Resource_xw5lg")
+inventory = SubResource("Resource_0lysu")
 
 [node name="Settlement3" parent="Settlements" unique_id=303712262 instance=ExtResource("2_eidgh")]
 position = Vector2(-1561, 1347)
@@ -225,29 +226,22 @@ offset_right = 809.0
 offset_bottom = -417.0
 
 [node name="Behaviour_Storage" parent="Settlements/Settlement3/Behaviours" parent_id_path=PackedInt32Array(303712262, 427234832) index="0" unique_id=1290599698]
-size = SubResource("Resource_0lysu")
+size = SubResource("Resource_26uyv")
 
 [node name="Behaviour_Producer" parent="Settlements/Settlement3/Behaviours" parent_id_path=PackedInt32Array(303712262, 427234832) index="1" unique_id=97658351]
-inventory = SubResource("Resource_26uyv")
+inventory = SubResource("Resource_dqu5g")
 
 [node name="Behaviour_Consumer" parent="Settlements/Settlement3/Behaviours" parent_id_path=PackedInt32Array(303712262, 427234832) index="2" unique_id=1825729538]
-inventory = SubResource("Resource_dqu5g")
+inventory = SubResource("Resource_o6lw0")
 
 [node name="Ships" type="Node2D" parent="." unique_id=136401531]
 metadata/_edit_lock_ = true
 
-[node name="Adrift" parent="Ships" unique_id=675415923 instance=ExtResource("15_f23eu")]
-rotation = 1.5707964
+[node name="Vessel" parent="Ships" unique_id=2060930593 instance=ExtResource("15_oeat8")]
+position = Vector2(-2190, -1115)
 
-[node name="Behaviour_Sail" parent="Ships/Adrift/Behaviours" parent_id_path=PackedInt32Array(675415923, 427234832) index="0" unique_id=1299946221]
-sail_orientation_factor = 0.0
-body_orientation_factor = 0.0
-
-[node name="Sail" parent="Ships" unique_id=517010215 instance=ExtResource("15_f23eu")]
-position = Vector2(603, 3157)
-rotation = 1.5707964
+[node name="Drifter" parent="Ships" unique_id=1323131171 instance=ExtResource("15_f23eu")]
 
 [editable path="Settlements/Settlement"]
 [editable path="Settlements/Settlement2"]
 [editable path="Settlements/Settlement3"]
-[editable path="Ships/Adrift"]
