@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1773140157|1111906229';
+const CACHE_VERSION = '1773141289|2244026755';
 /** @type {string} */
 const CACHE_PREFIX = 'arrcraken-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
