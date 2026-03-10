@@ -16,11 +16,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="arrcraken"
 config/version={
-"friendly_name": "AscendingSurf",
+"friendly_name": "ArcaneShore",
 "major": 0.0,
 "minor": 1.0,
-"release_timestamp": 1773092680.099,
-"sub": 112.0
+"release_timestamp": 1773139106.109,
+"sub": 114.0
 }
 run/main_scene="uid://xhgtb1y4vslj"
 config/features=PackedStringArray("4.6", "Forward Plus")
