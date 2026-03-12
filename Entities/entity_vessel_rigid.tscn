@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cg5obhr5q1gc2"]
+
+[ext_resource type="Script" uid="uid://bcjyxt6mxiyun" path="res://Entities/entity.gd" id="1_seisg"]
+[ext_resource type="Texture2D" uid="uid://bashykd2i81rs" path="res://Resurces/Textures/ship.png" id="2_21qrl"]
+[ext_resource type="Script" uid="uid://dh28yuh1lb7fq" path="res://Entities/Behaviours/behaviour_navigator.gd" id="4_5t1of"]
+[ext_resource type="Script" uid="uid://xms63mmt7436" path="res://Entities/Behaviours/behaviour_sail_rigid.gd" id="4_seisg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbgt4"]
+load_path = "res://.godot/imported/sail.jpg-16096d52e6d4903bd98e91de42e712ce.ctex"
+
+[node name="Vessel" type="RigidBody2D" unique_id=322092942]
+script = ExtResource("1_seisg")
+
+[node name="display_name_label" type="Label" parent="." unique_id=60452216]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -789.0
+offset_top = -476.045
+offset_right = 789.0
+offset_bottom = -148.04501
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 240
+text = "display_name"
+horizontal_alignment = 1
+
+[node name="icon" type="TextureRect" parent="." unique_id=155742740]
+modulate = Color(1, 0.26999998, 0.26999998, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.54388
+offset_top = -245.0
+offset_right = 293.54388
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_21qrl")
+
+[node name="sail" type="TextureRect" parent="." unique_id=1328024230]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.938614
+offset_top = -376.66666
+offset_right = 40.938614
+offset_bottom = 376.66666
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_vbgt4")
+
+[node name="Behaviours" type="Node" parent="." unique_id=2015201587]
+
+[node name="Behaviour_Navigator" type="Node" parent="Behaviours" unique_id=608105445]
+script = ExtResource("4_5t1of")
+is_paused = true
+update_interval = 0.5
+metadata/_custom_type_script = "uid://dh28yuh1lb7fq"
+
+[node name="Behaviour_Sail_Rigid" type="Node" parent="Behaviours" unique_id=715428169]
+script = ExtResource("4_seisg")
+update_interval = 0.0
+metadata/_custom_type_script = "uid://xms63mmt7436"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1177369766]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true

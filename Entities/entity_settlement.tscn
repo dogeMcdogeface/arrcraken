@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://i1lwfmixt0o0" path="res://Entities/Items/item_stone.tres" id="5_dr7x7"]
 [ext_resource type="Script" uid="uid://dsxf4p5gpoi50" path="res://Entities/Behaviours/behaviour_consumer.gd" id="5_lpowi"]
 [ext_resource type="Resource" uid="uid://bywthfkoiuhu4" path="res://Entities/Items/item_wood.tres" id="6_h513b"]
-[ext_resource type="Script" uid="uid://d0cbp1okch4tv" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="7_kpfyk"]
+[ext_resource type="Script" uid="uid://dbkm876dqin84" path="res://Entities/Items/Item_Lists/item_list_float.gd" id="7_kpfyk"]
 
 [sub_resource type="Resource" id="Resource_ua3v1"]
 resource_local_to_scene = true
@@ -20,6 +20,10 @@ items = Dictionary[ExtResource("4_yoyaf"), float]({
 ExtResource("5_dr7x7"): 500.0,
 ExtResource("6_h513b"): 500.0
 })
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yoyaf"]
+resource_local_to_scene = true
+radius = 250.0
 
 [node name="Settlement" unique_id=2127210789 instance=ExtResource("1_vnbnn")]
 
@@ -50,3 +54,6 @@ metadata/_custom_type_script = "uid://dsxf4p5gpoi50"
 script = ExtResource("3_tudj5")
 update_interval = 0.25
 metadata/_custom_type_script = "uid://cdjjti01tssem"
+
+[node name="CollisionShape2D" parent="Area2D" parent_id_path=PackedInt32Array(1069562144) index="0" unique_id=43010644]
+shape = SubResource("CircleShape2D_yoyaf")

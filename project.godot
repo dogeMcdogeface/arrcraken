@@ -16,11 +16,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="arrcraken"
 config/version={
-"friendly_name": "KeptEscarpment",
+"friendly_name": "SwiftPost",
 "major": 0.0,
 "minor": 1.0,
-"release_timestamp": 1773142015.817,
-"sub": 117.0
+"release_timestamp": 1773356320.142,
+"sub": 118.0
 }
 run/main_scene="uid://xhgtb1y4vslj"
 config/features=PackedStringArray("4.6", "Forward Plus")
@@ -92,6 +92,10 @@ map_drag={
 [navigation]
 
 2d/default_edge_connection_margin=50.0
+
+[physics]
+
+2d/default_gravity=0.0
 
 [rendering]
 
